@@ -4,17 +4,17 @@ Nova allows job-seekers to prove their meddle to employers by submitting project
 
 ## Design Student Team
 
-Nadia Al-Wahaibi
-Anoop Dhaliwal
-Gabrielle Galvez
-Mark Pagal
+* Nadia Al-Wahaibi
+* Anoop Dhaliwal
+* Gabrielle Galvez
+* Mark Pagal
 
 ## Dev Student Team
 
-Michael Uj Kim
-Scott Livingstone
-Travis Rempel
-Sean Stobo
+* Michael Uj Kim
+* Scott Livingstone
+* Travis Rempel
+* Sean Stobo
 
 # [Makin' it work](https://www.youtube.com/watch?v=fwwPmNWQfIY)
 
