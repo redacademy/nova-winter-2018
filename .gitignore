@@ -52,8 +52,5 @@ buck-out/
 */fastlane/Preview.html
 */fastlane/screenshots
 
-#pods/
-Pods
-
 #configuration
 js/config

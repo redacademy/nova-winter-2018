@@ -1,15 +1,13 @@
-import firebase from "react-native-firebase";
+import { auth } from "./firebase";
 
 export function register(data) {
   const { email, password } = data;
-  firebase.auth
-    .createUserWithEmailAndPassword(email, password)
-    .then(user => {});
+  auth.createUserWithEmailAndPassword(email, password).then(user => {});
 }
 
 export function login(data) {
   const { email, password } = data;
-  firebase.auth.signInWithEmailAndPassword(email, password).catch(error => {
+  auth.signInWithEmailAndPassword(email, password).catch(error => {
     console.log(
       "An error occured when logging in. Please check your login credentials"
     );
@@ -17,7 +15,7 @@ export function login(data) {
 }
 
 export function signOut() {
-  firebase.auth.signOut().catch(error => {
+  auth.signOut().catch(error => {
     console.log("An error occured when signing out");
   });
 }
