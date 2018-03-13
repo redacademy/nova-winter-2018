@@ -1,4 +1,4 @@
-import { AppRegistry } from 'react-native';
-import App from './App';
+import { AppRegistry } from "react-native";
+import App from "./js";
 
-AppRegistry.registerComponent('nova', () => App);
+AppRegistry.registerComponent("nova", () => App);
