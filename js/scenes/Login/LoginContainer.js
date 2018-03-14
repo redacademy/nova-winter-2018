@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Login from './Login';
+import { testGetUser } from '../../api/firebaseHelpers';
 
 class LoginContainer extends Component {
 	static route = {
@@ -10,6 +11,8 @@ class LoginContainer extends Component {
 	};
 
 	render() {
+		testGetUser('WJTvKQHAwP9frwE46woO');
+
 		return <Login />;
 	}
 }
