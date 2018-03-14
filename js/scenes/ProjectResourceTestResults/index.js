@@ -1,3 +1,3 @@
-import ProjectResourcesTestResultsContainer from "./ProjectResourcesTestResultsContainer";
+import ProjectResourceTestResultsContainer from "./ProjectResourceTestResultsContainer";
 
-export default ProjectResourcesTestResultsContainer;
+export default ProjectResourceTestResultsContainer;

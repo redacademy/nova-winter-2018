@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import Router from "./navigation/Router";
 import { Provider } from "react-redux";
 
@@ -15,20 +15,25 @@ import {
   NavigationProvider as NavProvider
 } from "@expo/ex-navigation";
 
+import Store from "./redux/store";
+
 const navContext = new NavContext({
-  router: Router
+  router: Router,
+  store: Store
 });
 
 export default class App extends Component {
   render() {
     return (
-      <NavProvider context={navContext}>
-        <StackNav
-          id="root"
-          navigatorUID="root"
-          initialRoute={Router.getRoute("layout")}
-        />
-      </NavProvider>
+      <Provider store={Store}>
+        <NavProvider context={navContext}>
+          <StackNav
+            id="root"
+            navigatorUID="root"
+            initialRoute={Router.getRoute("layout")}
+          />
+        </NavProvider>
+      </Provider>
     );
   }
 }
