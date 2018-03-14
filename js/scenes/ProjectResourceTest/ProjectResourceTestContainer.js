@@ -2,20 +2,20 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import ProjectResourcesTest from "./ProjectResourcesTest";
+import ProjectResourceTest from "./ProjectResourceTest";
 
-class ProjectResourcesTestContainer extends Component {
+class ProjectResourceTestContainer extends Component {
   static route = {
     navigationBar: {
-      title: "ProjectResourcesTest"
+      title: "ProjectResourceTest"
     }
   };
 
   render() {
-    return <ProjectResourcesTest />;
+    return <ProjectResourceTest />;
   }
 }
 
 // ProjectResourcesTestContainer.propTypes = {};
 
-export default ProjectResourcesTestContainer;
+export default ProjectResourceTestContainer;

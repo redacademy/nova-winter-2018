@@ -19,14 +19,14 @@ class NavigationLayout extends Component {
       <TabNav
         id="main"
         navigatorUID="main"
-        initialTab="companies"
+        initialTab="devRoutes"
         tabBarColor="#ccc"
       >
-        <TabItem id="login" title="Login">
+        <TabItem id="devRoutes" title="Dev Routes">
           <StackNav
-            id="login"
-            navigatorUID="login"
-            initialRoute={Router.getRoute("login")}
+            id="devRoutes"
+            navigatorUID="devRoutes"
+            initialRoute={Router.getRoute("devRoutes")}
             defaultRouteConfig={defaultRouteConfig}
           />
         </TabItem>
