@@ -3,12 +3,12 @@ import { Text, View } from "react-native";
 import PropTypes from "prop-types";
 import { styles } from "./styles";
 
-const ProjectResourcesTest = () => (
+const ProjectResourceTest = () => (
   <View>
-    <Text>ProjectResourcesTest Scene</Text>
+    <Text>ProjectResourceTest Scene</Text>
   </View>
 );
 
 // ProjectResourcesTest.propTypes = {};
 
-export default ProjectResourcesTest;
+export default ProjectResourceTest;
