@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableHighlight, ScrollView } from "react-native";
+import { ScrollView, Text } from "react-native";
 import PropTypes from "prop-types";
 import { styles } from "./styles";
 import { goToScene } from "../../navigation/NavigationHelper";
