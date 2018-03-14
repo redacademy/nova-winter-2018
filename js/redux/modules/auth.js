@@ -21,13 +21,13 @@ export default function(
   action
 ) {
   switch (action.type) {
-    case UPDATE_AUTH_STATE: {
-      return { ...state, authenticated: action.payload };
-    }
-    case USER_LOADING: {
-      return { ...state, userLoading: action.payload };
-    }
-    default:
-      return state;
+  case UPDATE_AUTH_STATE: {
+    return { ...state, authenticated: action.payload };
+  }
+  case USER_LOADING: {
+    return { ...state, userLoading: action.payload };
+  }
+  default:
+    return state;
   }
 }
