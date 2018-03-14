@@ -1,14 +1,23 @@
 import React from "react";
-
 import { Text, View, TextInput, Image, TouchableHighlight } from "react-native";
+import PropTypes from "prop-types";
 
 import { styles } from "./styles";
 import NovaButton from "../../components/UI/NovaButton/";
 import NovaHR from "../../components/UI/NovaHR/";
-import { colors, typography } from "../../config/styles.js";
-const { black, mediumGrey, nearBlack, green, red } = colors;
-const { fontMain } = typography;
-const Login = () => (
+import { colors } from "../../config/styles.js";
+import { goToScene } from "../../navigation/NavigationHelper";
+
+const { green, red } = colors;
+
+const Login = ({
+  email,
+  password,
+  handleChange,
+  handleSubmit,
+  logOut,
+  currentUser
+}) => (
   <View style={styles.container}>
     <Image
       style={styles.logo}
@@ -21,13 +30,54 @@ const Login = () => (
       resizeMode="contain"
     />
     <NovaHR color={green} />
-    <TextInput value="Email Address" style={styles.input} />
-    <TextInput value="Password" style={styles.input} />
-    <NovaButton title="ENTER" color={red} />
-    <TouchableHighlight>
+    <TextInput
+      autoCapitalize="none"
+      placeholder="Email Address"
+      style={styles.input}
+      onChange={e => {
+        handleChange("email", e.nativeEvent.text);
+      }}
+    />
+    <TextInput
+      autoCapitalize="none"
+      placeholder="Password"
+      style={styles.input}
+      onChange={e => {
+        handleChange("password", e.nativeEvent.text);
+      }}
+    />
+    <NovaButton
+      title="ENTER"
+      color={red}
+      onPressParams={{ email, password }}
+      onPressFunc={handleSubmit}
+    />
+    <TouchableHighlight
+      onPress={() => {
+        goToScene("devRoutes", "userAccountCreate");
+      }}
+    >
       <Text style={styles.newuser}>New User? Create Account</Text>
+    </TouchableHighlight>
+    <TouchableHighlight
+      onPress={() => {
+        if (currentUser) {
+          logOut(currentUser);
+        }
+      }}
+    >
+      <Text>Sign Out</Text>
     </TouchableHighlight>
   </View>
 );
+
+Login.propTypes = {
+  email: PropTypes.string,
+  password: PropTypes.string,
+  handleChange: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  logOut: PropTypes.func,
+  currentUser: PropTypes.string
+};
 
 export default Login;
