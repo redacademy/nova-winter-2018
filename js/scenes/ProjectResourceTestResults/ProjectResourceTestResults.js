@@ -1,11 +1,18 @@
 import React from "react";
-import { Text, View } from "react-native";
-import PropTypes from "prop-types";
-import { styles } from "./styles";
+import { View } from "react-native";
+// import PropTypes from "prop-types";
+// import { styles } from "./styles";
+import { colors } from "../../config/styles";
+const { red } = colors;
+
+// import Nova UI components:
+import NovaButton from "../../components/UI/NovaButton";
+import NovaH1 from "../../components/UI/NovaH1";
 
 const ProjectResourceTestResults = () => (
   <View>
-    <Text>ProjectResourceTestResults Scene</Text>
+    <NovaH1 title="Test Results" color={red} />
+    <NovaButton title="CONTINUE" color={red} onPress={null} />
   </View>
 );
 
