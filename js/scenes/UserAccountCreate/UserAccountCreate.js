@@ -1,10 +1,14 @@
 import React from "react";
-import { Text, View } from "react-native";
-import PropTypes from "prop-types";
+import { View } from "react-native";
 import { styles } from "./styles";
-import { NovaImperative, NovaButton, NovaHR } from "../../components/NovaUI";
+
 import { colors } from "../../config/styles";
 const { green, red } = colors;
+
+// import Nova UI components:
+import NovaButton from "../../components/UI/NovaButton";
+import NovaHR from "../../components/UI/NovaHR";
+import NovaImperative from "../../components/UI/NovaImperative";
 
 const UserAccountCreate = () => (
   <View>
@@ -13,7 +17,5 @@ const UserAccountCreate = () => (
     <NovaButton title="CREATE" color={red} onPress={null} />
   </View>
 );
-
-// UserAccountCreate.propTypes = {};
 
 export default UserAccountCreate;
