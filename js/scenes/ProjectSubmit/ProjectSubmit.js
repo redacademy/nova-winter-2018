@@ -1,7 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-// import PropTypes from "prop-types";
-// import { styles } from "./styles";
+
 import { colors } from "../../config/styles";
 const { green, red } = colors;
 
@@ -15,7 +14,5 @@ const ProjectSubmit = () => (
     <NovaButton title="FINISH" color={green} onPress={null} />
   </View>
 );
-
-// ProjectSubmit.propTypes = {};
 
 export default ProjectSubmit;

@@ -1,7 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-// import PropTypes from "prop-types";
-// import { styles } from "./styles";
+
 import { colors } from "../../config/styles";
 const { red } = colors;
 
@@ -13,7 +12,5 @@ const CompanyProfile = () => (
     <NovaH2 color={red} title="Company Name" />
   </View>
 );
-
-// ProjectConfirm.propTypes = {};
 
 export default CompanyProfile;
