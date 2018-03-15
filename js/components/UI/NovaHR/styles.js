@@ -5,10 +5,11 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "center",
-    marginTop: 16
+    marginTop: 16,
+    paddingBottom: 0
   },
   novaHRInner: {
-    width: 128,
+    width: 160,
     height: 4
   }
 });
