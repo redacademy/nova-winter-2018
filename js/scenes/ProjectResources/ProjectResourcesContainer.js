@@ -1,6 +1,6 @@
 // this component will need some conditional rendering.
 // before the user has watched the videos:
-// https://projects.invisionapp.com/share/GRFWI99HZKW#/screens/279885480
+// https://projects.invisionapp.com/d/main/default/#/console/13659608/284837900/preview
 // after completing watching the videos:
 // https://projects.invisionapp.com/share/GRFWI99HZKW#/screens/279885479
 
