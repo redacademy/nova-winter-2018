@@ -1,7 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-// import PropTypes from "prop-types";
-// import { styles } from "./styles";
+
 import { colors } from "../../config/styles";
 const { red } = colors;
 
@@ -14,7 +13,5 @@ const ProjectBrief = () => (
     <NovaH2 color={red} title="Project Title" />
   </View>
 );
-
-// ProjectBrief.propTypes = {};
 
 export default ProjectBrief;

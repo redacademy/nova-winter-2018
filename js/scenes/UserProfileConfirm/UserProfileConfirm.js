@@ -1,7 +1,5 @@
 import React from "react";
 import { Text, View } from "react-native";
-// import PropTypes from "prop-types";
-// import { styles } from "./styles";
 import { colors } from "../../config/styles";
 const { red } = colors;
 
@@ -16,7 +14,5 @@ const UserProfileConfirm = () => (
     <NovaButton title="CONTINUE" color="black" onPress={null} />
   </View>
 );
-
-// UserProfileConfirm.propTypes = {};
 
 export default UserProfileConfirm;
