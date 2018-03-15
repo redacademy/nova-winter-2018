@@ -40,12 +40,19 @@ const DevRoutes = () => (
     <Text style={{ fontWeight: "bold", marginTop: 16 }}>Root Stack:</Text>
     <Text onPress={() => goToScene("devRoutes", "login")}>Login</Text>
     <Text onPress={() => goToScene("devRoutes", "splash")}>Splash</Text>
+
     <Text onPress={() => goToScene("devRoutes", "userAccountConfirm")}>
       UserAccountConfirm
     </Text>
+
     <Text onPress={() => goToScene("devRoutes", "userAccountCreate")}>
       UserAccountCreate
     </Text>
+
+    <Text onPress={() => goToScene("devRoutes", "userProfileConfirm")}>
+      UserProfileConfirm
+    </Text>
+
     <Text onPress={() => goToScene("devRoutes", "userProfileCreate")}>
       UserProfileCreate
     </Text>
