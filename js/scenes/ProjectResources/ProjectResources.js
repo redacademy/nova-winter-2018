@@ -1,14 +1,16 @@
 import React from "react";
-import { Text, View } from "react-native";
-import PropTypes from "prop-types";
+import { View } from "react-native";
 import { styles } from "./styles";
+import { colors } from "../../config/styles";
+const { red } = colors;
+
+// import Nova UI components:
+import NovaH2 from "../../components/UI/NovaH2";
 
 const ProjectResources = () => (
   <View>
-    <Text>ProjectResources Scene</Text>
+    <NovaH2 color={red} title="Video Lessons" />
   </View>
 );
-
-// ProjectResources.propTypes = {};
 
 export default ProjectResources;

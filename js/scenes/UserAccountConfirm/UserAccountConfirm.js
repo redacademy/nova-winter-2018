@@ -1,14 +1,18 @@
 import React from "react";
-import { Text, View } from "react-native";
-import PropTypes from "prop-types";
+import { View } from "react-native";
 import { styles } from "./styles";
+import { colors } from "../../config/styles";
+const { red } = colors;
+
+// import Nova UI components:
+import NovaButton from "../../components/UI/NovaButton";
+import NovaH1 from "../../components/UI/NovaH1";
 
 const UserAccountConfirm = () => (
   <View>
-    <Text>UserAccountConfirm Scene</Text>
+    <NovaH1 color={red} title="Account Created" />
+    <NovaButton title="CREATE PROFILE" color="black" onPress={null} />
   </View>
 );
-
-// UserAccountConfirm.propTypes = {};
 
 export default UserAccountConfirm;
