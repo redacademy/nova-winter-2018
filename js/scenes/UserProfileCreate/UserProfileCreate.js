@@ -2,11 +2,11 @@ import React from "react";
 import { ScrollView, Text, View, TextInput, Image } from "react-native";
 import { styles } from "./styles";
 // import Nova UI components:
+import NovaButton from "../../components/UI/NovaButton/";
 import NovaImperative from "../../components/UI/NovaImperative";
 import { colors, typography } from "../../config/styles.js";
 const { black, mediumGrey, nearBlack, green, red } = colors;
 const { fontMain } = typography;
-import NovaButton from "../../components/UI/NovaButton/";
 
 const UserProfileCreate = () => (
   <ScrollView>
