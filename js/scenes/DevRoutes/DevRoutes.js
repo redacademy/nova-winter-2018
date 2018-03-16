@@ -1,7 +1,5 @@
 import React from "react";
 import { ScrollView, Text } from "react-native";
-import PropTypes from "prop-types";
-import { styles } from "./styles";
 import { goToScene } from "../../navigation/NavigationHelper";
 
 const DevRoutes = () => (
@@ -12,6 +10,9 @@ const DevRoutes = () => (
     </Text>
 
     <Text style={{ fontWeight: "bold", marginTop: 16 }}>Companies stack:</Text>
+    <Text onPress={() => goToScene("devRoutes", "companiesSearch")}>
+      CompaniesSearch
+    </Text>
     <Text onPress={() => goToScene("devRoutes", "companyProfile")}>
       CompanyProfile
     </Text>
@@ -65,7 +66,5 @@ const DevRoutes = () => (
     </Text>
   </ScrollView>
 );
-
-// DevRoutes.propTypes = {};
 
 export default DevRoutes;
