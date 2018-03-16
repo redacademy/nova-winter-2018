@@ -7,7 +7,7 @@ import { styles } from "./styles";
 // You can find an example implementation in the UserAccountCreate component
 
 const NovaHR = ({ color }) => (
-  <View style={styles.novaHROuterWrapper}>
+  <View>
     <View style={[styles.novaHRInner, { backgroundColor: color }]} />
   </View>
 );
