@@ -1,14 +1,16 @@
 import React from "react";
-import { Text, View } from "react-native";
-import PropTypes from "prop-types";
-import { styles } from "./styles";
+import { View } from "react-native";
+
+import { colors } from "../../config/styles";
+const { red } = colors;
+
+// import Nova UI components:
+import NovaH2 from "../../components/UI/NovaH2";
 
 const CompanyProfile = () => (
   <View>
-    <Text>CompanyProfile Scene</Text>
+    <NovaH2 color={red} title="Company Name" />
   </View>
 );
-
-// CompanyProfile.propTypes = {};
 
 export default CompanyProfile;

@@ -1,14 +1,13 @@
 import React from "react";
-import { Text, View } from "react-native";
-import PropTypes from "prop-types";
-import { styles } from "./styles";
+import { View } from "react-native";
+
+// import Nova UI components:
+import NovaImperative from "../../components/UI/NovaImperative";
 
 const UserProfileCreate = () => (
   <View>
-    <Text>UserProfileCreate Scene</Text>
+    <NovaImperative color="black" title="Create Your Profile" />
   </View>
 );
-
-// UserProfileCreate.propTypes = {};
 
 export default UserProfileCreate;

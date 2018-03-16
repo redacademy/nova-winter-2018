@@ -9,6 +9,4 @@ const UserProfileEdit = () => (
   </View>
 );
 
-// UserProfileEdit.propTypes = {};
-
 export default UserProfileEdit;
