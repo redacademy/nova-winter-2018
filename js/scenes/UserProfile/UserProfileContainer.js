@@ -1,19 +1,26 @@
-// https://projects.invisionapp.com/share/GRFWI99HZKW#/screens/279885483
-
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import UserProfile from './UserProfile';
-
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import UserProfile from "./UserProfile";
+import { connect } from "react-redux";
+import { getUser } from "../../redux/modules/userReducer";
 class UserProfileContainer extends Component {
-	static route = {
-		navigationBar: {
-			title: 'UserProfile'
-		}
-	};
+  constructor(props) {
+    super(props);
+  }
+  static route = {
+    navigationBar: {
+      title: "UserProfile"
+    }
+  };
 
-	render() {
-		return <UserProfile />;
-	}
+  render() {
+    this.props.dispatch(getUser("WJTvKQHAwP9frwE46woO"));
+    return <UserProfile />;
+  }
 }
 
-export default UserProfileContainer;
+const mapStateToProps = state => ({
+  userInfo: state.user.userInfo
+});
+
+export default connect(mapStateToProps)(UserProfileContainer);

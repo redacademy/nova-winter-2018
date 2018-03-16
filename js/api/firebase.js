@@ -1,5 +1,5 @@
 import firebase from "firebase";
-import C from "../config/constants";
+import * as C from "../config/constants";
 require("firebase/firestore");
 
 // Initialize Firebase
