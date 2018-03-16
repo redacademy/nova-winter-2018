@@ -15,6 +15,6 @@ export const styles = StyleSheet.create({
     margin: 30,
     color: white,
     fontFamily: fontMain,
-    fontSize: 18
+    fontSize: 20
   }
 });

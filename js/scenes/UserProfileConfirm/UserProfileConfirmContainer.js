@@ -1,13 +1,21 @@
 // https://projects.invisionapp.com/share/GRFWI99HZKW#/screens/279885489
 
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+
 import UserProfileConfirm from "./UserProfileConfirm";
+import { colors, typography } from "../../config/styles.js";
+const { black, mediumGrey, nearBlack, green, red } = colors;
+const { fontMain } = typography;
 
 class UserProfileConfirmContainer extends Component {
   static route = {
     navigationBar: {
-      title: "UserProfileConfirm"
+      title: "Sign Up",
+      backgroundColor: nearBlack,
+      titleStyle: {
+        color: "#ffffff",
+        fontFamily: fontMain
+      }
     }
   };
 
@@ -15,7 +23,5 @@ class UserProfileConfirmContainer extends Component {
     return <UserProfileConfirm />;
   }
 }
-
-// UserProfileConfirmContainer.propTypes = {};
 
 export default UserProfileConfirmContainer;
