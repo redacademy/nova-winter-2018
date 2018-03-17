@@ -6,13 +6,18 @@ import { styles } from "./styles";
 // H1 component, use for the largest, boldest headings
 // You can find an example implementation in the ProjectResources component
 
-const NovaH2 = ({ title, color }) => (
-  <Text style={[styles.h2, { color: color }]}>{title}</Text>
+const NovaH2 = ({ title, color, style }) => (
+  <Text style={[styles.h2, style, { color: color }]}>{title}</Text>
 );
+
+NovaH2.defaultProps = {
+  style: {}
+};
 
 NovaH2.propTypes = {
   title: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired
+  color: PropTypes.string.isRequired,
+  style: PropTypes.object
 };
 
 export default NovaH2;
