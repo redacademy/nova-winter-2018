@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Login from "./Login";
 
-import { setEmailState, setPasswordState } from "../../redux/modules/login";
+import { setEmailState, setPasswordState } from "../../redux/modules/auth";
 import { colors, typography } from "../../config/styles.js";
 const { nearBlack } = colors;
 const { fontMain } = typography;
