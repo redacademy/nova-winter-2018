@@ -2,6 +2,7 @@
 // temporary routes to make it possible to test components
 // remove before shipping!
 import DevRoutes from "../scenes/DevRoutes/";
+import CompaniesSearch from "../scenes/CompaniesSearch";
 import CompanyProfile from "../scenes/CompanyProfile";
 import Login from "../scenes/Login";
 import ProjectBrief from "../scenes/ProjectBrief";
@@ -38,7 +39,7 @@ const Router = createRouter(() => ({
 
   // temporary routes to make it possible to test components
   // remove before shipping!
-  devRoutes: () => DevRoutes,
+  companiesSearch: () => CompaniesSearch,
   companyProfile: () => CompanyProfile,
   login: () => Login,
   projectBrief: () => ProjectBrief,
