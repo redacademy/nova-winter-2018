@@ -11,7 +11,7 @@ const CompaniesSearch = () => (
     <NovaImperative
       color="black"
       title="Search for Your Industry of Interest"
-      style={styles.blah}
+      style={styles.imperative}
     />
   </View>
 );
