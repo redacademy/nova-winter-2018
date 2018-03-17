@@ -19,6 +19,10 @@ const NovaButton = ({ title, color, style, onPress }) => (
   </View>
 );
 
+NovaButton.defaultProps = {
+  style: {}
+};
+
 NovaButton.propTypes = {
   title: PropTypes.string.isRequired,
   onPress: PropTypes.func.isRequired,

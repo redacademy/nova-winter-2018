@@ -10,6 +10,10 @@ const NovaH1 = ({ title, color, style }) => (
   <Text style={[styles.h1, style, { color: color }]}>{title}</Text>
 );
 
+NovaH1.defaultProps = {
+  style: {}
+};
+
 NovaH1.propTypes = {
   title: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,

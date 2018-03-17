@@ -13,6 +13,10 @@ const NovaHR = ({ color }) => (
   </View>
 );
 
+NovaHR.defaultProps = {
+  style: {}
+};
+
 NovaHR.propTypes = {
   color: PropTypes.string.isRequired
 };
