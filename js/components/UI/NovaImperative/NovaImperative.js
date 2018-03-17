@@ -10,6 +10,10 @@ const NovaImperative = ({ title, color, style }) => (
   <Text style={[styles.imperative, style, { color: color }]}>{title}</Text>
 );
 
+NovaImperative.defaultProps = {
+  style: {}
+};
+
 NovaImperative.propTypes = {
   title: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
