@@ -7,10 +7,6 @@ export function register(data, callback) {
   });
 }
 
-// export function createUser (user, callback) {
-//   database.doc(`users/`)
-// }
-
 export function login(data, callback) {
   const { email, password } = data;
   auth
