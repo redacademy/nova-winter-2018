@@ -4,6 +4,12 @@ import { connect } from "react-redux";
 import UserAccountCreate from "./UserAccountCreate";
 import { createUser } from "../../redux/modules/auth";
 
+import { colors } from "../../config/styles";
+const { nearBlack } = colors;
+
+import { typography } from "../../config/styles";
+const { fontMain } = typography;
+
 class UserAccountCreateContainer extends Component {
   static route = {
     navigationBar: {
