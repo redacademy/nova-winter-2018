@@ -7,6 +7,8 @@ const REMOVE_USER_STATE = "REMOVE_USER_STATE";
 const SET_AUTHENTICATION_STATUS = "SET_AUTHENTICATION_STATUS";
 const USER_LOADING = "USER_LOADING";
 const USER_ERROR = "USER_ERROR";
+const SET_EMAIL_STATE = "SET_EMAIL_STATE";
+const SET_PASSWORD_STATE = "SET_PASSWORD_STATE";
 
 // Action Creator
 export const setUserState = user => ({
@@ -33,32 +35,48 @@ const setAuthenticationStatus = bool => ({
   payload: bool
 });
 
-export const logOut = userId => dispatch => {
+export const setEmailState = email => ({
+  type: SET_EMAIL_STATE,
+  payload: email
+});
+
+export const setPasswordState = password => ({
+  type: SET_PASSWORD_STATE,
+  payload: password
+});
+
+export const logOut = () => dispatch => {
   auth
     .signOut()
     .then(() => {
       dispatch(removeUserState());
       dispatch(setAuthenticationStatus(false));
-      AsyncStorage.removeItem(userId);
+      AsyncStorage.removeItem("USER_ID");
     })
     .catch(error => {
       console.log("An error occured when signing out", error);
     });
 };
 export const login = data => dispatch => {
+  dispatch(userLoading(true));
   const { email, password } = data;
   auth
     .signInWithEmailAndPassword(email, password)
     .then(user => {
       dispatch(setUserState(user));
       dispatch(setAuthenticationStatus(true));
-      AsyncStorage.setItem(user.uid, "true");
+      dispatch(userLoading(false));
+      dispatch(setPasswordState(""));
+      dispatch(setEmailState(""));
+      AsyncStorage.setItem("USER_ID", user.uid);
     })
     .catch(error => {
       console.log(
         "An error occured when logging in. Please check your login credentials",
         error
       );
+      dispatch(userError(error));
+      dispatch(userLoading(false));
     });
 };
 
@@ -74,10 +92,12 @@ export const createUser = data => dispatch => {
 
 export default function(
   state = {
+    email: "",
+    password: "",
     authenticated: false,
     user: null,
     userId: null,
-    userLoading: true,
+    userLoading: false,
     userError: null
   },
   action
@@ -97,6 +117,12 @@ export default function(
     }
     case SET_AUTHENTICATION_STATUS: {
       return { ...state, authenticated: action.payload };
+    }
+    case SET_PASSWORD_STATE: {
+      return { ...state, password: action.payload };
+    }
+    case SET_EMAIL_STATE: {
+      return { ...state, email: action.payload };
     }
     default:
       return state;

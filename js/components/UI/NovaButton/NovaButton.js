@@ -32,4 +32,8 @@ NovaButton.propTypes = {
   onPressParams: PropTypes.object
 };
 
+NovaButton.defaultProps = {
+  onPressParams: null
+};
+
 export default NovaButton;

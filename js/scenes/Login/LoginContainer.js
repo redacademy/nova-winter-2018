@@ -3,31 +3,28 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Login from "./Login";
 
+import { setEmailState, setPasswordState } from "../../redux/modules/login";
 import { colors, typography } from "../../config/styles.js";
 const { nearBlack } = colors;
 const { fontMain } = typography;
 import { login, logOut } from "../../redux/modules/auth";
 
 class LoginContainer extends Component {
-  constructor() {
-    super();
-    this.state = {
-      email: "",
-      password: ""
-    };
-  }
+  _handleChangeEmail = value => {
+    this.props.dispatch(setEmailState(value));
+  };
 
-  _handleChange = (stateProperty, value) => {
-    this.setState({ [stateProperty]: value });
+  _handleChangePassword = value => {
+    this.props.dispatch(setPasswordState(value));
   };
 
   _handleSubmit = ({ email, password }) => {
-    if (this.state.email && this.state.password) {
+    if (this.props.email && this.props.password) {
       this.props.dispatch(login({ email, password }));
     }
   };
-  _logOut = userId => {
-    this.props.dispatch(logOut(userId));
+  _logOut = () => {
+    this.props.dispatch(logOut());
   };
 
   static route = {
@@ -44,11 +41,12 @@ class LoginContainer extends Component {
   render() {
     return (
       <Login
-        handleChange={this._handleChange}
+        handleChangeEmail={this._handleChangeEmail}
+        handleChangePassword={this._handleChangePassword}
         handleSubmit={this._handleSubmit}
         logOut={this._logOut}
-        password={this.state.password}
-        email={this.state.email}
+        password={this.props.password}
+        email={this.props.email}
         currentUser={this.props.currentUser}
       />
     );
@@ -56,11 +54,20 @@ class LoginContainer extends Component {
 }
 
 LoginContainer.propTypes = {
-  dispatch: PropTypes.func,
-  currentUser: PropTypes.string
+  dispatch: PropTypes.func.isRequired,
+  currentUser: PropTypes.string,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired
 };
+
+LoginContainer.defaultProps = {
+  currentUser: null
+};
+
 const mapStateToProps = state => ({
-  currentUser: state.auth.userId
+  currentUser: state.auth.userId,
+  email: state.auth.email,
+  password: state.auth.password
 });
 
 export default connect(mapStateToProps)(LoginContainer);

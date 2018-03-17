@@ -13,7 +13,8 @@ const { green, red } = colors;
 const Login = ({
   email,
   password,
-  handleChange,
+  handleChangeEmail,
+  handleChangePassword,
   handleSubmit,
   logOut,
   currentUser
@@ -33,17 +34,19 @@ const Login = ({
     <TextInput
       autoCapitalize="none"
       placeholder="Email Address"
+      value={email}
       style={styles.input}
       onChange={e => {
-        handleChange("email", e.nativeEvent.text);
+        handleChangeEmail(e.nativeEvent.text);
       }}
     />
     <TextInput
       autoCapitalize="none"
       placeholder="Password"
+      vaule={password}
       style={styles.input}
       onChange={e => {
-        handleChange("password", e.nativeEvent.text);
+        handleChangePassword(e.nativeEvent.text);
       }}
     />
     <NovaButton
@@ -72,12 +75,17 @@ const Login = ({
 );
 
 Login.propTypes = {
-  email: PropTypes.string,
-  password: PropTypes.string,
-  handleChange: PropTypes.func,
-  handleSubmit: PropTypes.func,
-  logOut: PropTypes.func,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  handleChangeEmail: PropTypes.func.isRequired,
+  handleChangePassword: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  logOut: PropTypes.func.isRequired,
   currentUser: PropTypes.string
+};
+
+Login.defaultProps = {
+  currentUser: ""
 };
 
 export default Login;

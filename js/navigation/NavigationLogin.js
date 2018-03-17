@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import Router from "./Router";
 
-import {
-  StackNavigation as StackNav,
-  TabNavigation as TabNav,
-  TabNavigationItem as TabItem
-} from "@expo/ex-navigation";
+import { StackNavigation as StackNav } from "@expo/ex-navigation";
 
 const defaultRouteConfig = {
   navigationBar: {
@@ -16,43 +12,14 @@ const defaultRouteConfig = {
 class NavigationLogin extends Component {
   render() {
     return (
-      
-          <StackNav
-            id="devRoutes"
-            navigatorUID="devRoutes"
-            initialRoute={Router.getRoute("devRoutes")}
-            defaultRouteConfig={defaultRouteConfig}
-          />
-       
-
-          <StackNav
-            id="userProfile"
-            navigatorUID="userProfile"
-            initialRoute={Router.getRoute("userProfile")}
-            defaultRouteConfig={defaultRouteConfig}
-          />
-   
-
-       
-          <StackNav
-            id="companies"
-            navigatorUID="companies"
-            initialRoute={Router.getRoute("companies")}
-            defaultRouteConfig={defaultRouteConfig}
-          />
-       
-
-        
-          <StackNav
-            id="myProjects"
-            navigatorUID="myProjects"
-            initialRoute={Router.getRoute("myProjects")}
-            defaultRouteConfig={defaultRouteConfig}
-          />
-        
-      
+      <StackNav
+        id="devRoutes"
+        navigatorUID="devRoutes"
+        initialRoute={Router.getRoute("login")}
+        defaultRouteConfig={defaultRouteConfig}
+      />
     );
   }
 }
 
-export default NavigationLayout;
+export default NavigationLogin;
