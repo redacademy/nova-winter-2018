@@ -1,21 +1,29 @@
 import { auth } from "./firebase";
 
-export function register(data) {
+export function register(data, callback) {
   const { email, password } = data;
-  auth.createUserWithEmailAndPassword(email, password).then(user => {});
+  auth.createUserWithEmailAndPassword(email, password).then(user => {
+    callback(user);
+  });
 }
 
-export function login(data) {
+export function login(data, callback) {
   const { email, password } = data;
-  auth.signInWithEmailAndPassword(email, password).catch(error => {
-    console.log(
-      "An error occured when logging in. Please check your login credentials"
-    );
-  });
+  auth
+    .signInWithEmailAndPassword(email, password)
+    .then(user => {
+      callback(user);
+    })
+    .catch(error => {
+      console.log(
+        "An error occured when logging in. Please check your login credentials",
+        error
+      );
+    });
 }
 
 export function signOut() {
   auth.signOut().catch(error => {
-    console.log("An error occured when signing out");
+    console.log("An error occured when signing out", error);
   });
 }

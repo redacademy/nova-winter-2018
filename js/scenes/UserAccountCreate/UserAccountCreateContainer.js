@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import UserAccountCreate from "./UserAccountCreate";
-import { colors, typography } from "../../config/styles.js";
-const { black, mediumGrey, nearBlack, green, red } = colors;
+import { createUser } from "../../redux/modules/auth";
+
+import { colors } from "../../config/styles";
+const { nearBlack } = colors;
+
+import { typography } from "../../config/styles";
 const { fontMain } = typography;
 
 class UserAccountCreateContainer extends Component {
@@ -22,4 +27,12 @@ class UserAccountCreateContainer extends Component {
   }
 }
 
-export default UserAccountCreateContainer;
+const mapStateToProps = state => {
+  return state;
+};
+
+UserAccountCreateContainer.propTypes = {
+  dispatch: PropTypes.func
+};
+
+export default connect(mapStateToProps)(UserAccountCreateContainer);

@@ -1,5 +1,6 @@
 import firebase from "firebase";
-import C from "./config/constants";
+import * as C from "../config/constants";
+require("firebase/firestore");
 
 // Initialize Firebase
 const config = {
@@ -13,5 +14,5 @@ const config = {
 
 firebase.initializeApp(config);
 
-export const database = firebase.database();
+export const database = firebase.firestore();
 export const auth = firebase.auth();
