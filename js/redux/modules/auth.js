@@ -9,6 +9,7 @@ const USER_LOADING = "USER_LOADING";
 const USER_ERROR = "USER_ERROR";
 const SET_EMAIL_STATE = "SET_EMAIL_STATE";
 const SET_PASSWORD_STATE = "SET_PASSWORD_STATE";
+const SET_CONFIRM_PASSWORD_STATE = "SET_CONFIRM_PASSWORD_STATE";
 
 // Action Creator
 export const setUserState = user => ({
@@ -45,6 +46,11 @@ export const setPasswordState = password => ({
   payload: password
 });
 
+export const setConfirmPasswordState = confirmPassword => ({
+  type: SET_CONFIRM_PASSWORD_STATE,
+  payload: confirmPassword
+});
+
 export const logOut = () => dispatch => {
   auth
     .signOut()
@@ -68,6 +74,7 @@ export const login = data => dispatch => {
       dispatch(userLoading(false));
       dispatch(setPasswordState(""));
       dispatch(setEmailState(""));
+      dispatch(userError(null));
       AsyncStorage.setItem("USER_ID", user.uid);
     })
     .catch(error => {
@@ -85,7 +92,14 @@ export const createUser = data => dispatch => {
   auth
     .createUserWithEmailAndPassword(email, password)
     .then(user => {
-      return dispatch(setUserState(user));
+      dispatch(setUserState(user));
+      dispatch(setAuthenticationStatus(true));
+      dispatch(userLoading(false));
+      dispatch(setPasswordState(""));
+      dispatch(setEmailState(""));
+      dispatch(setConfirmPasswordState(""));
+      dispatch(userError(null));
+      AsyncStorage.setItem("USER_ID", user.uid);
     })
     .catch(error => dispatch(userError(error)));
 };
@@ -94,6 +108,7 @@ export default function(
   state = {
     email: "",
     password: "",
+    confirmPassword: "",
     authenticated: false,
     user: null,
     userId: null,
@@ -120,6 +135,9 @@ export default function(
     }
     case SET_PASSWORD_STATE: {
       return { ...state, password: action.payload };
+    }
+    case SET_CONFIRM_PASSWORD_STATE: {
+      return { ...state, confirmPassword: action.payload };
     }
     case SET_EMAIL_STATE: {
       return { ...state, email: action.payload };
