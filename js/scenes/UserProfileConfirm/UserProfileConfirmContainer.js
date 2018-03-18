@@ -1,5 +1,3 @@
-// https://projects.invisionapp.com/share/GRFWI99HZKW#/screens/279885489
-
 import React, { Component } from "react";
 
 import UserProfileConfirm from "./UserProfileConfirm";
