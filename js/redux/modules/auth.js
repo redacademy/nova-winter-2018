@@ -31,7 +31,7 @@ const removeUserState = () => ({
   type: REMOVE_USER_STATE
 });
 
-const setAuthenticationStatus = bool => ({
+export const setAuthenticationStatus = bool => ({
   type: SET_AUTHENTICATION_STATUS,
   payload: bool
 });
@@ -57,7 +57,7 @@ export const logOut = () => dispatch => {
     .then(() => {
       dispatch(removeUserState());
       dispatch(setAuthenticationStatus(false));
-      AsyncStorage.removeItem("USER_ID");
+      AsyncStorage.removeItem("USER");
     })
     .catch(error => {
       console.log("An error occured when signing out", error);
@@ -74,8 +74,7 @@ export const login = data => dispatch => {
       dispatch(userLoading(false));
       dispatch(setPasswordState(""));
       dispatch(setEmailState(""));
-      dispatch(userError(null));
-      AsyncStorage.setItem("USER_ID", user.uid);
+      AsyncStorage.setItem("USER", JSON.stringify(user));
     })
     .catch(error => {
       console.log(
