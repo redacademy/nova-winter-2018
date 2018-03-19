@@ -1,13 +1,12 @@
+
 import React from "react";
 import { Text, View, TextInput, Image, TouchableHighlight } from "react-native";
 import PropTypes from "prop-types";
-
 import { styles } from "./styles";
 import NovaButton from "../../components/UI/NovaButton/";
 import NovaHR from "../../components/UI/NovaHR/";
 import { colors } from "../../config/styles.js";
 import { goToScene } from "../../navigation/NavigationHelper";
-
 const { green, red } = colors;
 
 const Login = ({
