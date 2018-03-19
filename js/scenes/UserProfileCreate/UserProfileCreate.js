@@ -1,14 +1,20 @@
 import React from "react";
 import { ScrollView, Text, View, TextInput, Image } from "react-native";
 import { styles } from "./styles";
-// import Nova UI components:
-import NovaButton from "../../components/UI/NovaButton/";
-import NovaImperative from "../../components/UI/NovaImperative";
 import { colors, typography } from "../../config/styles.js";
 const { black, mediumGrey, nearBlack, green, red } = colors;
+import NovaButton from "../../components/UI/NovaButton/";
+import NovaImperative from "../../components/UI/NovaImperative";
 const { fontMain } = typography;
+import {
+  writeNewUserBio,
+  writeNewUserExp,
+  writeNewCompanyData,
+  writeNewUserEducation,
+  writeNewUserGlobal
+} from "../../api/firebaseHelper";
 
-const UserProfileCreate = () => (
+const UserProfileCreate = ({ userID }) => (
   <ScrollView>
     <View>
       <NovaImperative color="black" title="Create Your Profile" />
@@ -20,6 +26,7 @@ const UserProfileCreate = () => (
           numberOfLines={4}
           style={styles.input}
           placeholderTextColor={nearBlack}
+          onChangeText={text => writeNewUserBio(userID, text)}
         />
       </View>
       <Text style={styles.header}>Work Experience</Text>
@@ -32,6 +39,7 @@ you work there, what did you do?)"
           numberOfLines={4}
           style={styles.input}
           placeholderTextColor={nearBlack}
+          onChangeText={text => writeNewUserExp(userID, text)}
         />
       </View>
       <Text style={styles.header}>Education</Text>
@@ -43,6 +51,7 @@ certfications? What field did you study?"
           numberOfLines={4}
           style={styles.input}
           placeholderTextColor={nearBlack}
+          onChangeText={text => writeNewUserEducation(userID, text)}
         />
       </View>
       <View style={styles.global}>
@@ -62,6 +71,7 @@ certfications? What field did you study?"
           numberOfLines={4}
           style={styles.input}
           placeholderTextColor={nearBlack}
+          onChangeText={text => writeNewUserGlobal(userID, text)}
         />
       </View>
     </View>

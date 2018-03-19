@@ -4,7 +4,7 @@ import UserProfileCreate from "./UserProfileCreate";
 import { colors, typography } from "../../config/styles.js";
 const { black, mediumGrey, nearBlack, green, red } = colors;
 const { fontMain } = typography;
-
+import { connect } from "react-redux";
 class UserProfileCreateContainer extends Component {
   static route = {
     navigationBar: {
@@ -18,8 +18,12 @@ class UserProfileCreateContainer extends Component {
   };
 
   render() {
-    return <UserProfileCreate />;
+    return <UserProfileCreate userID={this.props.userID} />;
   }
 }
 
-export default UserProfileCreateContainer;
+const mapStateToProps = state => ({
+  userID: state.auth.userId
+});
+
+export default connect(mapStateToProps)(UserProfileCreateContainer);

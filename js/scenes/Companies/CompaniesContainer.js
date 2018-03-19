@@ -1,8 +1,11 @@
-// https://projects.invisionapp.com/share/GRFWI99HZKW#/screens/279885494
-
-import React, { Component } from "react";
+import React, {
+  Component
+} from "react";
 import PropTypes from "prop-types";
 import Companies from "./Companies";
+import {
+  connect
+} from 'react-redux';
 
 class CompaniesContainer extends Component {
   static route = {
@@ -12,10 +15,8 @@ class CompaniesContainer extends Component {
   };
 
   render() {
-    return <Companies />;
+    return <Companies / > ;
   }
 }
-
-// CompaniesContainer.propTypes = {};
 
 export default CompaniesContainer;
