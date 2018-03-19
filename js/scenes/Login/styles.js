@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { colors, typography } from "../../config/styles.js";
-const { black, mediumGrey, nearBlack, green, red, white } = colors;
+const { black, nearBlack, white } = colors;
 const { fontMain } = typography;
 
 export const styles = StyleSheet.create({
@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: black
+    backgroundColor: black,
+    paddingTop: 50
   },
   input: {
     height: 45,

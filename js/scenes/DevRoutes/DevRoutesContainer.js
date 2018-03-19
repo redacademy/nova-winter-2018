@@ -4,6 +4,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import DevRoutes from "./DevRoutes";
+import { connect } from "react-redux";
+import { logOut } from "../../redux/modules/auth";
 
 class DevRoutesContainer extends Component {
   static route = {
@@ -12,11 +14,21 @@ class DevRoutesContainer extends Component {
     }
   };
 
+  _logOut = () => {
+    this.props.dispatch(logOut());
+  };
+
   render() {
-    return <DevRoutes />;
+    return <DevRoutes logOut={this._logOut} />;
   }
 }
 
-// DevRoutesContainer.propTypes = {};
+const mapStateToProps = state => ({
+  authenticated: state.auth.authenticated
+});
 
-export default DevRoutesContainer;
+DevRoutesContainer.propTypes = {
+  dispatch: PropTypes.func.isRequired
+};
+
+export default connect(mapStateToProps)(DevRoutesContainer);

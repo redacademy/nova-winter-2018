@@ -1,5 +1,6 @@
 import { auth } from "../../api/firebase";
 import { AsyncStorage } from "react-native";
+import { goToScene } from "../../navigation/NavigationHelper";
 
 // Actions
 const SET_USER_STATE = "SET_USER_STATE";
@@ -58,6 +59,7 @@ export const logOut = () => dispatch => {
       dispatch(removeUserState());
       dispatch(setAuthenticationStatus(false));
       AsyncStorage.removeItem("USER");
+      goToScene("root", "login");
     })
     .catch(error => {
       console.log("An error occured when signing out", error);
@@ -74,6 +76,8 @@ export const login = data => dispatch => {
       dispatch(userLoading(false));
       dispatch(setPasswordState(""));
       dispatch(setEmailState(""));
+      dispatch(userError(null));
+
       AsyncStorage.setItem("USER", JSON.stringify(user));
     })
     .catch(error => {
