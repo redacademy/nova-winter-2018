@@ -1,12 +1,13 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { colors } from "../../config/styles";
-const { red } = colors;
 import VideoPlayer from "react-native-video-player";
 import { styles } from "./styles";
 
 // import Nova UI components:
 import NovaH2 from "../../components/UI/NovaH2";
+
+const { red } = colors;
 
 const ProjectResources = () => (
   <View>
@@ -16,7 +17,6 @@ const ProjectResources = () => (
     </Text>
     <View style={styles.videoContainer}>
       <VideoPlayer
-        // https://github.com/cornedor/react-native-video-player/blob/master/example/app/index.js
         video={{
           uri:
             "https://ia801403.us.archive.org/13/items/AboutBan1935/AboutBan1935_512kb.mp4"
