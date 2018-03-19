@@ -1,13 +1,19 @@
-// https://projects.invisionapp.com/share/GRFWI99HZKW#/screens/279885487
-
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+
 import ProjectConfirm from "./ProjectConfirm";
+import { colors, typography } from "../../config/styles.js";
+const { nearBlack } = colors;
+const { fontMain } = typography;
 
 class ProjectConfirmContainer extends Component {
   static route = {
     navigationBar: {
-      title: "ProjectConfirm"
+      title: "Start Project",
+      backgroundColor: nearBlack,
+      titleStyle: {
+        color: "#ffffff",
+        fontFamily: fontMain
+      }
     }
   };
 
@@ -15,7 +21,5 @@ class ProjectConfirmContainer extends Component {
     return <ProjectConfirm />;
   }
 }
-
-// ProjectConfirmContainer.propTypes = {};
 
 export default ProjectConfirmContainer;
