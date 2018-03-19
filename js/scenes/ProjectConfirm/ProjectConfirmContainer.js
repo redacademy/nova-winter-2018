@@ -2,14 +2,14 @@ import React, { Component } from "react";
 
 import ProjectConfirm from "./ProjectConfirm";
 import { colors, typography } from "../../config/styles.js";
-const { nearBlack } = colors;
+const { tintBlack } = colors;
 const { fontMain } = typography;
 
 class ProjectConfirmContainer extends Component {
   static route = {
     navigationBar: {
       title: "Start Project",
-      backgroundColor: nearBlack,
+      backgroundColor: tintBlack,
       titleStyle: {
         color: "#ffffff",
         fontFamily: fontMain

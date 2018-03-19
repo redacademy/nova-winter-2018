@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { colors, typography } from "../../config/styles.js";
-const { black, mediumGrey, nearBlack, green, red, white } = colors;
+const { black, mediumGrey, tintBlack, green, red, white } = colors;
 const { fontMain } = typography;
 export const styles = StyleSheet.create({
   container: {
@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     borderWidth: 1,
     marginTop: 10,
-    color: nearBlack,
+    color: tintBlack,
     paddingLeft: 10,
     fontFamily: fontMain,
     borderRadius: 3
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     borderWidth: 1,
     marginTop: 10,
-    color: nearBlack,
+    color: tintBlack,
     paddingLeft: 10,
     fontFamily: fontMain,
     borderRadius: 3,

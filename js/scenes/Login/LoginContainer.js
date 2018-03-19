@@ -10,7 +10,7 @@ import {
   logOut
 } from "../../redux/modules/auth";
 import { colors, typography } from "../../config/styles.js";
-const { nearBlack } = colors;
+const { tintBlack } = colors;
 const { fontMain } = typography;
 
 class LoginContainer extends Component {
@@ -34,7 +34,7 @@ class LoginContainer extends Component {
   static route = {
     navigationBar: {
       title: "Login",
-      backgroundColor: nearBlack,
+      backgroundColor: tintBlack,
       titleStyle: {
         color: "#ffffff",
         fontFamily: fontMain
