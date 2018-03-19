@@ -53,4 +53,4 @@ buck-out/
 */fastlane/screenshots
 
 #configuration
-js/config
+js/config/constants.js
