@@ -1,6 +1,5 @@
 import React from "react";
-import { View } from "react-native";
-import { styles } from "./styles";
+import { View, TextInput } from "react-native";
 
 import { colors } from "../../config/styles";
 const { green, red } = colors;
@@ -14,7 +13,13 @@ const UserAccountCreate = () => (
   <View>
     <NovaImperative color="black" title="Create An Account" />
     <NovaHR color={green} />
-    <NovaButton title="CREATE" color={red} onPress={null} />
+    <TextInput placeholder="Email" autoCapitalize="none" onChange={e => {}} />
+    <TextInput
+      placeholder="Password"
+      autoCapitalize="none"
+      onChange={() => {}}
+    />
+    <NovaButton title="CREATE" color={red} onPress={() => {}} />
   </View>
 );
 

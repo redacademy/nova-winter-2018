@@ -1,31 +1,73 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Login from "./Login";
-// import {
-//   getCompany,
-//   getCompanyProjects,
-//   getUser,
-//   getCompanyQuestions
-// } from "../../firebaseFunctions/firebase";
+import { setEmailState, setPasswordState } from "../../redux/modules/auth";
+import { colors, typography } from "../../config/styles.js";
+const { nearBlack } = colors;
+const { fontMain } = typography;
+import { login, logOut } from "../../redux/modules/auth";
 
 class LoginContainer extends Component {
+  _handleChangeEmail = value => {
+    this.props.dispatch(setEmailState(value));
+  };
+
+  _handleChangePassword = value => {
+    this.props.dispatch(setPasswordState(value));
+  };
+
+  _handleSubmit = ({ email, password }) => {
+    if (this.props.email && this.props.password) {
+      this.props.dispatch(login({ email, password }));
+    }
+  };
+  _logOut = () => {
+    this.props.dispatch(logOut());
+  };
+
   static route = {
     navigationBar: {
-      title: "Login"
+      title: "Login",
+      backgroundColor: nearBlack,
+      titleStyle: {
+        color: "#ffffff",
+        fontFamily: fontMain
+      }
     }
   };
 
   render() {
-    // console.log(getCompany("IxTyhQSllwOPTG0u3qCF"));
-    // console.log(getUser("WJTvKQHAwP9frwE46woO"));
-    // console.log(getCompanyProjects("IxTyhQSllwOPTG0u3qCF", "project1"));
-    // console.log(
-    //   getCompanyQuestions("IxTyhQSllwOPTG0u3qCF", "project1", "question1")
 
-    return <Login />;
+    return (
+      <Login
+        handleChangeEmail={this._handleChangeEmail}
+        handleChangePassword={this._handleChangePassword}
+        handleSubmit={this._handleSubmit}
+        logOut={this._logOut}
+        password={this.props.password}
+        email={this.props.email}
+        currentUser={this.props.currentUser}
+      />
+    );
   }
 }
 
-// LoginContainer.propTypes = {};
+LoginContainer.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  currentUser: PropTypes.string,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired
+};
 
-export default LoginContainer;
+LoginContainer.defaultProps = {
+  currentUser: null
+};
+
+const mapStateToProps = state => ({
+  currentUser: state.auth.userId,
+  email: state.auth.email,
+  password: state.auth.password
+});
+
+export default connect(mapStateToProps)(LoginContainer);

@@ -1,13 +1,24 @@
-// https://projects.invisionapp.com/share/GRFWI99HZKW#/screens/279885486
-
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import UserAccountCreate from "./UserAccountCreate";
+import { createUser } from "../../redux/modules/auth";
+
+import { colors } from "../../config/styles";
+const { nearBlack } = colors;
+
+import { typography } from "../../config/styles";
+const { fontMain } = typography;
 
 class UserAccountCreateContainer extends Component {
   static route = {
     navigationBar: {
-      title: "UserAccountCreate"
+      title: "Sign Up",
+      backgroundColor: nearBlack,
+      titleStyle: {
+        color: "#ffffff",
+        fontFamily: fontMain
+      }
     }
   };
 
@@ -16,6 +27,12 @@ class UserAccountCreateContainer extends Component {
   }
 }
 
-// UserAccountCreateContainer.propTypes = {};
+const mapStateToProps = state => {
+  return state;
+};
 
-export default UserAccountCreateContainer;
+UserAccountCreateContainer.propTypes = {
+  dispatch: PropTypes.func
+};
+
+export default connect(mapStateToProps)(UserAccountCreateContainer);

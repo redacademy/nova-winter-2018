@@ -6,11 +6,13 @@ import { styles } from "./styles";
 // Button component
 // You can find an example implementation in the UserAccountCreate component
 
-const NovaButton = ({ title, color, onPress }) => (
+const NovaButton = ({ title, color, onPressFunc, onPressParams }) => (
   <View style={styles.novaButtonOuterWrapper}>
     <TouchableHighlight
       style={[styles.novaButtonTouchable, { backgroundColor: color }]}
-      onPress={onPress}
+      onPress={() => {
+        onPressFunc(onPressParams);
+      }}
     >
       <View style={styles.novaButtonInnerWrapper}>
         <Text style={styles.novaButtonText}>{title}</Text>
@@ -19,10 +21,19 @@ const NovaButton = ({ title, color, onPress }) => (
   </View>
 );
 
+NovaButton.defaultProps = {
+  style: {}
+};
+
 NovaButton.propTypes = {
   title: PropTypes.string.isRequired,
-  onPress: PropTypes.func.isRequired,
-  color: PropTypes.string.isRequired
+  onPressFunc: PropTypes.func.isRequired,
+  color: PropTypes.string.isRequired,
+  onPressParams: PropTypes.object
+};
+
+NovaButton.defaultProps = {
+  onPressParams: null
 };
 
 export default NovaButton;

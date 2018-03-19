@@ -5,7 +5,6 @@
  */
 
 import React, { Component } from "react";
-import { Text, View } from "react-native";
 import Router from "./navigation/Router";
 import { Provider } from "react-redux";
 
