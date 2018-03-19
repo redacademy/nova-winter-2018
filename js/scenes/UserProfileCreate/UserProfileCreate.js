@@ -5,7 +5,7 @@ import { styles } from "./styles";
 import NovaButton from "../../components/UI/NovaButton/";
 import NovaImperative from "../../components/UI/NovaImperative";
 import { colors, typography } from "../../config/styles.js";
-const { black, mediumGrey, tintBlack, green, red } = colors;
+const { black, mediumGrey, nearBlack, green, red } = colors;
 const { fontMain } = typography;
 
 const UserProfileCreate = () => (
@@ -19,7 +19,7 @@ const UserProfileCreate = () => (
           multiline={true}
           numberOfLines={4}
           style={styles.input}
-          placeholderTextColor={tintBlack}
+          placeholderTextColor={nearBlack}
         />
       </View>
       <Text style={styles.header}>Work Experience</Text>
@@ -31,7 +31,7 @@ you work there, what did you do?)"
           multiline={true}
           numberOfLines={4}
           style={styles.input}
-          placeholderTextColor={tintBlack}
+          placeholderTextColor={nearBlack}
         />
       </View>
       <Text style={styles.header}>Education</Text>
@@ -42,7 +42,7 @@ certfications? What field did you study?"
           multiline={true}
           numberOfLines={4}
           style={styles.input}
-          placeholderTextColor={tintBlack}
+          placeholderTextColor={nearBlack}
         />
       </View>
       <View style={styles.global}>
@@ -61,7 +61,7 @@ certfications? What field did you study?"
           multiline={true}
           numberOfLines={4}
           style={styles.input}
-          placeholderTextColor={tintBlack}
+          placeholderTextColor={nearBlack}
         />
       </View>
     </View>

@@ -10,7 +10,7 @@ import {
 } from "../../redux/modules/auth";
 
 import { colors } from "../../config/styles";
-const { tintBlack } = colors;
+const { nearBlack } = colors;
 
 import { typography } from "../../config/styles";
 const { fontMain } = typography;
@@ -40,7 +40,7 @@ class UserAccountCreateContainer extends Component {
   static route = {
     navigationBar: {
       title: "Sign Up",
-      backgroundColor: tintBlack,
+      backgroundColor: nearBlack,
       titleStyle: {
         color: "#ffffff",
         fontFamily: fontMain
