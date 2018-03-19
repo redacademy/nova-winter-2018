@@ -1,5 +1,3 @@
-// https://projects.invisionapp.com/share/GRFWI99HZKW#/screens
-
 import React, { Component } from "react";
 import { AsyncStorage } from "react-native";
 import { connect } from "react-redux";
