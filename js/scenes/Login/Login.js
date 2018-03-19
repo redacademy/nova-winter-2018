@@ -43,7 +43,8 @@ const Login = ({
     <TextInput
       autoCapitalize="none"
       placeholder="Password"
-      vaule={password}
+      secureTextEntry
+      value={password}
       style={styles.input}
       onChange={e => {
         handleChangePassword(e.nativeEvent.text);

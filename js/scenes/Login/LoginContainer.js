@@ -3,11 +3,15 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Login from "./Login";
 
-import { setEmailState, setPasswordState } from "../../redux/modules/auth";
+import {
+  setEmailState,
+  setPasswordState,
+  login,
+  logOut
+} from "../../redux/modules/auth";
 import { colors, typography } from "../../config/styles.js";
 const { nearBlack } = colors;
 const { fontMain } = typography;
-import { login, logOut } from "../../redux/modules/auth";
 
 class LoginContainer extends Component {
   _handleChangeEmail = value => {
