@@ -1,7 +1,5 @@
-// https://projects.invisionapp.com/share/GRFWI99HZKW#/screens/279885488
-
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+
 import ProjectResourceTestResults from "./ProjectResourceTestResults";
 
 class ProjectResourceTestResultsContainer extends Component {
@@ -10,12 +8,10 @@ class ProjectResourceTestResultsContainer extends Component {
       title: "ProjectResourceTestResults"
     }
   };
-
+  componentDidMount() {}
   render() {
-    return <ProjectResourceTestResults />;
+    return <ProjectResourceTestResults score={this.props.route.params.props} />;
   }
 }
-
-// ProjectResourceTestResultsContainer.propTypes = {};
 
 export default ProjectResourceTestResultsContainer;

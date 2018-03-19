@@ -1,3 +1,26 @@
 import { StyleSheet } from "react-native";
-
-export const styles = StyleSheet.create({});
+import { colors, typography } from "../../config/styles.js";
+const { black, white } = colors;
+const { fontMain } = typography;
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: black,
+    paddingTop: 30
+  },
+  message: {
+    margin: 20,
+    color: white,
+    fontFamily: fontMain,
+    fontSize: 20,
+    textAlign: "center"
+  },
+  score: {
+    margin: 10,
+    color: white,
+    fontFamily: fontMain,
+    fontSize: 40
+  }
+});
