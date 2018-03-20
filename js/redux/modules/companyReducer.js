@@ -70,20 +70,10 @@ export const getCompanyProjects = (companyID, projectNumber) => dispatch => {
       console.log("Error getting document:", error);
     });
 };
-export const getCompanyQuestions = (
-  companyID,
-  projectNumber,
-  questionNumber
-) => dispatch => {
+
+export const getCompanyQuestions = (companyID, projectName) => dispatch => {
   database
-    .doc(
-      "companys/" +
-        companyID +
-        "/projects/" +
-        projectNumber +
-        "/questions/" +
-        questionNumber
-    )
+    .doc("companys/" + companyID + "/" + projectName + "/" + "questions")
     .get()
     .then(function(doc) {
       let questionsData = doc.data();
