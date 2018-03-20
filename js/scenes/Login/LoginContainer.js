@@ -37,7 +37,6 @@ class LoginContainer extends Component {
   };
 
   _goToLayout = () => {
-    // goToScene(this.props.navigatorUID, "layout");
     this.props.navigator.push(Router.getRoute("layout"));
   };
 

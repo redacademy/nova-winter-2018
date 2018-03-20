@@ -15,7 +15,7 @@ class DevRoutesContainer extends Component {
   };
 
   _logOut = () => {
-    this.props.dispatch(logOut());
+    this.props.logOut();
   };
 
   render() {
@@ -23,12 +23,14 @@ class DevRoutesContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  authenticated: state.auth.authenticated
+const mapDispatchToProps = dispatch => ({
+  logOut: () => {
+    dispatch(logOut());
+  }
 });
 
 DevRoutesContainer.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  logOut: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps)(DevRoutesContainer);
+export default connect(null, mapDispatchToProps)(DevRoutesContainer);
