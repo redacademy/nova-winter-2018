@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import Router from "./Router";
-
 import {
   StackNavigation as StackNav,
   TabNavigation as TabNav,
   TabNavigationItem as TabItem
 } from "@expo/ex-navigation";
+import Icon from "react-native-vector-icons/Ionicons";
+import { colors } from "../config/styles.js";
+const { nearBlack, red } = colors;
 
 const defaultRouteConfig = {
   navigationBar: {
-    // tintColor: white, // colour of scene title and hamburger menu
+    tintColor: "white", // colour of scene title and hamburger menu
+    backgroundColor: nearBlack
   }
 };
 
@@ -20,9 +23,12 @@ class NavigationLayout extends Component {
         id="main"
         navigatorUID="main"
         initialTab="devRoutes"
-        tabBarColor="#ccc"
+        tabBarColor={nearBlack}
       >
-        <TabItem id="devRoutes" title="Dev Routes">
+        <TabItem
+          id="devRoutes"
+          renderIcon={isSelected => this.renderIcon(isSelected, "ios-code")}
+        >
           <StackNav
             id="devRoutes"
             navigatorUID="devRoutes"
@@ -31,7 +37,10 @@ class NavigationLayout extends Component {
           />
         </TabItem>
 
-        <TabItem id="userProfile" title="User Profile">
+        <TabItem
+          id="userProfile"
+          renderIcon={isSelected => this.renderIcon(isSelected, "ios-contact")}
+        >
           <StackNav
             id="userProfile"
             navigatorUID="userProfile"
@@ -40,7 +49,10 @@ class NavigationLayout extends Component {
           />
         </TabItem>
 
-        <TabItem id="companies" title="Companies">
+        <TabItem
+          id="companies"
+          renderIcon={isSelected => this.renderIcon(isSelected, "ios-globe")}
+        >
           <StackNav
             id="companies"
             navigatorUID="companies"
@@ -49,7 +61,12 @@ class NavigationLayout extends Component {
           />
         </TabItem>
 
-        <TabItem id="myProjects" title="My Projects">
+        <TabItem
+          id="myProjects"
+          renderIcon={isSelected =>
+            this.renderIcon(isSelected, "ios-briefcase")
+          }
+        >
           <StackNav
             id="myProjects"
             navigatorUID="myProjects"
@@ -58,6 +75,12 @@ class NavigationLayout extends Component {
           />
         </TabItem>
       </TabNav>
+    );
+  }
+
+  renderIcon(isSelected, iconName) {
+    return (
+      <Icon name={iconName} size={24} color={isSelected ? red : "white"} />
     );
   }
 }

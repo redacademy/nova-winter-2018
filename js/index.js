@@ -7,6 +7,7 @@
 import React, { Component } from "react";
 import Router from "./navigation/Router";
 import { Provider } from "react-redux";
+import { StatusBar } from "react-native";
 
 import {
   StackNavigation as StackNav,
@@ -26,6 +27,7 @@ export default class App extends Component {
     return (
       <Provider store={Store}>
         <NavProvider context={navContext}>
+          <StatusBar barStyle="light-content" />
           <StackNav
             id="root"
             navigatorUID="root"
