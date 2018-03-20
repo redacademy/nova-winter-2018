@@ -1,6 +1,5 @@
 import React from "react";
 import { View } from "react-native";
-import { styles } from "./styles";
 
 // import Nova UI components:
 
@@ -11,7 +10,7 @@ const CompaniesSearch = () => (
     <NovaImperative
       color="black"
       title="Search for Your Industry of Interest"
-      style={styles.imperative}
+      style={{ textAlign: "left" }}
     />
   </View>
 );

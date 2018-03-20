@@ -22,12 +22,13 @@ const NovaButton = ({ title, color, onPressFunc, onPressParams }) => (
 );
 
 NovaButton.defaultProps = {
-  style: {}
+  style: {},
+  onPressFunc: undefined
 };
 
 NovaButton.propTypes = {
   title: PropTypes.string.isRequired,
-  onPressFunc: PropTypes.func.isRequired,
+  onPressFunc: PropTypes.func,
   color: PropTypes.string.isRequired,
   onPressParams: PropTypes.object
 };

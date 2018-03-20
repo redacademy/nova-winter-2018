@@ -6,6 +6,7 @@ import {
   createUser,
   setEmailState,
   setPasswordState,
+  setNameState,
   setConfirmPasswordState
 } from "../../redux/modules/auth";
 
@@ -22,6 +23,10 @@ class UserAccountCreateContainer extends Component {
 
   _handleChangePassword = value => {
     this.props.dispatch(setPasswordState(value));
+  };
+
+  _handleChangeName = value => {
+    this.props.dispatch(setNameState(value));
   };
 
   _handleChangeConfirmPassword = value => {
@@ -53,6 +58,7 @@ class UserAccountCreateContainer extends Component {
       <UserAccountCreate
         handleChangeEmail={this._handleChangeEmail}
         handleChangePassword={this._handleChangePassword}
+        handleChangeName={this._handleChangeName}
         handleChangeConfirmPassword={this._handleChangeConfirmPassword}
         handleSubmit={this._handleSubmit}
         password={this.props.password}
