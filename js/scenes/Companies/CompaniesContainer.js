@@ -1,8 +1,9 @@
-// https://projects.invisionapp.com/share/GRFWI99HZKW#/screens/279885494
-
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Companies from "./Companies";
+
+import { connect } from "react-redux";
+import { getAllCompanys } from "../../redux/modules/companyReducer";
 
 class CompaniesContainer extends Component {
   static route = {
@@ -11,11 +12,25 @@ class CompaniesContainer extends Component {
     }
   };
 
+  componentDidMount() {
+    this.props.dispatch(getAllCompanys());
+  }
+
   render() {
-    return <Companies />;
+    const { companyList } = this.props;
+    return <Companies companyList={companyList} />;
   }
 }
 
-// CompaniesContainer.propTypes = {};
+CompaniesContainer.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  companyList: PropTypes.array.isRequired
+};
 
-export default CompaniesContainer;
+const mapStateToProps = state => {
+  return {
+    companyList: state.company.companyList
+  };
+};
+
+export default connect(mapStateToProps)(CompaniesContainer);
