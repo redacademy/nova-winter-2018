@@ -6,11 +6,11 @@ const { red } = colors;
 // import Nova UI components:
 import NovaH1 from "../../components/UI/NovaH1";
 import NovaButton from "../../components/UI/NovaButton";
-
+import { styles } from "./styles";
 const ProjectSubmitConfirm = () => (
-  <View>
+  <View style={styles.container}>
     <NovaH1 color={red} title="Congratulations" />
-    <Text>
+    <Text style={styles.message}>
       {
         "Your project has been submitted to THE COMPANY's department on DATE/MOMENT for review."
       }
