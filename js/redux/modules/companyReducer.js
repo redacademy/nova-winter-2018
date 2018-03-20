@@ -60,7 +60,6 @@ export const getAllCompanys = () => dispatch => {
       console.log("Error getting documents", err);
     });
 };
-
 export const getCompany = companyID => dispatch => {
   database
     .collection("companys")
@@ -75,7 +74,6 @@ export const getCompany = companyID => dispatch => {
       console.log("Error getting document:", error);
     });
 };
-
 export const getCompanyProjects = (companyID, projectNumber) => dispatch => {
   database
     .doc("companys/" + companyID + "/projects/" + projectNumber)
@@ -88,7 +86,6 @@ export const getCompanyProjects = (companyID, projectNumber) => dispatch => {
       console.log("Error getting document:", error);
     });
 };
-
 export const getCompanyQuestions = (companyID, projectName) => dispatch => {
   database
     .doc("companys/" + companyID + "/" + projectName + "/questions")
