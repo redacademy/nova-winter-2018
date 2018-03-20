@@ -1,11 +1,6 @@
-import React, {
-  Component
-} from "react";
-import PropTypes from "prop-types";
+import React, { Component } from "react";
 import Companies from "./Companies";
-import {
-  connect
-} from 'react-redux';
+import { connect } from "react-redux";
 
 class CompaniesContainer extends Component {
   static route = {
@@ -15,7 +10,7 @@ class CompaniesContainer extends Component {
   };
 
   render() {
-    return <Companies / > ;
+    return <Companies />;
   }
 }
 

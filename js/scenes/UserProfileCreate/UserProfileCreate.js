@@ -2,10 +2,9 @@ import React from "react";
 import { ScrollView, Text, View, TextInput, Image } from "react-native";
 import { styles } from "./styles";
 import { colors, typography } from "../../config/styles.js";
-const { black, mediumGrey, nearBlack, green, red } = colors;
+import PropTypes from "prop-types";
 import NovaButton from "../../components/UI/NovaButton/";
 import NovaImperative from "../../components/UI/NovaImperative";
-const { fontMain } = typography;
 import {
   writeNewUserBio,
   writeNewUserExp,
@@ -13,6 +12,8 @@ import {
   writeNewUserEducation,
   writeNewUserGlobal
 } from "../../api/firebaseHelper";
+const { fontMain } = typography;
+const { black, mediumGrey, nearBlack, green, red } = colors;
 
 const UserProfileCreate = ({ userID }) => (
   <ScrollView>
@@ -78,5 +79,9 @@ certfications? What field did you study?"
     <NovaButton title="CONTINUE" color="black" onPress={null} />
   </ScrollView>
 );
+
+UserProfileCreate.propTypes = {
+  userID: PropTypes.string
+};
 
 export default UserProfileCreate;
