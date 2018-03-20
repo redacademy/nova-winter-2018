@@ -1,15 +1,23 @@
 import React from "react";
-import { Text, TouchableHighlight, View } from "react-native";
+import { FlatList, Image, View } from "react-native";
 import PropTypes from "prop-types";
 import { styles } from "./styles";
-import { goToScene } from "../../navigation/NavigationHelper";
 
-const Companies = () => (
+const Companies = ({ companyList }) => (
   <View>
-    <Text>Companies Scene</Text>
+    <FlatList
+      data={companyList}
+      keyExtractor={item => item.name}
+      numColumns={3}
+      renderItem={({ item }) => (
+        <Image style={styles.logo} source={{ uri: item.logo }} />
+      )}
+    />
   </View>
 );
 
-// Companies.propTypes = {};
+Companies.propTypes = {
+  companyList: PropTypes.array.isRequired
+};
 
 export default Companies;

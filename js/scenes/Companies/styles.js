@@ -1,3 +1,8 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 
-export const styles = StyleSheet.create({});
+const { width } = Dimensions.get("window");
+const logoDimension = width / 3;
+
+export const styles = StyleSheet.create({
+  logo: { width: logoDimension, height: logoDimension }
+});
