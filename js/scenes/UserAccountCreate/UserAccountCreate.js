@@ -3,7 +3,6 @@ import { View, TextInput } from "react-native";
 import PropTypes from "prop-types";
 import { styles } from "./styles";
 import { colors } from "../../config/styles";
-
 import NovaButton from "../../components/UI/NovaButton";
 import NovaHR from "../../components/UI/NovaHR";
 import NovaImperative from "../../components/UI/NovaImperative";
