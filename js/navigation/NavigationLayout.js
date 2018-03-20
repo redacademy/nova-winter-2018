@@ -27,7 +27,6 @@ class NavigationLayout extends Component {
       >
         <TabItem
           id="devRoutes"
-          // title="Dev Routes"
           renderIcon={isSelected => this.renderIcon(isSelected, "ios-code")}
         >
           <StackNav
@@ -40,7 +39,6 @@ class NavigationLayout extends Component {
 
         <TabItem
           id="userProfile"
-          // title="User Profile"
           renderIcon={isSelected => this.renderIcon(isSelected, "ios-contact")}
         >
           <StackNav
@@ -53,7 +51,6 @@ class NavigationLayout extends Component {
 
         <TabItem
           id="companies"
-          // title="Companies"
           renderIcon={isSelected => this.renderIcon(isSelected, "ios-globe")}
         >
           <StackNav
@@ -66,7 +63,6 @@ class NavigationLayout extends Component {
 
         <TabItem
           id="myProjects"
-          // title="My Projects"
           renderIcon={isSelected =>
             this.renderIcon(isSelected, "ios-briefcase")
           }
