@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Companies from "./Companies";
+import { connect } from "react-redux";
 
 class CompaniesContainer extends Component {
   static route = {
@@ -16,6 +17,10 @@ class CompaniesContainer extends Component {
   }
 }
 
-// CompaniesContainer.propTypes = {};
+const mapStateToProps = state => {
+  return {
+    companyList: state.company.companyList
+  };
+};
 
-export default CompaniesContainer;
+export default connect(mapStateToProps)(CompaniesContainer);
