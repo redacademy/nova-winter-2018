@@ -61,19 +61,7 @@ export function writeNewUserData(userID, name, email) {
       console.log("User data written!");
     });
 }
-export function writeNewUserInformation(userID, bio, experience, projects) {
-  database
-    .collection("users")
-    .doc(userID)
-    .set({
-      bio: bio,
-      experience: experience,
-      projects: projects
-    })
-    .then(function() {
-      console.log("User info written!");
-    });
-}
+// USER FUNCTIONS
 export function writeNewUserLocation(userID, location) {
   database
     .collection("users")
@@ -101,5 +89,62 @@ export function writeNewUserTests(
     })
     .then(function() {
       console.log("User location written!");
+    });
+}
+// PROFILE CREATION
+export function writeNewUserBio(userID, bio) {
+  database
+    .collection("users")
+    .doc(userID)
+    .set(
+      {
+        bio: bio
+      },
+      { merge: true }
+    )
+    .then(function() {
+      console.log("User info written!");
+    });
+}
+export function writeNewUserExp(userID, experience) {
+  database
+    .collection("users")
+    .doc(userID)
+    .set(
+      {
+        experience: experience
+      },
+      { merge: true }
+    )
+    .then(function() {
+      console.log("User info written!");
+    });
+}
+export function writeNewUserEducation(userID, education) {
+  database
+    .collection("users")
+    .doc(userID)
+    .set(
+      {
+        education: education
+      },
+      { merge: true }
+    )
+    .then(function() {
+      console.log("User info written!");
+    });
+}
+export function writeNewUserGlobal(userID, global) {
+  database
+    .collection("users")
+    .doc(userID)
+    .set(
+      {
+        global: global
+      },
+      { merge: true }
+    )
+    .then(function() {
+      console.log("User info written!");
     });
 }
