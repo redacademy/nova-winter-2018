@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import Companies from "./Companies";
-
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { getAllCompanys } from "../../redux/modules/companyReducer";
 
 class CompaniesContainer extends Component {

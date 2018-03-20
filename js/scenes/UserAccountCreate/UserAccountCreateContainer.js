@@ -9,11 +9,10 @@ import {
   setNameState,
   setConfirmPasswordState
 } from "../../redux/modules/auth";
-
-import { colors } from "../../config/styles";
-const { nearBlack } = colors;
-
 import { typography } from "../../config/styles";
+import { colors } from "../../config/styles";
+
+const { nearBlack } = colors;
 const { fontMain } = typography;
 
 class UserAccountCreateContainer extends Component {
