@@ -96,7 +96,7 @@ export const getCompanyQuestions = (
 // Reducers
 export default function(
   state = {
-    companyList: [],
+    companyList: {},
     companyInfo: {},
     companyLoading: true,
     questions: {},
