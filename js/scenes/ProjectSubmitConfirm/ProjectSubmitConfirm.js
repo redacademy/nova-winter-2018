@@ -1,12 +1,13 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { colors } from "../../config/styles";
-const { red } = colors;
 
 // import Nova UI components:
 import NovaH1 from "../../components/UI/NovaH1";
 import NovaButton from "../../components/UI/NovaButton";
 import { styles } from "./styles";
+
+const { red } = colors;
 const ProjectSubmitConfirm = () => (
   <View style={styles.container}>
     <NovaH1 color={red} title="Congratulations" />
