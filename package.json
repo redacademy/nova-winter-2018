@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@expo/ex-navigation": "^4.2.0",
+    "algoliasearch": "^3.25.1",
     "babel": "^6.23.0",
     "babel-eslint": "^8.2.2",
     "babel-preset-react-native-stage-0": "^1.0.1",
