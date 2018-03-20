@@ -3,9 +3,6 @@ import PropTypes from "prop-types";
 import { Text, TouchableHighlight, View } from "react-native";
 import { styles } from "./styles";
 
-// Button component
-// You can find an example implementation in the UserAccountCreate component
-
 const NovaButton = ({ title, color, onPressFunc, onPressParams }) => (
   <View style={styles.novaButtonOuterWrapper}>
     <TouchableHighlight
@@ -21,11 +18,6 @@ const NovaButton = ({ title, color, onPressFunc, onPressParams }) => (
   </View>
 );
 
-NovaButton.defaultProps = {
-  style: {},
-  onPressFunc: undefined
-};
-
 NovaButton.propTypes = {
   title: PropTypes.string.isRequired,
   onPressFunc: PropTypes.func,
@@ -34,7 +26,9 @@ NovaButton.propTypes = {
 };
 
 NovaButton.defaultProps = {
-  onPressParams: null
+  onPressParams: null,
+  style: {},
+  onPressFunc: undefined
 };
 
 export default NovaButton;

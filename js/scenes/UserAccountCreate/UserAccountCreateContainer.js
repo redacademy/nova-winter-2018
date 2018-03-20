@@ -83,4 +83,8 @@ UserAccountCreateContainer.propTypes = {
   confirmPassword: PropTypes.string.isRequired
 };
 
+UserAccountCreateContainer.defaultProps = {
+  currentUser: ""
+};
+
 export default connect(mapStateToProps)(UserAccountCreateContainer);
