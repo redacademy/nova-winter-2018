@@ -1,5 +1,3 @@
-// https://projects.invisionapp.com/share/GRFWI99HZKW#/screens/279885494
-
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Companies from "./Companies";
