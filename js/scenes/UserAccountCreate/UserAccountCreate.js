@@ -1,15 +1,13 @@
 import React from "react";
 import { View, TextInput } from "react-native";
 import PropTypes from "prop-types";
-
+import { styles } from "./styles";
 import { colors } from "../../config/styles";
-const { green, red } = colors;
 
-// import Nova UI components:
 import NovaButton from "../../components/UI/NovaButton";
 import NovaHR from "../../components/UI/NovaHR";
 import NovaImperative from "../../components/UI/NovaImperative";
-
+const { green, red } = colors;
 const UserAccountCreate = ({
   email,
   password,
@@ -17,11 +15,20 @@ const UserAccountCreate = ({
   handleChangeEmail,
   handleChangePassword,
   handleChangeConfirmPassword,
-  handleSubmit
+  handleSubmit,
+  handleChangeName
 }) => (
-  <View>
-    <NovaImperative color="black" title="Create An Account" />
+  <View style={styles.container}>
+    <NovaImperative color="white" title="Create An Account" />
     <NovaHR color={green} />
+    <TextInput
+      placeholder="Full Name"
+      autoCapitalize="none"
+      onChange={e => {
+        handleChangeName(e.nativeEvent.text);
+      }}
+      style={styles.input}
+    />
     <TextInput
       placeholder="Email"
       autoCapitalize="none"
@@ -29,6 +36,7 @@ const UserAccountCreate = ({
       onChange={e => {
         handleChangeEmail(e.nativeEvent.text);
       }}
+      style={styles.input}
     />
     <TextInput
       placeholder="Password"
@@ -37,6 +45,7 @@ const UserAccountCreate = ({
       onChange={e => {
         handleChangePassword(e.nativeEvent.text);
       }}
+      style={styles.input}
     />
     <TextInput
       placeholder="Confirm Password"
@@ -45,6 +54,7 @@ const UserAccountCreate = ({
       onChange={e => {
         handleChangeConfirmPassword(e.nativeEvent.text);
       }}
+      style={styles.input}
     />
     <NovaButton
       title="CREATE"
@@ -60,6 +70,7 @@ UserAccountCreate.propTypes = {
   password: PropTypes.string.isRequired,
   confirmPassword: PropTypes.string.isRequired,
   handleChangeEmail: PropTypes.func.isRequired,
+  handleChangeName: PropTypes.func.isRequired,
   handleChangePassword: PropTypes.func.isRequired,
   handleChangeConfirmPassword: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired
