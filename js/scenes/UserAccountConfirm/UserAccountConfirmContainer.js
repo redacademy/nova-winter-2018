@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { colors, typography } from "../../config/styles.js";
+import UserAccountConfirm from "./UserAccountConfirm";
 const { black, mediumGrey, nearBlack, green, red } = colors;
 const { fontMain } = typography;
-import UserAccountConfirm from "./UserAccountConfirm";
 
 class UserAccountConfirmContainer extends Component {
   static route = {
