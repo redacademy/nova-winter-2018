@@ -22,14 +22,6 @@ const UserAccountCreate = ({
     <NovaImperative color="white" title="Create An Account" />
     <NovaHR color={green} />
     <TextInput
-      placeholder="Full Name"
-      autoCapitalize="none"
-      onChange={e => {
-        handleChangeName(e.nativeEvent.text);
-      }}
-      style={styles.input}
-    />
-    <TextInput
       placeholder="Email"
       autoCapitalize="none"
       value={email}

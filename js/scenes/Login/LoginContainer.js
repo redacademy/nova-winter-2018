@@ -100,7 +100,7 @@ LoginContainer.propTypes = {
 };
 
 LoginContainer.defaultProps = {
-  currentUser: null
+  currentUser: ""
 };
 
 const mapStateToProps = state => ({

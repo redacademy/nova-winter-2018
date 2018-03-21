@@ -25,10 +25,6 @@ class UserAccountCreateContainer extends Component {
     this.props.dispatch(setPasswordState(value));
   };
 
-  _handleChangeName = value => {
-    this.props.dispatch(setNameState(value));
-  };
-
   _handleChangeConfirmPassword = value => {
     this.props.dispatch(setConfirmPasswordState(value));
   };
