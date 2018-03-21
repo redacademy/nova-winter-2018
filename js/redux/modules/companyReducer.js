@@ -1,10 +1,14 @@
 import { database } from "../../api/firebase";
+import { algoliaSearchIndex } from "../../api/algoliaConfig";
 // Actions
 const COMPANY_LOADING = "COMPANY_LOADING";
 const GET_COMPANY_INFO = "GET_COMPANY_INFO";
 const GET_PROJECTS_LIST = "GET_ASSIGNMENTS_LIST";
 const GET_QUESTIONS_LIST = "GET_QUESTIONS_LIST";
 const GET_COMPANY_LIST = "GET_COMPANY_LIST";
+const GET_COMPANY_SEARCH_RESULTS = "GET_COMPANY_SEARCH_RESULTS";
+const SEARCH_ERROR = "SEARCH_ERROR";
+const SET_SEARCH_QUERY = "SET_SEARCH_QUERY";
 // Action Creator
 export const getCompanyInfo = companyInfo => ({
   type: GET_COMPANY_INFO,
@@ -24,6 +28,20 @@ export const companyLoading = () => ({
 export const getCompanyList = companyInfo => ({
   type: GET_COMPANY_LIST,
   payload: companyInfo
+});
+export const getCompanySearchResults = searchResults => ({
+  type: GET_COMPANY_SEARCH_RESULTS,
+  payload: searchResults
+});
+
+const searchError = error => ({
+  type: SEARCH_ERROR,
+  payload: error
+});
+
+export const setSearchQuery = query => ({
+  type: SET_SEARCH_QUERY,
+  payload: query
 });
 
 // Fetch functions
@@ -83,11 +101,27 @@ export const getCompanyQuestions = (companyID, projectName) => dispatch => {
       console.log("Error getting document:", error);
     });
 };
+
+export const executeCompanySearch = searchQuery => dispatch => {
+  algoliaSearchIndex.search({ query: searchQuery }, (err, content) => {
+    if (err) {
+      dispatch(searchError(err));
+    }
+    let results = [];
+    for (var h in content.hits) {
+      results.push(content.hits[h]);
+    }
+    dispatch(getCompanySearchResults(results));
+  });
+};
 // Reducers
 export default function(
   state = {
-    companyList: {},
+    searchQuery: "",
+    companyList: [],
     companyInfo: {},
+    companySearchResults: [],
+    searchError: null,
     companyLoading: true,
     questions: {},
     projects: {}
@@ -124,6 +158,18 @@ export default function(
         ...state,
         companyLoading: false
       };
+    }
+    case GET_COMPANY_SEARCH_RESULTS: {
+      return {
+        ...state,
+        companySearchResults: action.payload
+      };
+    }
+    case SEARCH_ERROR: {
+      return { ...state, searchError: action.payload };
+    }
+    case SET_SEARCH_QUERY: {
+      return { ...state, searchQuery: action.payload };
     }
     default:
       return state;

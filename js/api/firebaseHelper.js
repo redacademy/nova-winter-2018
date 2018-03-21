@@ -22,6 +22,7 @@ export function writeNewCompanyData(
       console.log("Company data written!");
     });
 }
+
 export function writeNewCompanyProjects(
   companyID,
   project_name,
@@ -49,6 +50,7 @@ export function writeNewCompanyProjects(
       console.log("Company data written!");
     });
 }
+
 export function writeNewUserData(userID, name, email) {
   database
     .collection("users")
@@ -61,7 +63,20 @@ export function writeNewUserData(userID, name, email) {
       console.log("User data written!");
     });
 }
-// USER FUNCTIONS
+export function writeNewUserInformation(userID, bio, experience, projects) {
+  database
+    .collection("users")
+    .doc(userID)
+    .set({
+      bio: bio,
+      experience: experience,
+      projects: projects
+    })
+    .then(function() {
+      console.log("User info written!");
+    });
+}
+
 export function writeNewUserLocation(userID, location) {
   database
     .collection("users")
@@ -146,5 +161,17 @@ export function writeNewUserGlobal(userID, global) {
     )
     .then(function() {
       console.log("User info written!");
+    });
+}
+
+export function getCompaniesCollectionForSearchIndexing(callback) {
+  database
+    .collection("companys")
+    .get()
+    .then(snapshot => {
+      snapshot.forEach(doc => {
+        callback(doc.data());
+        console.log(doc.id, "=>", doc.data());
+      });
     });
 }
