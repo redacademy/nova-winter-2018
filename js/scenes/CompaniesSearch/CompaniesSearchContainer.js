@@ -1,5 +1,3 @@
-// https://projects.invisionapp.com/share/GRFWI99HZKW#/screens/279885494
-
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import CompaniesSearch from "./CompaniesSearch";
