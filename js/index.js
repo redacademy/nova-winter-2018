@@ -23,6 +23,13 @@ const navContext = new NavContext({
 });
 
 export default class App extends Component {
+  getInitialRoute() {
+    if (Store.getState().auth.authenticated) {
+      return "layout";
+    }
+    return "login";
+  }
+
   render() {
     return (
       <Provider store={Store}>
@@ -31,7 +38,7 @@ export default class App extends Component {
           <StackNav
             id="root"
             navigatorUID="root"
-            initialRoute={Router.getRoute("layout")}
+            initialRoute={Router.getRoute(this.getInitialRoute())}
           />
         </NavProvider>
       </Provider>

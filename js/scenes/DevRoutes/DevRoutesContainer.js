@@ -4,6 +4,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import DevRoutes from "./DevRoutes";
+import { connect } from "react-redux";
+import { logOut } from "../../redux/modules/auth";
 
 class DevRoutesContainer extends Component {
   static route = {
@@ -12,11 +14,23 @@ class DevRoutesContainer extends Component {
     }
   };
 
+  _logOut = () => {
+    this.props.logOut();
+  };
+
   render() {
-    return <DevRoutes />;
+    return <DevRoutes logOut={this._logOut} />;
   }
 }
 
-// DevRoutesContainer.propTypes = {};
+const mapDispatchToProps = dispatch => ({
+  logOut: () => {
+    dispatch(logOut());
+  }
+});
 
-export default DevRoutesContainer;
+DevRoutesContainer.propTypes = {
+  logOut: PropTypes.func.isRequired
+};
+
+export default connect(null, mapDispatchToProps)(DevRoutesContainer);

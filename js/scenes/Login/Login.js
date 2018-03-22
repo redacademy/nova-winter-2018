@@ -16,8 +16,7 @@ const Login = ({
   handleChangeEmail,
   handleChangePassword,
   handleSubmit,
-  logOut,
-  currentUser
+  navigatorUID
 }) => (
   <View style={styles.container}>
     <Image
@@ -58,19 +57,10 @@ const Login = ({
     />
     <TouchableHighlight
       onPress={() => {
-        goToScene("devRoutes", "userAccountCreate");
+        goToScene(navigatorUID, "userAccountCreate");
       }}
     >
       <Text style={styles.newuser}>New User? Create Account</Text>
-    </TouchableHighlight>
-    <TouchableHighlight
-      onPress={() => {
-        if (currentUser) {
-          logOut(currentUser);
-        }
-      }}
-    >
-      <Text>Sign Out</Text>
     </TouchableHighlight>
   </View>
 );
@@ -82,7 +72,8 @@ Login.propTypes = {
   handleChangePassword: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   logOut: PropTypes.func.isRequired,
-  currentUser: PropTypes.string
+  currentUser: PropTypes.string,
+  navigatorUID: PropTypes.string.isRequired
 };
 
 Login.defaultProps = {

@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { ScrollView, Text } from "react-native";
 import { goToScene } from "../../navigation/NavigationHelper";
 
-const DevRoutes = () => (
+const DevRoutes = ({ logOut }) => (
   <ScrollView>
     <Text style={{ fontWeight: "bold", marginTop: 16, color: "red" }}>
       All links here push onto this devRoutes stack. Stacks indicated below
@@ -64,7 +65,18 @@ const DevRoutes = () => (
     <Text onPress={() => goToScene("devRoutes", "userProfileEdit")}>
       UserProfileEdit
     </Text>
+    <Text
+      onPress={() => {
+        logOut();
+      }}
+    >
+      Logout
+    </Text>
   </ScrollView>
 );
+
+DevRoutes.propTypes = {
+  logOut: PropTypes.func.isRequired
+};
 
 export default DevRoutes;
