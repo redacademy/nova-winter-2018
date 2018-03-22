@@ -3,7 +3,8 @@ import { algoliaSearchIndex } from "../../api/algoliaConfig";
 // Actions
 const COMPANY_LOADING = "COMPANY_LOADING";
 const GET_COMPANY_INFO = "GET_COMPANY_INFO";
-const GET_PROJECTS_LIST = "GET_ASSIGNMENTS_LIST";
+const GET_PROJECTS_LIST = "GET_PROJECTS_LIST";
+const GET_ALL_PROJECTS_LIST = "GET_ALL_PROJECTS_LIST";
 const GET_QUESTIONS_LIST = "GET_QUESTIONS_LIST";
 const GET_COMPANY_LIST = "GET_COMPANY_LIST";
 const GET_COMPANY_SEARCH_RESULTS = "GET_COMPANY_SEARCH_RESULTS";
@@ -14,18 +15,22 @@ export const getCompanyInfo = companyInfo => ({
   type: GET_COMPANY_INFO,
   payload: companyInfo
 });
-export const getProjectsInfo = assignmentsInfo => ({
+const getProjectsInfo = assignmentsInfo => ({
   type: GET_PROJECTS_LIST,
   payload: assignmentsInfo
 });
-export const getQuestionsInfo = questionsInfo => ({
+const getAllProjectsInfo = assignmentsInfo => ({
+  type: GET_ALL_PROJECTS_LIST,
+  payload: assignmentsInfo
+});
+const getQuestionsInfo = questionsInfo => ({
   type: GET_QUESTIONS_LIST,
   payload: questionsInfo
 });
-export const companyLoading = () => ({
+const companyLoading = () => ({
   type: COMPANY_LOADING
 });
-export const getCompanyList = companyInfo => ({
+const getCompanyList = companyInfo => ({
   type: GET_COMPANY_LIST,
   payload: companyInfo
 });
@@ -74,6 +79,26 @@ export const getCompany = companyID => dispatch => {
       console.log("Error getting document:", error);
     });
 };
+<<<<<<< HEAD
+=======
+
+export const getAllCompanyProjects = companyID => dispatch => {
+  database
+    .collection("companys/" + companyID + "/projects")
+    .get()
+    .then(collection => {
+      const projects = [];
+      collection.forEach(doc => {
+        projects.push(doc.data());
+      });
+      dispatch(getAllProjectsInfo(projects));
+    })
+    .catch(function(error) {
+      console.log("Error getting document:", error);
+    });
+};
+
+>>>>>>> Add content and styles to CompanyProfile scene.
 export const getCompanyProjects = (companyID, projectNumber) => dispatch => {
   database
     .doc("companys/" + companyID + "/projects/" + projectNumber)
@@ -121,7 +146,7 @@ export default function(
     searchError: null,
     companyLoading: true,
     questions: {},
-    projects: {}
+    projects: []
   },
   action
 ) {
@@ -144,6 +169,13 @@ export default function(
         projects: action.payload
       };
     }
+    case GET_ALL_PROJECTS_LIST: {
+      return {
+        ...state,
+        projects: action.payload
+      };
+    }
+
     case GET_QUESTIONS_LIST: {
       return {
         ...state,

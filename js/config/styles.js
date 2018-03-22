@@ -4,8 +4,14 @@ export const colors = {
   mediumGrey: "#EEEEEE",
   white: "#FFFFFF",
   green: "#92BFB5",
-
   red: "#E17B61"
+};
+
+export const shadow = {
+  shadowColor: "black",
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.5,
+  shadowRadius: 2
 };
 
 export const typography = {

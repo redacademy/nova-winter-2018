@@ -5,17 +5,15 @@ import { goToScene } from "../../navigation/NavigationHelper";
 
 const DevRoutes = ({ logOut }) => (
   <ScrollView>
-    <Text style={{ fontWeight: "bold", marginTop: 16, color: "red" }}>
-      All links here push onto this devRoutes stack. Stacks indicated below
-      document where these Scenes will be pushed in production.
-    </Text>
-
     <Text style={{ fontWeight: "bold", marginTop: 16 }}>Companies stack:</Text>
     <Text onPress={() => goToScene("devRoutes", "companiesSearch")}>
       CompaniesSearch
     </Text>
-    <Text onPress={() => goToScene("devRoutes", "companyProfile")}>
-      CompanyProfile
+    <Text onPress={() => goToScene("devRoutes", "companyProfile", "deloitte")}>
+      CompanyProfile (Deloitte)
+    </Text>
+    <Text onPress={() => goToScene("devRoutes", "companyProfile", "adobe")}>
+      CompanyProfile (Adobe)
     </Text>
     <Text onPress={() => goToScene("devRoutes", "projectBrief")}>
       ProjectBrief

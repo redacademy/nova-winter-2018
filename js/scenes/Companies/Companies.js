@@ -1,5 +1,6 @@
 import React from "react";
-import { FlatList, Image, View } from "react-native";
+import { FlatList, Image, TouchableHighlight, View } from "react-native";
+import { goToScene } from "../../navigation/NavigationHelper";
 import PropTypes from "prop-types";
 import { styles } from "./styles";
 
@@ -10,7 +11,11 @@ const Companies = ({ companyList }) => (
       keyExtractor={item => item.name}
       numColumns={3}
       renderItem={({ item }) => (
-        <Image style={styles.logo} source={{ uri: item.logo }} />
+        <TouchableHighlight
+          onPress={() => goToScene("companies", "companyProfile", item.id)}
+        >
+          <Image style={styles.logo} source={{ uri: item.logo }} />
+        </TouchableHighlight>
       )}
     />
   </View>

@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import { Text, TouchableHighlight, View } from "react-native";
 import { styles } from "./styles";
 
-const NovaButton = ({ title, color, onPressFunc, onPressParams }) => (
+const NovaButton = ({ title, color, onPressFunc, onPressParams, style }) => (
   <View style={styles.novaButtonOuterWrapper}>
     <TouchableHighlight
-      style={[styles.novaButtonTouchable, { backgroundColor: color }]}
+      style={[styles.novaButtonTouchable, style, { backgroundColor: color }]}
       onPress={() => {
         onPressFunc(onPressParams);
       }}
@@ -22,7 +22,12 @@ NovaButton.propTypes = {
   title: PropTypes.string.isRequired,
   onPressFunc: PropTypes.func,
   color: PropTypes.string.isRequired,
-  onPressParams: PropTypes.object
+  onPressParams: PropTypes.object,
+  style: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object,
+    PropTypes.number
+  ])
 };
 
 NovaButton.defaultProps = {
