@@ -18,9 +18,7 @@ export function writeNewCompanyData(
       company_info: company_info,
       location: location
     })
-    .then(function() {
-      console.log("Company data written!");
-    });
+    .then(function() {});
 }
 export function writeNewCompanyProjects(
   companyID,
@@ -45,9 +43,7 @@ export function writeNewCompanyProjects(
       video2: video2,
       video3: video3
     })
-    .then(function() {
-      console.log("Company data written!");
-    });
+    .then(function() {});
 }
 export function writeNewUserData(userID, name, email) {
   database
@@ -57,9 +53,7 @@ export function writeNewUserData(userID, name, email) {
       name: name,
       email: email
     })
-    .then(function() {
-      console.log("User data written!");
-    });
+    .then(function() {});
 }
 export function writeNewUserInformation(userID, bio, experience, projects) {
   database
@@ -70,9 +64,7 @@ export function writeNewUserInformation(userID, bio, experience, projects) {
       experience: experience,
       projects: projects
     })
-    .then(function() {
-      console.log("User info written!");
-    });
+    .then(function() {});
 }
 
 export function writeNewUserLocation(userID, location) {
@@ -82,9 +74,7 @@ export function writeNewUserLocation(userID, location) {
     .set({
       location: location
     })
-    .then(function() {
-      console.log("User location written!");
-    });
+    .then(function() {});
 }
 export function writeNewUserTests(
   userID,
@@ -100,11 +90,8 @@ export function writeNewUserTests(
       testStartTime: testStartTime,
       testScore: testScore
     })
-    .then(function() {
-      console.log("User location written!");
-    });
+    .then(function() {});
 }
-// PROFILE CREATION
 export function writeNewUserBio(userID, bio) {
   database
     .collection("users")
@@ -117,9 +104,7 @@ export function writeNewUserBio(userID, bio) {
         merge: true
       }
     )
-    .then(function() {
-      console.log("User info written!");
-    });
+    .then(function() {});
 }
 export function writeNewUserExp(userID, experience) {
   database
@@ -133,9 +118,7 @@ export function writeNewUserExp(userID, experience) {
         merge: true
       }
     )
-    .then(function() {
-      console.log("User info written!");
-    });
+    .then(function() {});
 }
 export function writeNewUserEducation(userID, education) {
   database
@@ -149,9 +132,7 @@ export function writeNewUserEducation(userID, education) {
         merge: true
       }
     )
-    .then(function() {
-      console.log("User info written!");
-    });
+    .then(function() {});
 }
 export function writeNewUserGlobal(userID, global) {
   database
@@ -165,9 +146,7 @@ export function writeNewUserGlobal(userID, global) {
         merge: true
       }
     )
-    .then(function() {
-      console.log("User info written!");
-    });
+    .then(function() {});
 }
 export function writeNewUserName(userID, name) {
   database
@@ -181,9 +160,7 @@ export function writeNewUserName(userID, name) {
         merge: true
       }
     )
-    .then(function() {
-      console.log("User info written!");
-    });
+    .then(function() {});
 }
 export function writeNewUserProjects(userID, projects) {
   database
@@ -197,9 +174,7 @@ export function writeNewUserProjects(userID, projects) {
         merge: true
       }
     )
-    .then(function() {
-      console.log("User info written!");
-    });
+    .then(function() {});
 }
 export function writeNewUserQuote(userID, quote) {
   database
@@ -213,9 +188,7 @@ export function writeNewUserQuote(userID, quote) {
         merge: true
       }
     )
-    .then(function() {
-      console.log("User info written!");
-    });
+    .then(function() {});
 }
 export function writeNewUserReferences(userID, references) {
   database
@@ -229,9 +202,7 @@ export function writeNewUserReferences(userID, references) {
         merge: true
       }
     )
-    .then(function() {
-      console.log("User info written!");
-    });
+    .then(function() {});
 }
 export function writeNewUserTitle(userID, title) {
   database
@@ -245,9 +216,7 @@ export function writeNewUserTitle(userID, title) {
         merge: true
       }
     )
-    .then(function() {
-      console.log("User info written!");
-    });
+    .then(function() {});
 }
 export function writeNewUserImage(userID, image) {
   database
@@ -261,9 +230,7 @@ export function writeNewUserImage(userID, image) {
         merge: true
       }
     )
-    .then(function() {
-      console.log("User info written!");
-    });
+    .then(function() {});
 }
 export function getCompaniesCollectionForSearchIndexing(callback) {
   database
@@ -272,7 +239,6 @@ export function getCompaniesCollectionForSearchIndexing(callback) {
     .then(snapshot => {
       snapshot.forEach(doc => {
         callback(doc.data());
-        console.log(doc.id, "=>", doc.data());
       });
     });
 }
