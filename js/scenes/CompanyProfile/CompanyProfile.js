@@ -11,6 +11,7 @@ import PropTypes from "prop-types";
 import { styles } from "./styles";
 import { colors, shadow } from "../../config/styles";
 const { green } = colors;
+import { buttonToScene } from "../../navigation/NavigationHelper";
 
 // import Nova UI components:
 import NovaH2 from "../../components/UI/NovaH2";
@@ -40,6 +41,7 @@ const CompanyProfile = companyInfo => (
     </View>
 
     <View>
+      
       <FlatList
         data={companyInfo.projects}
         keyExtractor={item => item.title}
@@ -55,6 +57,9 @@ const CompanyProfile = companyInfo => (
                   title="Brief"
                   color={green}
                   style={[styles.brief, shadow]}
+                  onPressParams={{ currentNavigatorUID: "devRoutes", targetScene: "projectBrief", props: { success: false, id: item.id, company: companyInfo.companyInfo.id } }}
+                  onPressFunc={buttonToScene}
+
                 />
                 <NovaH2
                   color="white"

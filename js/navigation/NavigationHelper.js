@@ -10,8 +10,12 @@ export const goToScene = (currentNavigatorUID, targetScene, props) => {
     )
   );
 };
+<<<<<<< HEAD
 
 export const buttonToScene = params => {
+=======
+export const buttonToScene = (params) => {
+>>>>>>> a00dfad... Wiring to brief page done, errors debugged
   const { currentNavigatorUID, targetScene, props } = params;
   Store.dispatch(
     NavigationActions.push(
@@ -20,3 +24,7 @@ export const buttonToScene = params => {
     )
   );
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> a00dfad... Wiring to brief page done, errors debugged

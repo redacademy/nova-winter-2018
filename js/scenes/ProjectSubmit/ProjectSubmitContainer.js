@@ -1,8 +1,8 @@
-// https://projects.invisionapp.com/share/GRFWI99HZKW#/screens/279885499
-
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ProjectSubmit from "./ProjectSubmit";
+import { connect } from "react-redux";
+import { getProjectDeliverables } from "../../redux/modules/companyReducer";
 
 class ProjectSubmitContainer extends Component {
   static route = {
@@ -11,11 +11,41 @@ class ProjectSubmitContainer extends Component {
     }
   };
 
+  componentDidMount = () => {
+    this.props.dispatch(
+      getProjectDeliverables(
+        this.props.route.params.props.company,
+        this.props.route.params.props.id
+      )
+    );
+  };
+
   render() {
-    return <ProjectSubmit />;
+    return (
+      <ProjectSubmit
+        deliverables={this.props.deliverables}
+        userID={this.props.userID}
+        projectName={this.props.route.params.props.id}
+        companyName={this.props.route.params.company}
+        userEmail={this.props.userEmail}
+      />
+    );
   }
 }
-
-// ProjectSubmitContainer.propTypes = {};
-
-export default ProjectSubmitContainer;
+const mapStateToProps = state => ({
+  userID: state.auth.userId,
+  userEmail: state.auth.user.email,
+  deliverables: state.company.deliverables
+});
+ProjectSubmitContainer.propTypes = {
+  userID: PropTypes.string,
+  params: PropTypes.string,
+  route: PropTypes.object,
+  deliverables: PropTypes.array.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  userEmail: PropTypes.string.isRequired
+};
+ProjectSubmitContainer.defaultProps = {
+  userID: ""
+};
+export default connect(mapStateToProps)(ProjectSubmitContainer);

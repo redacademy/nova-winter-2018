@@ -161,14 +161,15 @@ export const getCompanyQuestions = (companyID, projectName) => dispatch => {
         "/questions/questions"
     )
     .get()
-    .then(doc => {
-      dispatch(getQuestionsInfo(doc.data()));
+    .then(function(doc) {
+      let questionsData = doc.data();
+      dispatch(getQuestionsInfo(questionsData));
+      dispatch(getDataError(null));
     })
-    .catch(error => {
+    .catch(function(error) {
       console.log("Error getting document:", error);
     });
 };
-
 export const executeCompanySearch = searchQuery => dispatch => {
   algoliaSearchIndex.search({ query: searchQuery }, (err, content) => {
     if (err) {
@@ -210,7 +211,8 @@ export default function(
     companyLoading: true,
     questions: {},
     projects: [],
-    resources: []
+    resources: [],
+    deliverables: []
   },
   action
 ) {
