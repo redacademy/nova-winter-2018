@@ -13,7 +13,7 @@ export const goToScene = (currentNavigatorUID, targetScene, props) => {
 
 export const goBack = () => {
   Store.dispatch(NavigationActions.goBack());
-}
+};
 
 export const buttonToScene = params => {
   const { currentNavigatorUID, targetScene, props } = params;
@@ -24,4 +24,3 @@ export const buttonToScene = params => {
     )
   );
 };
-

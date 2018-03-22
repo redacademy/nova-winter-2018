@@ -21,8 +21,8 @@ const UserProfile = ({ userInfo }) => (
           <Text style={styles.text}>{userInfo.bio}</Text>
         </View>
         <View style={styles.viewbox}>
-          <Text style={styles.headline}>Education</Text>
-          <Text style={styles.text}>{userInfo.education}</Text>
+          <Text style={styles.headline}>Experience</Text>
+          <Text style={styles.text}>{userInfo.experience}</Text>
         </View>
 
         <View style={styles.viewbox}>
