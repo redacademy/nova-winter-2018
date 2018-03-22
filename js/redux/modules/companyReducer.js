@@ -1,5 +1,6 @@
 import { database } from "../../api/firebase";
 import { algoliaSearchIndex } from "../../api/algoliaConfig";
+
 // Actions
 const COMPANY_LOADING = "COMPANY_LOADING";
 const GET_COMPANY_INFO = "GET_COMPANY_INFO";
@@ -7,9 +8,11 @@ const GET_PROJECTS_LIST = "GET_PROJECTS_LIST";
 const GET_ALL_PROJECTS_LIST = "GET_ALL_PROJECTS_LIST";
 const GET_QUESTIONS_LIST = "GET_QUESTIONS_LIST";
 const GET_COMPANY_LIST = "GET_COMPANY_LIST";
+const DATA_ERROR = "DATA_ERROR";
 const GET_COMPANY_SEARCH_RESULTS = "GET_COMPANY_SEARCH_RESULTS";
 const SEARCH_ERROR = "SEARCH_ERROR";
 const SET_SEARCH_QUERY = "SET_SEARCH_QUERY";
+
 // Action Creator
 export const getCompanyInfo = companyInfo => ({
   type: GET_COMPANY_INFO,
@@ -34,6 +37,12 @@ const getCompanyList = companyInfo => ({
   type: GET_COMPANY_LIST,
   payload: companyInfo
 });
+
+const getDataError = error => ({
+  type: DATA_ERROR,
+  payload: error
+});
+
 export const getCompanySearchResults = searchResults => ({
   type: GET_COMPANY_SEARCH_RESULTS,
   payload: searchResults
@@ -60,9 +69,10 @@ export const getAllCompanys = () => dispatch => {
         companyInfo.push(doc.data());
       });
       dispatch(getCompanyList(companyInfo));
+      dispatch(getDataError(null));
     })
     .catch(err => {
-      console.log("Error getting documents", err);
+      dispatch(getDataError(err));
     });
 };
 export const getCompany = companyID => dispatch => {
@@ -73,10 +83,11 @@ export const getCompany = companyID => dispatch => {
     .then(function(doc) {
       let companyInfo = doc.data();
       dispatch(getCompanyInfo(companyInfo));
+      dispatch(getDataError(null));
       return companyInfo;
     })
     .catch(function(error) {
-      console.log("Error getting document:", error);
+      dispatch(getDataError(error));
     });
 };
 <<<<<<< HEAD
@@ -92,9 +103,10 @@ export const getAllCompanyProjects = companyID => dispatch => {
         projects.push(doc.data());
       });
       dispatch(getAllProjectsInfo(projects));
+      dispatch(getDataError(null));
     })
     .catch(function(error) {
-      console.log("Error getting document:", error);
+      dispatch(getDataError(error));
     });
 };
 
@@ -106,9 +118,10 @@ export const getCompanyProjects = (companyID, projectNumber) => dispatch => {
     .then(function(doc) {
       let projectInfo = doc.data();
       dispatch(getProjectsInfo(projectInfo));
+      dispatch(getDataError(null));
     })
     .catch(function(error) {
-      console.log("Error getting document:", error);
+      dispatch(getDataError(error));
     });
 };
 export const getCompanyQuestions = (companyID, projectName) => dispatch => {
@@ -118,9 +131,10 @@ export const getCompanyQuestions = (companyID, projectName) => dispatch => {
     .then(function(doc) {
       let questionsData = doc.data();
       dispatch(getQuestionsInfo(questionsData));
+      dispatch(getDataError(null));
     })
     .catch(function(error) {
-      console.log("Error getting document:", error);
+      dispatch(getDataError(error));
     });
 };
 
@@ -142,6 +156,7 @@ export default function(
     searchQuery: "",
     companyList: [],
     companyInfo: {},
+    dataError: null,
     companySearchResults: [],
     searchError: null,
     companyLoading: true,
@@ -187,6 +202,9 @@ export default function(
         ...state,
         companyLoading: false
       };
+    }
+    case DATA_ERROR: {
+      return { ...state, dataError: action.payload };
     }
     case GET_COMPANY_SEARCH_RESULTS: {
       return {
