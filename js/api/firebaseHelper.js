@@ -169,6 +169,102 @@ export function writeNewUserGlobal(userID, global) {
       console.log("User info written!");
     });
 }
+export function writeNewUserName(userID, name) {
+  database
+    .collection("users")
+    .doc(userID)
+    .set(
+      {
+        name: name
+      },
+      {
+        merge: true
+      }
+    )
+    .then(function() {
+      console.log("User info written!");
+    });
+}
+export function writeNewUserProjects(userID, projects) {
+  database
+    .collection("users")
+    .doc(userID)
+    .set(
+      {
+        projects: projects
+      },
+      {
+        merge: true
+      }
+    )
+    .then(function() {
+      console.log("User info written!");
+    });
+}
+export function writeNewUserQuote(userID, quote) {
+  database
+    .collection("users")
+    .doc(userID)
+    .set(
+      {
+        quote: quote
+      },
+      {
+        merge: true
+      }
+    )
+    .then(function() {
+      console.log("User info written!");
+    });
+}
+export function writeNewUserReferences(userID, references) {
+  database
+    .collection("users")
+    .doc(userID)
+    .set(
+      {
+        references: references
+      },
+      {
+        merge: true
+      }
+    )
+    .then(function() {
+      console.log("User info written!");
+    });
+}
+export function writeNewUserTitle(userID, title) {
+  database
+    .collection("users")
+    .doc(userID)
+    .set(
+      {
+        title: title
+      },
+      {
+        merge: true
+      }
+    )
+    .then(function() {
+      console.log("User info written!");
+    });
+}
+export function writeNewUserImage(userID, image) {
+  database
+    .collection("users")
+    .doc(userID)
+    .set(
+      {
+        image: image
+      },
+      {
+        merge: true
+      }
+    )
+    .then(function() {
+      console.log("User info written!");
+    });
+}
 export function getCompaniesCollectionForSearchIndexing(callback) {
   database
     .collection("companys")
