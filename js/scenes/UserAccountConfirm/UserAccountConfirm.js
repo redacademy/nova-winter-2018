@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import { styles } from "./styles";
 import { colors } from "../../config/styles";
-const { red, white, nearBlack } = colors;
+const { white, nearBlack } = colors;
 
 // import Nova UI components:
 import NovaButton from "../../components/UI/NovaButton";

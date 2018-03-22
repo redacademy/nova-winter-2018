@@ -1,5 +1,3 @@
-// https://projects.invisionapp.com/share/GRFWI99HZKW#/screens/279885488
-
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ProjectResourceTestResults from "./ProjectResourceTestResults";
@@ -7,15 +5,20 @@ import ProjectResourceTestResults from "./ProjectResourceTestResults";
 class ProjectResourceTestResultsContainer extends Component {
   static route = {
     navigationBar: {
-      title: "ProjectResourceTestResults"
+      title: "ProjectResourceTestResults",
+      visible: false
     }
-  };
 
+  };
+  componentDidMount() { }
   render() {
-    return <ProjectResourceTestResults />;
+    return <ProjectResourceTestResults score={this.props.route.params.props} />;
   }
 }
 
-// ProjectResourceTestResultsContainer.propTypes = {};
+ProjectResourceTestResultsContainer.propTypes = {
+
+  route: PropTypes.object.isRequired
+};
 
 export default ProjectResourceTestResultsContainer;
