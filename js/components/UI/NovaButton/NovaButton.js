@@ -1,4 +1,5 @@
 import React from "react";
+import { ViewPropTypes } from "react-native";
 import PropTypes from "prop-types";
 import { Text, TouchableHighlight, View } from "react-native";
 import { styles } from "./styles";
@@ -23,11 +24,7 @@ NovaButton.propTypes = {
   onPressFunc: PropTypes.func,
   color: PropTypes.string.isRequired,
   onPressParams: PropTypes.object,
-  style: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.object,
-    PropTypes.number
-  ])
+  style: ViewPropTypes.style
 };
 
 NovaButton.defaultProps = {
