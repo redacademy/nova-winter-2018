@@ -21,12 +21,16 @@ export const styles = StyleSheet.create({
     marginRight: 16
   },
 
+  companyName: {
+    textAlign: "left"
+  },
+
   titleContainer: {
     flex: 1,
     flexDirection: "column"
   },
 
-  title: {
+  projectTitle: {
     textAlign: "left"
   },
 

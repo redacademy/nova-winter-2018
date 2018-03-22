@@ -30,12 +30,7 @@ const CompanyProfile = companyInfo => (
           <NovaH2
             color="white"
             title={companyInfo.companyInfo.name}
-            style={[
-              {
-                textAlign: "left"
-              },
-              shadow
-            ]}
+            style={[styles.companyName, shadow]}
           />
           <Text style={[{ color: "white" }, shadow]}>
             {companyInfo.companyInfo.industry}
@@ -43,11 +38,11 @@ const CompanyProfile = companyInfo => (
         </View>
       </View>
     </View>
+
     <View>
       <FlatList
         data={companyInfo.projects}
         keyExtractor={item => item.title}
-        // numColumns={3}
         renderItem={({ item }) => (
           <View>
             <Text style={styles.category}>{item.industry} Project</Text>
@@ -63,7 +58,7 @@ const CompanyProfile = companyInfo => (
                 />
                 <NovaH2
                   color="white"
-                  style={[shadow, styles.title]}
+                  style={[shadow, styles.projectTitle]}
                   title={item.title}
                 />
               </View>
