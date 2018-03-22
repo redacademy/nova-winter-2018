@@ -36,7 +36,13 @@ const mapStateToProps = state => {
   };
 };
 ProjectResourceTestContainer.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  questions: PropTypes.array.isRequired,
+  answers: PropTypes.array.isRequired
 };
 
+ProjectResourceTestContainer.defaultProps = {
+  questions: ["", "", "", "", "", ""],
+  answers: [false, false, false, false, false]
+};
 export default connect(mapStateToProps)(ProjectResourceTestContainer);

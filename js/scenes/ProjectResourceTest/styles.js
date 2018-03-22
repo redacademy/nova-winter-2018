@@ -91,4 +91,5 @@ export const styles = StyleSheet.create({
   cardContainer: {
     width: 320
   }
+
 });

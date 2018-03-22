@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text } from "react-native";
 import { colors } from "../../config/styles";
 import { styles } from "./styles";
+import PropTypes from "prop-types";
 
 // import Nova UI components:
 import NovaButton from "../../components/UI/NovaButton";
@@ -18,14 +19,22 @@ const ProjectResourceTestResults = ({ score }) =>
       <NovaButton title="CONTINUE" color={red} onPress={null} />
     </View>
   ) : (
-    <View style={styles.container}>
-      <NovaH1 title="Test Results" color={red} />
-      <Text style={styles.message}>
-        Sorry, better luck next time. Try again later.
+      <View style={styles.container}>
+        <NovaH1 title="Test Results" color={red} />
+        <Text style={styles.message}>
+          Sorry, better luck next time. Try again later.
       </Text>
-      <Text style={styles.score}>{score * 10}/10</Text>
-      <NovaButton title="BACK TO BRIEF" color={red} onPress={null} />
-    </View>
-  );
+        <Text style={styles.score}>{score * 10}/10</Text>
+        <NovaButton title="BACK TO BRIEF" color={red} onPress={null} />
+      </View>
+    );
+ProjectResourceTestResults.propTypes = {
+  score: PropTypes.number.isRequired,
+
+};
+
+ProjectResourceTestResults.defaultProps = {
+  score: 0
+};
 
 export default ProjectResourceTestResults;
