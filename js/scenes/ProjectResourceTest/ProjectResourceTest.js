@@ -78,7 +78,7 @@ ProjectResourceTest.defaultProps = {
 };
 ProjectResourceTest.propTypes = {
   usersanswers: PropTypes.array,
-  scorebank: PropTypes.number.isRequired,
+  scorebank: PropTypes.number,
   questions: PropTypes.array.isRequired,
   solutions: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired,
