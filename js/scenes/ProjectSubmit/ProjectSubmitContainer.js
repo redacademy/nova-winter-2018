@@ -1,9 +1,7 @@
-// https://projects.invisionapp.com/share/GRFWI99HZKW#/screens/279885499
-
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ProjectSubmit from "./ProjectSubmit";
-
+import { connect } from "react-redux";
 class ProjectSubmitContainer extends Component {
   static route = {
     navigationBar: {
@@ -12,10 +10,19 @@ class ProjectSubmitContainer extends Component {
   };
 
   render() {
-    return <ProjectSubmit />;
+    return <ProjectSubmit userID={this.props.userID} />;
   }
 }
 
-// ProjectSubmitContainer.propTypes = {};
+const mapStateToProps = state => ({
+  userID: state.auth.userId
+});
 
-export default ProjectSubmitContainer;
+ProjectSubmitContainer.propTypes = {
+  userID: PropTypes.string
+};
+
+ProjectSubmitContainer.defaultProps = {
+  userID: ""
+};
+export default connect(mapStateToProps)(ProjectSubmitContainer);
