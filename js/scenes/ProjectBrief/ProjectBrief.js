@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 import { colors } from "../../config/styles";
 import Icon from "react-native-vector-icons/Ionicons";
 import moment from "moment";
-
+import { buttonToScene } from "../../navigation/NavigationHelper";
 // import Nova UI components:
 import { styles } from "./styles";
 import NovaH2 from "../../components/UI/NovaH2";
@@ -76,7 +76,16 @@ const ProjectBrief = ({
       </View>
 
       {success.success === true && (
-        <NovaButton color={green} title="START PROJECT" />
+        <NovaButton
+          color={green}
+          title="START PROJECT"
+          onPressParams={{
+            currentNavigatorUID: "devRoutes",
+            targetScene: "projectConfirm",
+            props: { success: true, id: "blockchain", company: "deloitte" }
+          }}
+          onPressFunc={buttonToScene}
+        />
       )}
 
       <NovaH2
