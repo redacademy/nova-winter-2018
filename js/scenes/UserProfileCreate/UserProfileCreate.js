@@ -10,7 +10,13 @@ import {
   writeNewUserExp,
   writeNewCompanyData,
   writeNewUserEducation,
-  writeNewUserGlobal
+  writeNewUserGlobal,
+  writeNewUserName,
+  writeNewUserProjects,
+  writeNewUserQuote,
+  writeNewUserReferences,
+  writeNewUserImage,
+  writeNewUserTitle
 } from "../../api/firebaseHelper";
 const { fontMain } = typography;
 const { black, mediumGrey, nearBlack, green, red } = colors;
@@ -19,6 +25,39 @@ const UserProfileCreate = ({ userID }) => (
   <ScrollView>
     <View>
       <NovaImperative color="black" title="Create Your Profile" />
+      <Text style={styles.header}>Your full name</Text>
+      <View style={styles.textInputContainer}>
+        <TextInput
+          placeholder="Your name"
+          multiline={true}
+          numberOfLines={1}
+          style={styles.input}
+          placeholderTextColor={nearBlack}
+          onChangeText={text => writeNewUserName(userID, text)}
+        />
+      </View>
+      <Text style={styles.header}>Your tag-line</Text>
+      <View style={styles.textInputContainer}>
+        <TextInput
+          placeholder="A quote, comment, or motto."
+          multiline={true}
+          numberOfLines={2}
+          style={styles.input}
+          placeholderTextColor={nearBlack}
+          onChangeText={text => writeNewUserQuote(userID, text)}
+        />
+      </View>
+      <Text style={styles.header}>Your Degree</Text>
+      <View style={styles.textInputContainer}>
+        <TextInput
+          placeholder="Where did you graduate from?"
+          multiline={true}
+          numberOfLines={2}
+          style={styles.input}
+          placeholderTextColor={nearBlack}
+          onChangeText={text => writeNewUserTitle(userID, text)}
+        />
+      </View>
       <Text style={styles.header}>Biography</Text>
       <View style={styles.textInputContainer}>
         <TextInput
@@ -73,6 +112,28 @@ certfications? What field did you study?"
           style={styles.input}
           placeholderTextColor={nearBlack}
           onChangeText={text => writeNewUserGlobal(userID, text)}
+        />
+      </View>
+      <Text style={styles.header}>References</Text>
+      <View style={styles.textInputContainer}>
+        <TextInput
+          placeholder="List your primary references here, with email address."
+          multiline={true}
+          numberOfLines={4}
+          style={styles.input}
+          placeholderTextColor={nearBlack}
+          onChangeText={text => writeNewUserReferences(userID, text)}
+        />
+      </View>
+      <Text style={styles.header}>Image</Text>
+      <View style={styles.textInputContainer}>
+        <TextInput
+          placeholder="Paste a link to an image here."
+          multiline={true}
+          numberOfLines={1}
+          style={styles.input}
+          placeholderTextColor={nearBlack}
+          onChangeText={text => writeNewUserImage(userID, text)}
         />
       </View>
     </View>
