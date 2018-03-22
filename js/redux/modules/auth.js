@@ -77,6 +77,7 @@ export const login = data => dispatch => {
       dispatch(setPasswordState(""));
       dispatch(setEmailState(""));
       dispatch(userError(null));
+      goToScene("root", "layout");
 
       AsyncStorage.setItem("USER", JSON.stringify(user));
     })
