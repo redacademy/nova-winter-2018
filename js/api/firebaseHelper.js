@@ -22,7 +22,6 @@ export function writeNewCompanyData(
       console.log("Company data written!");
     });
 }
-
 export function writeNewCompanyProjects(
   companyID,
   project_name,
@@ -50,7 +49,6 @@ export function writeNewCompanyProjects(
       console.log("Company data written!");
     });
 }
-
 export function writeNewUserData(userID, name, email) {
   database
     .collection("users")
@@ -115,7 +113,9 @@ export function writeNewUserBio(userID, bio) {
       {
         bio: bio
       },
-      { merge: true }
+      {
+        merge: true
+      }
     )
     .then(function() {
       console.log("User info written!");
@@ -129,7 +129,9 @@ export function writeNewUserExp(userID, experience) {
       {
         experience: experience
       },
-      { merge: true }
+      {
+        merge: true
+      }
     )
     .then(function() {
       console.log("User info written!");
@@ -143,7 +145,9 @@ export function writeNewUserEducation(userID, education) {
       {
         education: education
       },
-      { merge: true }
+      {
+        merge: true
+      }
     )
     .then(function() {
       console.log("User info written!");
@@ -157,13 +161,14 @@ export function writeNewUserGlobal(userID, global) {
       {
         global: global
       },
-      { merge: true }
+      {
+        merge: true
+      }
     )
     .then(function() {
       console.log("User info written!");
     });
 }
-
 export function getCompaniesCollectionForSearchIndexing(callback) {
   database
     .collection("companys")
