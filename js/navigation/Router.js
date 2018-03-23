@@ -4,6 +4,7 @@
 import DevRoutes from "../scenes/DevRoutes/";
 import CompaniesSearch from "../scenes/CompaniesSearch";
 import CompanyProfile from "../scenes/CompanyProfile";
+import CompaniesFilter from "../scenes/CompaniesFilter";
 import Login from "../scenes/Login";
 import ProjectBrief from "../scenes/ProjectBrief";
 import ProjectConfirm from "../scenes/ProjectConfirm";
@@ -39,6 +40,7 @@ const Router = createRouter(() => ({
 
   // temporary routes to make it possible to test components
   // remove before shipping!
+  companiesFilter: () => CompaniesFilter,
   companiesSearch: () => CompaniesSearch,
   companyProfile: () => CompanyProfile,
   login: () => Login,

@@ -1,6 +1,8 @@
 import { database } from "../../api/firebase";
 import { algoliaSearchIndex } from "../../api/algoliaConfig";
 
+import { formatFilterSearchResults } from "../../api/algoliaSearchHelpers";
+
 // Actions
 const COMPANY_LOADING = "COMPANY_LOADING";
 const GET_COMPANY_INFO = "GET_COMPANY_INFO";
@@ -12,12 +14,15 @@ const DATA_ERROR = "DATA_ERROR";
 const GET_COMPANY_SEARCH_RESULTS = "GET_COMPANY_SEARCH_RESULTS";
 const SEARCH_ERROR = "SEARCH_ERROR";
 const SET_SEARCH_QUERY = "SET_SEARCH_QUERY";
-const GET_DELIVERABLES = "GET_DELIVERABLES"
+const GET_DELIVERABLES = "GET_DELIVERABLES";
+const GET_FILTER_SEARCH_RESULTS = "GET_FILTER_SEARCH_RESULTS";
+const TOGGLE_FILTER_TAG = "TOGGLE_FILTER_TAG";
+
 // Action Creator
 const getDeliverables = deliverables => ({
   type: GET_DELIVERABLES,
   payload: deliverables
-})
+});
 export const getCompanyInfo = companyInfo => ({
   type: GET_COMPANY_INFO,
   payload: companyInfo
@@ -52,6 +57,11 @@ export const getCompanySearchResults = searchResults => ({
   payload: searchResults
 });
 
+const getFilterSearchResults = searchResults => ({
+  type: GET_FILTER_SEARCH_RESULTS,
+  payload: searchResults
+});
+
 const searchError = error => ({
   type: SEARCH_ERROR,
   payload: error
@@ -60,6 +70,11 @@ const searchError = error => ({
 export const setSearchQuery = query => ({
   type: SET_SEARCH_QUERY,
   payload: query
+});
+
+export const toggleFilterTag = tag => ({
+  type: TOGGLE_FILTER_TAG,
+  payload: tag
 });
 
 // Fetch functions
@@ -79,18 +94,19 @@ export const getAllCompanys = () => dispatch => {
       dispatch(getDataError(err));
     });
 };
+
 export const getCompany = companyID => dispatch => {
   database
     .collection("companys")
     .doc(companyID)
     .get()
-    .then(function (doc) {
+    .then(function(doc) {
       let companyInfo = doc.data();
       dispatch(getCompanyInfo(companyInfo));
       dispatch(getDataError(null));
       return companyInfo;
     })
-    .catch(function (error) {
+    .catch(function(error) {
       dispatch(getDataError(error));
     });
 };
@@ -107,7 +123,7 @@ export const getAllCompanyProjects = companyID => dispatch => {
       dispatch(getAllProjectsInfo(projects));
       dispatch(getDataError(null));
     })
-    .catch(function (error) {
+    .catch(function(error) {
       dispatch(getDataError(error));
     });
 };
@@ -116,44 +132,48 @@ export const getCompanyProjects = (companyID, projectNumber) => dispatch => {
   database
     .doc("companys/" + companyID + "/projects/" + projectNumber)
     .get()
-    .then(function (doc) {
+    .then(function(doc) {
       let projectInfo = doc.data();
       dispatch(getProjectsInfo(projectInfo));
       dispatch(getDataError(null));
     })
-    .catch(function (error) {
+    .catch(function(error) {
       dispatch(getDataError(error));
     });
 };
+
 export const getCompanyQuestions = (companyID, projectName) => dispatch => {
   database
     .doc("companys/" + companyID + "/" + projectName + "/questions")
     .get()
-    .then(function (doc) {
+    .then(function(doc) {
       let questionsData = doc.data();
       dispatch(getQuestionsInfo(questionsData));
       dispatch(getDataError(null));
     })
-    .catch(function (error) {
+    .catch(function(error) {
       console.log("Error getting document:", error);
     });
 };
 
-export const executeCompanySearch = searchQuery => dispatch => {
-  algoliaSearchIndex.search({ query: searchQuery }, (err, content) => {
-    if (err) {
-      dispatch(searchError(err));
+export const executeCompanySearch = searchParams => dispatch => {
+  const { searchQuery, page, filters } = searchParams;
+  algoliaSearchIndex.search(
+    { query: searchQuery, page, filters },
+    (err, content) => {
+      if (err) {
+        dispatch(searchError(err));
+      }
+      dispatch(getCompanySearchResults(content));
     }
-    let results = [];
-    for (var h in content.hits) {
-      results.push(content.hits[h]);
-    }
-    dispatch(getCompanySearchResults(results));
-  });
+  );
 };
+
 export const getProjectDeliverables = (companyID, project) => dispatch => {
   database
-    .collection("companys/" + companyID + "/projects/" + project + "/deliverables")
+    .collection(
+      "companys/" + companyID + "/projects/" + project + "/deliverables"
+    )
     .get()
     .then(collection => {
       const deliverables = [];
@@ -161,20 +181,40 @@ export const getProjectDeliverables = (companyID, project) => dispatch => {
         deliverables.push(doc.data());
       });
       dispatch(getDeliverables(deliverables));
-
-
-    }).catch(function (error) {
-      console.log(error)
     })
-}
+    .catch(function(error) {
+      console.log(error);
+    });
+};
+
+export const executeFilterSearch = searchQuery => dispatch => {
+  algoliaSearchIndex.search(
+    {
+      query: searchQuery,
+      attributesToRetrieve: ["tags", "industry"],
+      hitsPerPage: 5
+    },
+    (err, content) => {
+      if (err) {
+        dispatch(searchError(err));
+      }
+      console.log(content);
+      const formattedSearchResults = formatFilterSearchResults(content.hits);
+      dispatch(getFilterSearchResults(formattedSearchResults));
+    }
+  );
+};
+
 // Reducers
-export default function (
+export default function(
   state = {
     searchQuery: "",
     companyList: [],
     companyInfo: {},
     dataError: null,
-    companySearchResults: [],
+    companySearchResults: {},
+    filterSearchResults: [],
+    activeFilter: null,
     searchError: null,
     companyLoading: true,
     questions: {},
@@ -230,6 +270,12 @@ export default function (
         companySearchResults: action.payload
       };
     }
+    case GET_FILTER_SEARCH_RESULTS: {
+      return {
+        ...state,
+        filterSearchResults: action.payload
+      };
+    }
     case SEARCH_ERROR: {
       return { ...state, searchError: action.payload };
     }
@@ -237,7 +283,10 @@ export default function (
       return { ...state, searchQuery: action.payload };
     }
     case GET_DELIVERABLES: {
-      return { ...state, deliverables: action.payload }
+      return { ...state, deliverables: action.payload };
+    }
+    case TOGGLE_FILTER_TAG: {
+      return { ...state, activeFilter: action.payload };
     }
     default:
       return state;
