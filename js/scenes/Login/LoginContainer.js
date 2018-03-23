@@ -27,9 +27,13 @@ class LoginContainer extends Component {
     this.props.dispatch(setPasswordState(value));
   };
 
-  _handleSubmit = ({ email, password }) => {
+  _handleSubmit = async ({ email, password }) => {
     if (this.props.email && this.props.password) {
-      this.props.dispatch(login({ email, password }));
+      await this.props.dispatch(login({ email, password }));
+
+      if (this.props.authenticated) {
+        this._goToLayout();
+      }
     }
   };
   _logOut = () => {
@@ -60,17 +64,10 @@ class LoginContainer extends Component {
         this.props.dispatch(setAuthenticationStatus(true));
       }
       this.props.dispatch(userLoading(false));
+      if (this.props.authenticated) {
+        this._goToLayout();
+      }
     });
-
-    if (this.props.authenticated) {
-      this._goToLayout();
-    }
-  }
-
-  componentDidUpdate() {
-    if (this.props.authenticated) {
-      this._goToLayout();
-    }
   }
 
   render() {
