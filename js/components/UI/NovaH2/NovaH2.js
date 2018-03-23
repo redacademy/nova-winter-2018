@@ -10,14 +10,15 @@ const NovaH2 = ({ title, color, style }) => (
   <Text style={[styles.h2, style, { color: color }]}>{title}</Text>
 );
 
-NovaH2.defaultProps = {
-  style: {}
-};
-
 NovaH2.propTypes = {
   title: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired,
-  style: PropTypes.object
+  color: PropTypes.string,
+  style: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
+};
+
+NovaH2.defaultProps = {
+  style: {},
+  title: ""
 };
 
 export default NovaH2;
