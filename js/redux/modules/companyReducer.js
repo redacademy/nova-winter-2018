@@ -90,8 +90,6 @@ export const getCompany = companyID => dispatch => {
       dispatch(getDataError(error));
     });
 };
-<<<<<<< HEAD
-=======
 
 export const getAllCompanyProjects = companyID => dispatch => {
   database
@@ -110,7 +108,6 @@ export const getAllCompanyProjects = companyID => dispatch => {
     });
 };
 
->>>>>>> Add content and styles to CompanyProfile scene.
 export const getCompanyProjects = (companyID, projectNumber) => dispatch => {
   database
     .doc("companys/" + companyID + "/projects/" + projectNumber)
