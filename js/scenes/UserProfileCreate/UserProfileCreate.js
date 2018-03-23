@@ -5,46 +5,59 @@ import { colors, typography } from "../../config/styles.js";
 import PropTypes from "prop-types";
 import NovaButton from "../../components/UI/NovaButton/";
 import NovaImperative from "../../components/UI/NovaImperative";
-import {
-  writeNewUserBio,
-  writeNewUserExp,
-  writeNewCompanyData,
-  writeNewUserEducation,
-  writeNewUserGlobal,
-  writeNewUserName,
-  writeNewUserProjects,
-  writeNewUserQuote,
-  writeNewUserReferences,
-  writeNewUserImage,
-  writeNewUserTitle
-} from "../../api/firebaseHelper";
 const { fontMain } = typography;
-const { black, mediumGrey, nearBlack, green, red } = colors;
+const { nearBlack } = colors;
 
-const UserProfileCreate = ({ userID }) => (
+const UserProfileCreate = ({
+  handleChangeBio,
+  handleChangeExperience,
+  handleChangeEducation,
+  handleChangeGlobal,
+  handleChangeName,
+  handleChangeQuote,
+  handleChangeReferences,
+  handleChangeImages,
+  handleChangeTitle,
+  handleSubmit,
+  bio,
+  experience,
+  education,
+  global,
+  name,
+  quote,
+  references,
+  image,
+  title
+}) => (
   <ScrollView>
     <View>
       <NovaImperative color="black" title="Create Your Profile" />
       <Text style={styles.header}>Your full name</Text>
       <View style={styles.textInputContainer}>
         <TextInput
-          placeholder="Your name"
+          placeholder={"Your name"}
+          value={name}
           multiline={true}
           numberOfLines={1}
           style={styles.input}
           placeholderTextColor={nearBlack}
-          onChangeText={text => writeNewUserName(userID, text)}
+          onChange={e => {
+            handleChangeName(e.nativeEvent.text);
+          }}
         />
       </View>
       <Text style={styles.header}>Your tag-line</Text>
       <View style={styles.textInputContainer}>
         <TextInput
           placeholder="A quote, comment, or motto."
+          value={quote}
           multiline={true}
           numberOfLines={2}
           style={styles.input}
           placeholderTextColor={nearBlack}
-          onChangeText={text => writeNewUserQuote(userID, text)}
+          onChange={e => {
+            handleChangeQuote(e.nativeEvent.text);
+          }}
         />
       </View>
       <Text style={styles.header}>Your Degree</Text>
@@ -53,9 +66,12 @@ const UserProfileCreate = ({ userID }) => (
           placeholder="Where did you graduate from?"
           multiline={true}
           numberOfLines={2}
+          value={title}
           style={styles.input}
           placeholderTextColor={nearBlack}
-          onChangeText={text => writeNewUserTitle(userID, text)}
+          onChange={e => {
+            handleChangeTitle(e.nativeEvent.text);
+          }}
         />
       </View>
       <Text style={styles.header}>Biography</Text>
@@ -63,10 +79,13 @@ const UserProfileCreate = ({ userID }) => (
         <TextInput
           placeholder="Tell the recruiters a little bit about yourself… "
           multiline={true}
+          title={bio}
           numberOfLines={4}
           style={styles.input}
           placeholderTextColor={nearBlack}
-          onChangeText={text => writeNewUserBio(userID, text)}
+          onChange={e => {
+            handleChangeBio(e.nativeEvent.text);
+          }}
         />
       </View>
       <Text style={styles.header}>Work Experience</Text>
@@ -76,10 +95,13 @@ const UserProfileCreate = ({ userID }) => (
 experience (i.e Company name, how long did
 you work there, what did you do?)"
           multiline={true}
+          value={experience}
           numberOfLines={4}
           style={styles.input}
           placeholderTextColor={nearBlack}
-          onChangeText={text => writeNewUserExp(userID, text)}
+          onChange={e => {
+            handleChangeExperience(e.nativeEvent.text);
+          }}
         />
       </View>
       <Text style={styles.header}>Education</Text>
@@ -88,10 +110,13 @@ you work there, what did you do?)"
           placeholder="Where did you attend school? Any credible
 certfications? What field did you study?"
           multiline={true}
+          value={education}
           numberOfLines={4}
           style={styles.input}
           placeholderTextColor={nearBlack}
-          onChangeText={text => writeNewUserEducation(userID, text)}
+          onChange={e => {
+            handleChangeEducation(e.nativeEvent.text);
+          }}
         />
       </View>
       <View style={styles.global}>
@@ -110,8 +135,11 @@ certfications? What field did you study?"
           multiline={true}
           numberOfLines={4}
           style={styles.input}
+          value={global}
           placeholderTextColor={nearBlack}
-          onChangeText={text => writeNewUserGlobal(userID, text)}
+          onChange={e => {
+            handleChangeGlobal(e.nativeEvent.text);
+          }}
         />
       </View>
       <Text style={styles.header}>References</Text>
@@ -120,9 +148,12 @@ certfications? What field did you study?"
           placeholder="List your primary references here, with email address."
           multiline={true}
           numberOfLines={4}
+          value={references}
           style={styles.input}
           placeholderTextColor={nearBlack}
-          onChangeText={text => writeNewUserReferences(userID, text)}
+          onChange={e => {
+            handleChangeReferences(e.nativeEvent.text);
+          }}
         />
       </View>
       <Text style={styles.header}>Image</Text>
@@ -131,21 +162,55 @@ certfications? What field did you study?"
           placeholder="Paste a link to an image here."
           multiline={true}
           numberOfLines={1}
+          value={image}
           style={styles.input}
           placeholderTextColor={nearBlack}
-          onChangeText={text => writeNewUserImage(userID, text)}
+          onChange={e => {
+            handleChangeImages(e.nativeEvent.text);
+          }}
         />
       </View>
     </View>
-    <NovaButton title="CONTINUE" color="black" />
+    <NovaButton title="CONTINUE" color="black" onPressFunc={handleSubmit} />
   </ScrollView>
 );
 
 UserProfileCreate.defaultProps = {
-  userID: ""
+  userID: "",
+  bio: "",
+  experience: "",
+  education: "",
+  global: "",
+  name: "",
+  projects: "",
+  quote: "",
+  references: "",
+  image: "http://www.apimages.com/Images/Ap_Creative_Stock_Header.jpg",
+  title: ""
 };
 UserProfileCreate.propTypes = {
-  userID: PropTypes.string
+  userID: PropTypes.string,
+  handleChangeBio: PropTypes.func.isRequired,
+  handleChangeExperience: PropTypes.func.isRequired,
+  handleChangeEducation: PropTypes.func.isRequired,
+  handleChangeGlobal: PropTypes.func.isRequired,
+  handleChangeName: PropTypes.func.isRequired,
+  handleChangeProjects: PropTypes.func.isRequired,
+  handleChangeQuote: PropTypes.func.isRequired,
+  handleChangeReferences: PropTypes.func.isRequired,
+  handleChangeImages: PropTypes.func,
+  handleChangeTitle: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  bio: PropTypes.string,
+  experience: PropTypes.string,
+  education: PropTypes.string,
+  global: PropTypes.string,
+  name: PropTypes.string,
+  projects: PropTypes.string,
+  quote: PropTypes.string,
+  references: PropTypes.string,
+  image: PropTypes.string,
+  title: PropTypes.string
 };
 
 export default UserProfileCreate;
