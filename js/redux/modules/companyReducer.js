@@ -178,7 +178,7 @@ export default function (
     searchError: null,
     companyLoading: true,
     questions: {},
-    projects: {},
+    projects: [],
     deliverables: []
   },
   action

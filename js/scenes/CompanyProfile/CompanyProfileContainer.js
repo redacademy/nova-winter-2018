@@ -29,7 +29,7 @@ class CompanyProfileContainer extends Component {
 CompanyProfileContainer.propTypes = {
   dispatch: PropTypes.func.isRequired,
   companyInfo: PropTypes.object.isRequired,
-  projects: PropTypes.array.isRequired,
+  projects: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   route: PropTypes.object.isRequired
 };
 
