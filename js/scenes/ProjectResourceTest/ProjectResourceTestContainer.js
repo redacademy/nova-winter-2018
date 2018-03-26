@@ -19,7 +19,7 @@ class ProjectResourceTestContainer extends Component {
     }
   };
   componentDidMount() {
-    this.props.dispatch(getCompanyQuestions("adobe", "indesign"));
+    this.props.dispatch(getCompanyQuestions("deloitte", "blockchain"));
   }
 
   render() {

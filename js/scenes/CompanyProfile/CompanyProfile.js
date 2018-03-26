@@ -41,6 +41,7 @@ const CompanyProfile = companyInfo => (
     </View>
 
     <View>
+      
       <FlatList
         data={companyInfo.projects}
         keyExtractor={item => item.title}
