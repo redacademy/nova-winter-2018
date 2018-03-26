@@ -15,12 +15,12 @@ import RNMomentCountDown from 'react-native-moment-countdown';
 const { red, green } = colors;
 
 
-const ProjectBrief = ({ title, brief, deliverables, logo, dueDate, image, hours }) => {
+const ProjectBrief = ({ title, brief, deliverables, logo, dueDate, image, hours, success }) => {
   const dateInFuture = moment(dueDate, 'YYYY-MM-DD');
   return (
 
     < ScrollView >
-
+      {console.log(success)}
       <ImageBackground style={styles.backgroundImage}
         source={image && { uri: image }}>
 
@@ -32,7 +32,11 @@ const ProjectBrief = ({ title, brief, deliverables, logo, dueDate, image, hours 
         <RNMomentCountDown toDate={dateInFuture} targetFormatMask='DD' /></Text><Text style={styles.days}>Days Left</Text><Icon name="ios-clock-outline" size={40} color="#FFFFFF" style={styles.clock} /><Text style={styles.hours} >{hours}</Text><Text style={styles.days}>Hour Limit</Text>
 
       </View>
-      <NovaButton color={green} title="START PROJECT" />
+
+      {success.success === true &&
+        <NovaButton color={green} title="START PROJECT" />
+      }
+
       <NovaH2 color={red} title="Project Brief" style={styles.header} />
 
       <Text style={styles.brief}>{brief}</Text>
@@ -59,7 +63,8 @@ ProjectBrief.propTypes = {
   logo: PropTypes.string,
   dueDate: PropTypes.string,
   image: PropTypes.string,
-  hours: PropTypes.string
+  hours: PropTypes.string,
+  success: PropTypes.object.isRequired
 };
 ProjectBrief.defaultProps = {
   title: "",

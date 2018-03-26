@@ -12,9 +12,10 @@ class ProjectBriefContainer extends Component {
     }
   };
   componentDidMount() {
-    this.props.dispatch(getProjectDeliverables("deloitte", "blockchain"));
-    this.props.dispatch(getCompanyProjects("deloitte", "blockchain"));
-    this.props.dispatch(getCompany("deloitte"))
+
+    this.props.dispatch(getProjectDeliverables(this.props.route.params.props.company, this.props.route.params.props.id));
+    this.props.dispatch(getCompanyProjects(this.props.route.params.props.company, this.props.route.params.props.id));
+    this.props.dispatch(getCompany(this.props.route.params.props.company))
   }
   render() {
     return <ProjectBrief brief={this.props.projectBrief}
@@ -23,7 +24,8 @@ class ProjectBriefContainer extends Component {
       logo={this.props.companyLogo}
       dueDate={this.props.dueDate}
       image={this.props.image}
-      hours={this.props.hours} />;
+      hours={this.props.hours}
+      success={this.props.route.params.props} />;
   }
 }
 const mapStateToProps = state => ({
@@ -33,7 +35,9 @@ const mapStateToProps = state => ({
   companyLogo: state.company.companyInfo.logo,
   dueDate: state.company.projects.dueDate,
   image: state.company.projects.image,
-  hours: state.company.projects.hoursAllowed
+  hours: state.company.projects.hoursAllowed,
+
+
 });
 ProjectBriefContainer.propTypes = {
   projectName: PropTypes.string,
@@ -43,7 +47,11 @@ ProjectBriefContainer.propTypes = {
   companyLogo: PropTypes.string,
   dueDate: PropTypes.string,
   image: PropTypes.string,
-  hours: PropTypes.string
+  hours: PropTypes.string,
+
+  route: PropTypes.object.isRequired,
+
+
 };
 ProjectBriefContainer.defaultProps = {
   projectName: "",
