@@ -12,12 +12,12 @@ const DATA_ERROR = "DATA_ERROR";
 const GET_COMPANY_SEARCH_RESULTS = "GET_COMPANY_SEARCH_RESULTS";
 const SEARCH_ERROR = "SEARCH_ERROR";
 const SET_SEARCH_QUERY = "SET_SEARCH_QUERY";
-const GET_DELIVERABLES = "GET_DELIVERABLES"
+const GET_DELIVERABLES = "GET_DELIVERABLES";
 // Action Creator
 const getDeliverables = deliverables => ({
   type: GET_DELIVERABLES,
   payload: deliverables
-})
+});
 export const getCompanyInfo = companyInfo => ({
   type: GET_COMPANY_INFO,
   payload: companyInfo
@@ -84,13 +84,13 @@ export const getCompany = companyID => dispatch => {
     .collection("companys")
     .doc(companyID)
     .get()
-    .then(function (doc) {
+    .then(function(doc) {
       let companyInfo = doc.data();
       dispatch(getCompanyInfo(companyInfo));
       dispatch(getDataError(null));
       return companyInfo;
     })
-    .catch(function (error) {
+    .catch(function(error) {
       dispatch(getDataError(error));
     });
 };
@@ -107,7 +107,7 @@ export const getAllCompanyProjects = companyID => dispatch => {
       dispatch(getAllProjectsInfo(projects));
       dispatch(getDataError(null));
     })
-    .catch(function (error) {
+    .catch(function(error) {
       dispatch(getDataError(error));
     });
 };
@@ -116,12 +116,12 @@ export const getCompanyProjects = (companyID, projectNumber) => dispatch => {
   database
     .doc("companys/" + companyID + "/projects/" + projectNumber)
     .get()
-    .then(function (doc) {
+    .then(function(doc) {
       let projectInfo = doc.data();
       dispatch(getProjectsInfo(projectInfo));
       dispatch(getDataError(null));
     })
-    .catch(function (error) {
+    .catch(function(error) {
       dispatch(getDataError(error));
     });
 };
@@ -129,16 +129,15 @@ export const getCompanyQuestions = (companyID, projectName) => dispatch => {
   database
     .doc("companys/" + companyID + "/" + projectName + "/questions")
     .get()
-    .then(function (doc) {
+    .then(function(doc) {
       let questionsData = doc.data();
       dispatch(getQuestionsInfo(questionsData));
       dispatch(getDataError(null));
     })
-    .catch(function (error) {
+    .catch(function(error) {
       console.log("Error getting document:", error);
     });
 };
-
 export const executeCompanySearch = searchQuery => dispatch => {
   algoliaSearchIndex.search({ query: searchQuery }, (err, content) => {
     if (err) {
@@ -153,7 +152,9 @@ export const executeCompanySearch = searchQuery => dispatch => {
 };
 export const getProjectDeliverables = (companyID, project) => dispatch => {
   database
-    .collection("companys/" + companyID + "/projects/" + project + "/deliverables")
+    .collection(
+      "companys/" + companyID + "/projects/" + project + "/deliverables"
+    )
     .get()
     .then(collection => {
       const deliverables = [];
@@ -161,14 +162,13 @@ export const getProjectDeliverables = (companyID, project) => dispatch => {
         deliverables.push(doc.data());
       });
       dispatch(getDeliverables(deliverables));
-
-
-    }).catch(function (error) {
-      console.log(error)
     })
-}
+    .catch(function(error) {
+      console.log(error);
+    });
+};
 // Reducers
-export default function (
+export default function(
   state = {
     searchQuery: "",
     companyList: [],
@@ -237,7 +237,7 @@ export default function (
       return { ...state, searchQuery: action.payload };
     }
     case GET_DELIVERABLES: {
-      return { ...state, deliverables: action.payload }
+      return { ...state, deliverables: action.payload };
     }
     default:
       return state;

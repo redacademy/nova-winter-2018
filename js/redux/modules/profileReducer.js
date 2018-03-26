@@ -82,7 +82,7 @@ export default function(
     case PROFILE_EXPERIENCE: {
       return {
         ...state,
-        profile: action.payload
+        experience: action.payload
       };
     }
     case PROFILE_EDUCATION: {
