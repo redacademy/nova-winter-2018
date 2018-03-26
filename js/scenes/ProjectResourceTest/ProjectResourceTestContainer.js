@@ -19,12 +19,18 @@ class ProjectResourceTestContainer extends Component {
     }
   };
   componentDidMount() {
-    this.props.dispatch(getCompanyQuestions("adobe", "indesign"));
+    this.props.dispatch(
+      getCompanyQuestions(
+        this.props.route.params.props.company,
+        this.props.route.params.props.project
+      )
+    );
   }
 
   render() {
     const answers = this.props.answers;
     const questions = this.props.questions;
+    console.log(questions, answers);
 
     return <ProjectResourceTest solutions={answers} questions={questions} />;
   }
@@ -38,7 +44,8 @@ const mapStateToProps = state => {
 ProjectResourceTestContainer.propTypes = {
   dispatch: PropTypes.func.isRequired,
   questions: PropTypes.array.isRequired,
-  answers: PropTypes.array.isRequired
+  answers: PropTypes.array.isRequired,
+  route: PropTypes.object.isRequired
 };
 
 ProjectResourceTestContainer.defaultProps = {

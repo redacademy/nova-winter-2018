@@ -21,14 +21,41 @@ const DevRoutes = ({ logOut }) => (
     <Text onPress={() => goToScene("devRoutes", "projectConfirm")}>
       ProjectConfirm
     </Text>
-    <Text onPress={() => goToScene("devRoutes", "projectResourceTest")}>
-      ProjectResourceTest
+
+    <Text
+      onPress={() =>
+        goToScene("devRoutes", "projectResourceTest", {
+          company: "adobe",
+          project: "indesign"
+        })
+      }
+    >
+      ProjectResourceTest (Adobe InDesign project)
     </Text>
+
+    <Text
+      onPress={() =>
+        goToScene("devRoutes", "projectResourceTest", {
+          company: "deloitte",
+          project: "blockchain"
+        })
+      }
+    >
+      ProjectResourceTest (Deloitte blockchain project)
+    </Text>
+
     <Text onPress={() => goToScene("devRoutes", "projectResourceTestResults")}>
       ProjectResourceTestResults
     </Text>
-    <Text onPress={() => goToScene("devRoutes", "projectResources")}>
-      ProjectResources
+    <Text
+      onPress={() =>
+        goToScene("devRoutes", "projectResources", {
+          companyID: "deloitte",
+          projectID: "blockchain"
+        })
+      }
+    >
+      ProjectResources (Deloitte blockchain project)
     </Text>
     <Text onPress={() => goToScene("devRoutes", "projectSubmit")}>
       ProjectSubmit
