@@ -7,7 +7,7 @@ import { getProjectDeliverables } from "../../redux/modules/companyReducer";
 class ProjectSubmitContainer extends Component {
   static route = {
     navigationBar: {
-      title: "ProjectSubmit"
+      title: "Project Submission"
     }
   };
 

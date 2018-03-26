@@ -7,7 +7,7 @@ import { getAllCompanys } from "../../redux/modules/companyReducer";
 class CompaniesContainer extends Component {
   static route = {
     navigationBar: {
-      title: "Companies"
+      title: "Company"
     }
   };
 

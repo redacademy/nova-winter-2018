@@ -7,7 +7,7 @@ import MyProjects from "./MyProjects";
 class MyProjectsContainer extends Component {
   static route = {
     navigationBar: {
-      title: "MyProjects"
+      title: "My Projects"
     }
   };
 
