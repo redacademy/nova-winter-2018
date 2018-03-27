@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
   },
   delContainer: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: "row"
   },
   delPoint: {
     paddingLeft: 20,
@@ -27,17 +27,22 @@ export const styles = StyleSheet.create({
     top: -2
   },
   delMessage: {
-    fontFamily: fontMain, fontSize: 14, lineHeight: 30,
-
+    fontFamily: fontMain,
+    fontSize: 14,
+    lineHeight: 30
   },
   delMessageContainer: {
     width: 250
   },
   logo: {
-    height: 75, width: 75, borderRadius: 3, borderColor: red, borderWidth: 0.5
-  }, backgroundImage: {
+    height: 75,
+    width: 75,
+    borderRadius: 3
+  },
+  backgroundImage: {
     flex: 1
-  }, overlay: {
+  },
+  overlay: {
     backgroundColor: "rgba(0,0,0,0.7)",
     flex: 1,
     flexDirection: "row",
@@ -52,8 +57,7 @@ export const styles = StyleSheet.create({
     fontFamily: fontMain,
     fontSize: 30,
     color: white,
-    paddingLeft: 20,
-
+    paddingLeft: 20
   },
   titleContainer: {
     maxWidth: 200
@@ -62,8 +66,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
 
-    backgroundColor: red,
-
+    backgroundColor: red
   },
   number: {
     fontSize: 20,
@@ -80,11 +83,10 @@ export const styles = StyleSheet.create({
     fontFamily: fontMain,
     paddingTop: 7,
     paddingBottom: 5
-  }
-  , clock: {
+  },
+  clock: {
     paddingLeft: 10,
-    paddingRight: 10,
-
+    paddingRight: 10
   },
   hours: {
     fontSize: 20,
@@ -94,5 +96,4 @@ export const styles = StyleSheet.create({
     paddingTop: 7,
     paddingBottom: 5
   }
-
 });
