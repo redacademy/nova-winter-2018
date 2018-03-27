@@ -1,10 +1,12 @@
-
-
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ProjectBrief from "./ProjectBrief";
 import { connect } from "react-redux";
-import { getProjectDeliverables, getCompanyProjects, getCompany } from "../../redux/modules/companyReducer";
+import {
+  getProjectDeliverables,
+  getCompanyProjects,
+  getCompany
+} from "../../redux/modules/companyReducer";
 class ProjectBriefContainer extends Component {
   static route = {
     navigationBar: {
@@ -12,18 +14,24 @@ class ProjectBriefContainer extends Component {
     }
   };
   componentDidMount() {
-    this.props.dispatch(getProjectDeliverables("deloitte", "blockchain"));
-    this.props.dispatch(getCompanyProjects("deloitte", "blockchain"));
-    this.props.dispatch(getCompany("deloitte"))
+    const { company, id } = this.props.route.params.props;
+    this.props.dispatch(getProjectDeliverables(company, id));
+    this.props.dispatch(getCompanyProjects(company, id));
+    this.props.dispatch(getCompany(company));
   }
   render() {
-    return <ProjectBrief brief={this.props.projectBrief}
-      deliverables={this.props.projectDeliverables}
-      title={this.props.projectName}
-      logo={this.props.companyLogo}
-      dueDate={this.props.dueDate}
-      image={this.props.image}
-      hours={this.props.hours} />;
+    return (
+      <ProjectBrief
+        brief={this.props.projectBrief}
+        deliverables={this.props.projectDeliverables}
+        title={this.props.projectName}
+        logo={this.props.companyLogo}
+        dueDate={this.props.dueDate}
+        image={this.props.image}
+        hours={this.props.hours}
+        success={this.props.route.params.props}
+      />
+    );
   }
 }
 const mapStateToProps = state => ({
@@ -43,16 +51,17 @@ ProjectBriefContainer.propTypes = {
   companyLogo: PropTypes.string,
   dueDate: PropTypes.string,
   image: PropTypes.string,
-  hours: PropTypes.string
+  hours: PropTypes.string,
+  route: PropTypes.object.isRequired
 };
 ProjectBriefContainer.defaultProps = {
   projectName: "",
-  projectBrief: "",
+
   projectDeliverables: [],
   companyLogo: "",
   dueDate: "",
   image: "",
-  hours: "",
+  hours: ""
 };
 
 export default connect(mapStateToProps)(ProjectBriefContainer);

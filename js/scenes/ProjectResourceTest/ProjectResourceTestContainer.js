@@ -20,7 +20,6 @@ class ProjectResourceTestContainer extends Component {
   };
   componentDidMount() {
     const { company, project } = this.props.route.params.props;
-    console.log(company, project);
     this.props.dispatch(getCompanyQuestions(company, project));
   }
 

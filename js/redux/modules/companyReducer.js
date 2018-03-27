@@ -250,6 +250,7 @@ export default function(
     companyLoading: true,
     questions: {},
     projects: [],
+    deliverables: [],
     resources: []
   },
   action

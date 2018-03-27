@@ -23,6 +23,5 @@ export const buttonToScene = params => {
       Router.getRoute(targetScene, { props })
     )
   );
-}
-
+};
 
