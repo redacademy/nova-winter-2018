@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 class UserProfileContainer extends Component {
   static route = {
     navigationBar: {
-      title: "UserProfile"
+      title: "Profile"
     }
   };
   componentDidMount = () => {

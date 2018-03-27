@@ -5,7 +5,7 @@ import ProjectSubmitConfirm from "./ProjectSubmitConfirm";
 class ProjectSubmitConfirmContainer extends Component {
   static route = {
     navigationBar: {
-      title: "ProjectSubmitConfirm"
+      title: "Confirm Submission"
     }
   };
 
