@@ -30,7 +30,7 @@ NovaButton.propTypes = {
 NovaButton.defaultProps = {
   onPressParams: null,
   style: {},
-  onPressFunc: undefined
+  onPressFunc: function() {}
 };
 
 export default NovaButton;

@@ -13,12 +13,10 @@ import ProjectResourceTest from "../scenes/ProjectResourceTest";
 import ProjectResourceTestResults from "../scenes/ProjectResourceTestResults";
 import ProjectSubmit from "../scenes/ProjectSubmit";
 import ProjectSubmitConfirm from "../scenes/ProjectSubmitConfirm";
-import Splash from "../scenes/Splash";
 import UserAccountConfirm from "../scenes/UserAccountConfirm";
 import UserAccountCreate from "../scenes/UserAccountCreate";
 import UserProfileConfirm from "../scenes/UserProfileConfirm";
 import UserProfileCreate from "../scenes/UserProfileCreate";
-import UserProfileEdit from "../scenes/UserProfileEdit";
 
 // Main routes in the tab tab
 import UserProfile from "../scenes/UserProfile";
@@ -51,12 +49,10 @@ const Router = createRouter(() => ({
   projectResourceTestResults: () => ProjectResourceTestResults,
   projectSubmit: () => ProjectSubmit,
   projectSubmitConfirm: () => ProjectSubmitConfirm,
-  splash: () => Splash,
   userAccountConfirm: () => UserAccountConfirm,
   userAccountCreate: () => UserAccountCreate,
   userProfileConfirm: () => UserProfileConfirm,
-  userProfileCreate: () => UserProfileCreate,
-  userProfileEdit: () => UserProfileEdit
+  userProfileCreate: () => UserProfileCreate
 }));
 
 export default Router;

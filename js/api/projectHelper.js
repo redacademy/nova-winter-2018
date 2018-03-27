@@ -1,18 +1,74 @@
 import { database } from "./firebase";
 
-export function writeProjectOutOfTime(userID, project) {
-  database.doc("users/" + userID + "/projects/" + project).set({
-    outoftime: true,
-    completed: true
-  });
+export function writeProjectPassed(company, project, userEmail) {
+  database
+    .doc(
+      "companys/" +
+        company +
+        "/" +
+        project +
+        "/submissions/" +
+        "users/" +
+        userEmail
+    )
+    .set(
+      {
+        passed: true
+      },
+      { merge: true }
+    );
 }
-export function writeProjectPassed(userID, project) {
-  database.doc("users/" + userID + "/projects/" + project).set({
-    passed: true
-  });
+export function writeProjectOutOfTime(company, project, userEmail) {
+  database
+    .doc(
+      "companys/" +
+        company +
+        "/" +
+        project +
+        "/submissions/" +
+        "users/" +
+        userEmail
+    )
+    .set(
+      {
+        outoftime: true,
+        passed: false
+      },
+      { merge: true }
+    );
 }
-export function writeProjectFailed(userID, project) {
-  database.doc("users/" + userID + "/projects/" + project).set({
-    passed: true
-  });
+export function writeProjectFailed(company, project, userEmail) {
+  database
+    .doc(
+      "companys/" +
+        company +
+        "/" +
+        project +
+        "/submissions/" +
+        "users/" +
+        userEmail
+    )
+    .set(
+      {
+        passed: false
+      },
+      { merge: true }
+    );
+}
+export function writeProjectToDatabase(company, project, userEmail, text) {
+  database
+    .doc(
+      "companys/" +
+        company +
+        "/projects/" +
+        project +
+        "/submissions/" +
+        userEmail
+    )
+    .set(
+      {
+        submission: text
+      },
+      { merge: true }
+    );
 }
