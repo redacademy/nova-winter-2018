@@ -6,7 +6,6 @@ import {
   createUser,
   setEmailState,
   setPasswordState,
-  setNameState,
   setConfirmPasswordState
 } from "../../redux/modules/auth";
 

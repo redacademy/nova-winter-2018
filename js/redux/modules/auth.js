@@ -104,6 +104,7 @@ export const createUser = data => dispatch => {
       dispatch(setConfirmPasswordState(""));
       dispatch(userError(null));
       AsyncStorage.setItem("USER_ID", user.uid);
+      goToScene("root", "userAccountCreate");
     })
     .catch(error => dispatch(userError(error)));
 };
