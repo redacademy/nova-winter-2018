@@ -3,7 +3,13 @@ import { View, Image, Text, ScrollView } from "react-native";
 import { styles } from "./styles";
 import PropTypes from "prop-types";
 
-const UserProfile = ({ userInfo }) => (
+import { colors } from "../../config/styles";
+import { buttonToScene } from "../../navigation/NavigationHelper";
+import { NovaButton } from "../../components/UI/NovaButton";
+
+const { nearBlack, red } = colors;
+
+const UserProfile = ({ userInfo, logoutFunc }) => (
   <View>
     <ScrollView>
       <Image
@@ -37,11 +43,22 @@ const UserProfile = ({ userInfo }) => (
           <Text style={styles.headline}>References</Text>
           <Text style={styles.text}>{userInfo.references}</Text>
         </View>
+        <NovaButton
+          title="EDIT PROFILE"
+          color={red}
+          onPressParams={{
+            currentNavigatorUID: "userProfile",
+            targetScene: "userProfileCreate"
+          }}
+          onPressFunc={buttonToScene}
+        />
+        <NovaButton title="LOGOUT" color={nearBlack} onPressFunc={logoutFunc} />
       </View>
     </ScrollView>
   </View>
 );
 UserProfile.propTypes = {
-  userInfo: PropTypes.object.isRequired
+  userInfo: PropTypes.object.isRequired,
+  logoutFunc: PropTypes.func
 };
 export default UserProfile;
