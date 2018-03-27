@@ -103,8 +103,8 @@ export const createUser = data => dispatch => {
       dispatch(setEmailState(""));
       dispatch(setConfirmPasswordState(""));
       dispatch(userError(null));
-      AsyncStorage.setItem("USER_ID", user.uid);
-      goToScene("root", "userAccountCreate");
+      AsyncStorage.setItem("USER", JSON.stringify(user));
+      goToScene("root", "userProfileCreate");
     })
     .catch(error => dispatch(userError(error)));
 };
