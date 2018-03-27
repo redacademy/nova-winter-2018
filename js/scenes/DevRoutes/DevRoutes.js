@@ -66,7 +66,6 @@ const DevRoutes = ({ logOut }) => (
 
     <Text style={{ fontWeight: "bold", marginTop: 16 }}>Root Stack:</Text>
     <Text onPress={() => goToScene("devRoutes", "login")}>Login</Text>
-    <Text onPress={() => goToScene("devRoutes", "splash")}>Splash</Text>
 
     <Text onPress={() => goToScene("devRoutes", "userAccountConfirm")}>
       UserAccountConfirm
@@ -87,9 +86,7 @@ const DevRoutes = ({ logOut }) => (
     <Text style={{ fontWeight: "bold", marginTop: 16 }}>
       User Profile Stack?:
     </Text>
-    <Text onPress={() => goToScene("devRoutes", "userProfileEdit")}>
-      UserProfileEdit
-    </Text>
+
     <Text
       onPress={() => {
         logOut();
