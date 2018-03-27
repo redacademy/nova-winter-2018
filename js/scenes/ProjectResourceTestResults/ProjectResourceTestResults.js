@@ -18,24 +18,38 @@ const ProjectResourceTestResults = ({ score }) =>
       </Text>
       <Text style={styles.score}>{score * 10}/10</Text>
 
-      <NovaButton title="CONTINUE" color={red} onPressParams={{ currentNavigatorUID: "devRoutes", targetScene: "projectBrief", props: { success: true, id: "blockchain", company: "deloitte" } }}
+      <NovaButton
+        title="CONTINUE"
+        color={red}
+        onPressParams={{
+          currentNavigatorUID: "companies",
+          targetScene: "projectBrief",
+          props: { success: true, id: "blockchain", company: "deloitte" }
+        }}
         onPressFunc={buttonToScene}
       />
     </View>
   ) : (
-      <View style={styles.container}>
-        <NovaH1 title="Test Results" color={red} />
-        <Text style={styles.message}>
-          Sorry, better luck next time. Try again later.
+    <View style={styles.container}>
+      <NovaH1 title="Test Results" color={red} />
+      <Text style={styles.message}>
+        Sorry, better luck next time. Try again later.
       </Text>
-        <Text style={styles.score}>{score * 10}/10</Text>
-        <NovaButton title="BACK TO BRIEF" color={red} onPressParams={{ currentNavigatorUID: "devRoutes", targetScene: "projectBrief", props: { success: false, id: "blockchain", company: "deloitte" } }}
-          onPressFunc={buttonToScene} />
-      </View>
-    );
+      <Text style={styles.score}>{score * 10}/10</Text>
+      <NovaButton
+        title="BACK TO BRIEF"
+        color={red}
+        onPressParams={{
+          currentNavigatorUID: "companies",
+          targetScene: "projectBrief",
+          props: { success: false, id: "blockchain", company: "deloitte" }
+        }}
+        onPressFunc={buttonToScene}
+      />
+    </View>
+  );
 ProjectResourceTestResults.propTypes = {
-  score: PropTypes.number.isRequired,
-
+  score: PropTypes.number.isRequired
 };
 
 ProjectResourceTestResults.defaultProps = {
