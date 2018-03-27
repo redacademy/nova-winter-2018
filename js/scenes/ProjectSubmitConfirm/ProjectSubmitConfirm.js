@@ -5,6 +5,7 @@ import NovaH1 from "../../components/UI/NovaH1";
 import NovaButton from "../../components/UI/NovaButton";
 import { styles } from "./styles.js";
 import Icon from "react-native-vector-icons/Ionicons";
+import { buttonToScene } from "../../navigation/NavigationHelper";
 const { red } = colors;
 const ProjectSubmitConfirm = () => (
   <ScrollView>
@@ -18,7 +19,16 @@ const ProjectSubmitConfirm = () => (
       <Text style={styles.message}>
         {"Your project has been submitted for review."}
       </Text>
-      <NovaButton title="CONTINUE" color={red} onPress={null} />
+      <NovaButton
+        title="CONTINUE"
+        color={red}
+        onPressParams={{
+          currentNavigatorUID: "devRoutes",
+          targetScene: "companiesSearch",
+          props: { success: true, id: "blockchain", company: "deloitte" }
+        }}
+        onPressFunc={buttonToScene}
+      />
     </View>
     <View style={styles.container}>
       <Icon name={"ios-close-circle"} size={96} color={red} />

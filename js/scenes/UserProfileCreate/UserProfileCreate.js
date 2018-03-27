@@ -10,7 +10,6 @@ const { nearBlack } = colors;
 let nameCheck = true;
 let bioCheck = true;
 let expCheck = true;
-let eduCheck = true;
 let gloCheck = true;
 let quoCheck = true;
 let refCheck = true;
@@ -22,7 +21,6 @@ const UserProfileCreate = ({
   handleChangeProjects,
   handleChangeBio,
   handleChangeExperience,
-  handleChangeEducation,
   handleChangeGlobal,
   handleChangeName,
   handleChangeQuote,
@@ -53,7 +51,7 @@ const UserProfileCreate = ({
           style={styles.input}
           placeholderTextColor={nearBlack}
           onChange={text => {
-            handleChangeName(text);
+            handleChangeName(text.nativeEvent.text);
             nameCheck = false;
           }}
         />
@@ -73,7 +71,7 @@ const UserProfileCreate = ({
           style={styles.input}
           placeholderTextColor={nearBlack}
           onChange={text => {
-            handleChangeQuote(text);
+            handleChangeQuote(text.nativeEvent.text);
             quoCheck = false;
           }}
         />
@@ -93,7 +91,7 @@ const UserProfileCreate = ({
           style={styles.input}
           placeholderTextColor={nearBlack}
           onChange={text => {
-            handleChangeTitle(text);
+            handleChangeTitle(text.nativeEvent.text);
             titCheck = false;
           }}
         />
@@ -113,7 +111,7 @@ const UserProfileCreate = ({
           style={styles.input}
           placeholderTextColor={nearBlack}
           onChange={text => {
-            handleChangeBio(text);
+            handleChangeBio(text.nativeEvent.text);
             bioCheck = false;
           }}
         />
@@ -135,7 +133,7 @@ you work there, what did you do?)"
           style={styles.input}
           placeholderTextColor={nearBlack}
           onChange={text => {
-            handleChangeExperience(text);
+            handleChangeExperience(text.nativeEvent.text);
             expCheck = false;
           }}
         />
@@ -145,7 +143,7 @@ you work there, what did you do?)"
           <Text style={{ color: "green" }}>Completed</Text>
         )}
       </View>
-      <Text style={styles.header}>Education</Text>
+      {/* <Text style={styles.header}>Education</Text>
       <View style={styles.textInputContainer}>
         <TextInput
           placeholder="Where did you attend school? Any credible
@@ -156,7 +154,7 @@ certfications? What field did you study?"
           style={styles.input}
           placeholderTextColor={nearBlack}
           onChange={text => {
-            handleChangeEducation(text);
+            handleChangeEducation(text.nativeEvent.text);
             eduCheck = false;
           }}
         />
@@ -165,7 +163,7 @@ certfications? What field did you study?"
         ) : (
           <Text style={{ color: "green" }}>Completed</Text>
         )}
-      </View>
+      </View> */}
       <Text style={styles.header}>Projects</Text>
       <View style={styles.textInputContainer}>
         <TextInput
@@ -205,9 +203,8 @@ certfications? What field did you study?"
           value={global}
           placeholderTextColor={nearBlack}
           onChange={text => {
-            handleChangeGlobal(text);     
+            handleChangeGlobal(text.nativeEvent.text);
             gloCheck = false;
-
           }}
         />
         {gloCheck ? (
@@ -225,12 +222,9 @@ certfications? What field did you study?"
           value={references}
           style={styles.input}
           placeholderTextColor={nearBlack}
-
           onChange={text => {
-            handleChangeReferences(text);
-
+            handleChangeReferences(text.nativeEvent.text);
             refCheck = false;
-
           }}
         />
         {refCheck ? (
@@ -249,7 +243,7 @@ certfications? What field did you study?"
           style={styles.input}
           placeholderTextColor={nearBlack}
           onChange={text => {
-            handleChangeImage(text);
+            handleChangeImage(text.nativeEvent.text);
             imgCheck = false;
           }}
         />
