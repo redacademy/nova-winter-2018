@@ -6,6 +6,7 @@
 
 import React, { Component } from "react";
 import { ActivityIndicator, AsyncStorage } from "react-native";
+import Splash from "./components/Splash";
 import Router from "./navigation/Router";
 import { Provider } from "react-redux";
 import { StatusBar } from "react-native";
@@ -59,7 +60,7 @@ export default class App extends Component {
 
   render() {
     if (this.state.loadingUser) {
-      return <ActivityIndicator />;
+      return <Splash />;
     }
     return (
       <Provider store={Store}>
