@@ -31,5 +31,10 @@ export const styles = StyleSheet.create({
     fontFamily: fontMain,
     borderRadius: 3,
     marginBottom: 10
+  },
+  inputError: {
+    marginTop: 5,
+    color: colors.red,
+    fontFamily: typography.fontMainLight
   }
 });

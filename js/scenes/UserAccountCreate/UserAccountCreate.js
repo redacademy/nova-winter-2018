@@ -56,6 +56,10 @@ const UserAccountCreate = ({
       onChange={e => {
         handleChangeConfirmPassword(e.nativeEvent.text);
       }}
+<<<<<<< HEAD
+=======
+      style={[styles.input, renderStyleConfirmPassword()]}
+>>>>>>> 5869ba5d2110601b3d8cfad301a9c25e3478a0d7
     />
     {confirmPassword.length > 0 && password !== confirmPassword ? (
       <Text style={styles.inputError}>Passwords do not match</Text>
@@ -83,7 +87,10 @@ UserAccountCreate.propTypes = {
   handleChangeEmail: PropTypes.func.isRequired,
   handleChangePassword: PropTypes.func.isRequired,
   handleChangeConfirmPassword: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  renderStyleConfirmPassword: PropTypes.func.isRequired,
+  renderStylePassword: PropTypes.func.isRequired,
+  userError: PropTypes.object
 };
 
 export default UserAccountCreate;

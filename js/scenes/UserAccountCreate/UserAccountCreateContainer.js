@@ -37,6 +37,19 @@ class UserAccountCreateContainer extends Component {
       this.props.dispatch(createUser({ email, password }));
     }
   };
+  _renderStylePassword = () => {
+    if (this.props.password && this.props.password.length < 6) {
+      return { borderColor: colors.red, borderWidth: 2 };
+    }
+  };
+  _renderStyleConfirmPassword = () => {
+    if (
+      this.props.confirmPassword &&
+      this.props.password !== this.props.confirmPassword
+    ) {
+      return { borderColor: colors.red, borderWidth: 2 };
+    }
+  };
   static route = {
     navigationBar: {
       title: "Sign Up",
@@ -59,6 +72,9 @@ class UserAccountCreateContainer extends Component {
         password={this.props.password}
         email={this.props.email}
         confirmPassword={this.props.confirmPassword}
+        userError={this.props.userError}
+        renderStylePassword={this._renderStylePassword}
+        renderStyleConfirmPassword={this._renderStyleConfirmPassword}
       />
     );
   }
@@ -67,7 +83,8 @@ class UserAccountCreateContainer extends Component {
 const mapStateToProps = state => ({
   email: state.auth.email,
   password: state.auth.password,
-  confirmPassword: state.auth.confirmPassword
+  confirmPassword: state.auth.confirmPassword,
+  userError: state.auth.userError
 });
 
 UserAccountCreateContainer.propTypes = {
@@ -75,11 +92,13 @@ UserAccountCreateContainer.propTypes = {
   currentUser: PropTypes.string,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  confirmPassword: PropTypes.string.isRequired
+  confirmPassword: PropTypes.string.isRequired,
+  userError: PropTypes.object
 };
 
 UserAccountCreateContainer.defaultProps = {
-  currentUser: ""
+  currentUser: "",
+  userError: null
 };
 
 export default connect(mapStateToProps)(UserAccountCreateContainer);
