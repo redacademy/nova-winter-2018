@@ -7,9 +7,9 @@ import {
   TouchableHighlight,
   View
 } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 import PropTypes from "prop-types";
 
-import NovaHr from "../../components/UI/NovaHR";
 import { goToScene } from "../../navigation/NavigationHelper";
 import { colors } from "../../config/styles";
 import { styles } from "./styles";
@@ -22,29 +22,35 @@ const CompaniesSearch = ({
 }) => (
   <View style={styles.container}>
     <View style={styles.searchInputContainer}>
-      <TextInput
-        autoCapitalize="none"
-        placeholder="Search"
-        style={styles.searchBar}
-        onChange={e => {
-          handleChange(e.nativeEvent.text);
-        }}
-      />
+      <View style={styles.searchBar}>
+        <Icon
+          name="ios-search"
+          size={16}
+          style={styles.searchIcon}
+          color={colors.darkGrey}
+        />
+        <TextInput
+          autoCapitalize="none"
+          placeholder="Search"
+          style={{ marginLeft: 10 }}
+          onChange={e => {
+            handleChange(e.nativeEvent.text);
+          }}
+        />
+      </View>
       <Text style={styles.filterText}>Filters</Text>
       <TouchableHighlight
-        underlayColor={colors.mediumGrey}
+        style={styles.filterBox}
+        underlayColor={"#ddd"}
         onPress={() => {
           goToScene(currentNavigatorUID, "companiesFilter");
         }}
       >
-        <View style={styles.filterBox}>
-          <Text style={styles.filterBoxText}>
-            {activeFilter ? activeFilter : "None"}
-          </Text>
-        </View>
+        <Text style={styles.filterBoxText}>
+          {activeFilter ? activeFilter : "None"}
+        </Text>
       </TouchableHighlight>
     </View>
-    <View style={styles.horizontalRule} />
     <View style={styles.companyListContainer}>
       <FlatList
         data={searchResults}
@@ -65,6 +71,7 @@ const CompaniesSearch = ({
 );
 
 CompaniesSearch.propTypes = {
+  activeFilter: PropTypes.string,
   currentNavigatorUID: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   searchResults: PropTypes.array

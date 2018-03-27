@@ -1,15 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { View } from "react-native";
+import { TouchableHighlight, View } from "react-native";
 import PropTypes from "prop-types";
+import Icon from "react-native-vector-icons/Ionicons";
 
+import { colors } from "../../config/styles";
 import CompaniesFilter from "./CompaniesFilter";
 import {
   toggleFilterTag,
+  executeCompanySearch,
   executeFilterSearch,
   setSearchQuery
 } from "../../redux/modules/companyReducer";
-import { goToScene } from "../../navigation/NavigationHelper";
+import { styles } from "./styles";
+
+import { goToScene, goBack } from "../../navigation/NavigationHelper";
 
 class CompaniesFilterContainer extends Component {
   static route = {
@@ -21,6 +26,18 @@ class CompaniesFilterContainer extends Component {
   componentDidMount() {
     this.props.dispatch(executeFilterSearch("*"));
   }
+
+  _handleGoBack = () => {
+    if (this.props.activeFilter) {
+      this.props.dispatch(
+        executeCompanySearch({ searchQuery: this.props.activeFilter })
+      );
+    } else {
+      this.props.dispatch(executeCompanySearch({ searchQuery: " " }));
+    }
+
+    goBack();
+  };
 
   _handleChange = async value => {
     await this.props.dispatch(setSearchQuery(value));
@@ -38,17 +55,14 @@ class CompaniesFilterContainer extends Component {
 
   render() {
     return (
-      <View>
-        <View>
-          <CompaniesFilter
-            searchQuery={this.props.searchQuery}
-            filterSearchResults={this.props.filterSearchResults}
-            handleChange={this._handleChange}
-            handleClick={this._handleClick}
-            activeFilter={this.props.activeFilter}
-          />
-        </View>
-      </View>
+      <CompaniesFilter
+        searchQuery={this.props.searchQuery}
+        filterSearchResults={this.props.filterSearchResults}
+        handleChange={this._handleChange}
+        handleClick={this._handleClick}
+        handleGoBack={this._handleGoBack}
+        activeFilter={this.props.activeFilter}
+      />
     );
   }
 }

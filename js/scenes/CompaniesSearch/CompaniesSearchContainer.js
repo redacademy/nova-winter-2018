@@ -103,7 +103,11 @@ class CompaniesSearchContainer extends Component {
             >
               <View style={styles.paginationContainer}>
                 <Text style={styles.paginationText}>See More</Text>
-                <Icon name={"ios-arrow-down"} style={{ color: colors.red }} />
+                <Icon
+                  name={"ios-arrow-down"}
+                  size={25}
+                  style={{ color: colors.red }}
+                />
               </View>
             </TouchableHighlight>
           ) : (

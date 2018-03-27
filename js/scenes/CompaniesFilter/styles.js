@@ -25,13 +25,15 @@ export const styles = StyleSheet.create({
     color: colors.darkGrey
   },
   searchBar: {
+    flex: 1,
+    flexDirection: "row",
     backgroundColor: colors.mediumGrey,
-    marginBottom: 15,
+    marginVertical: 15,
     borderRadius: 10,
     padding: 10
   },
   searchResults: {
-    height: height / 1.75
+    minHeight: height / 2.35
   },
   closeFilter: {
     fontSize: 30,
