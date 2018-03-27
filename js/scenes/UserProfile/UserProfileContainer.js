@@ -3,12 +3,15 @@ import PropTypes from "prop-types";
 import UserProfile from "./UserProfile";
 import { getUser } from "../../redux/modules/userReducer";
 import { connect } from "react-redux";
-
+import { logOut } from "../../redux/modules/auth";
 class UserProfileContainer extends Component {
   static route = {
     navigationBar: {
       title: "Profile"
     }
+  };
+  _logoutFunc = () => {
+    this.props.dispatch(logOut());
   };
   componentDidMount = () => {
     this.props.dispatch(getUser(this.props.userID));
@@ -16,7 +19,7 @@ class UserProfileContainer extends Component {
 
   render() {
     const userInfo = this.props.userInfo;
-    return <UserProfile userInfo={userInfo} />;
+    return <UserProfile userInfo={userInfo} logoutFunc={this._logoutFunc} />;
   }
 }
 
