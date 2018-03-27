@@ -1,19 +1,16 @@
 import React, { Component } from "react";
 import Swiper from "react-native-deck-swiper";
-import { View, } from "react-native";
+import { View } from "react-native";
 import { styles } from "./styles";
 import { goToScene } from "../../navigation/NavigationHelper";
 import { createAnswerList, addToScore } from "../../redux/modules/quiz";
 import { connect } from "react-redux";
-import { renderCard } from "../../components/renderCard.js"
+import { renderCard } from "../../components/renderCard.js";
 import PropTypes from "prop-types";
 class ProjectResourceTest extends Component {
   constructor(props) {
     super(props);
-
   }
-
-
 
   onSwipedAllCards = () => {
     for (var i = 0; i < this.props.solutions.length; i++) {
@@ -24,7 +21,7 @@ class ProjectResourceTest extends Component {
 
     const score = this.props.scorebank / this.props.solutions.length;
 
-    goToScene("devRoutes", "projectResourceTestResults", score);
+    goToScene("companies", "projectResourceTestResults", score);
   };
 
   _onSwipedRight = () => {
@@ -35,7 +32,7 @@ class ProjectResourceTest extends Component {
   };
 
   render() {
-    let cardIndex = 0
+    let cardIndex = 0;
 
     return (
       <View style={styles.container}>
@@ -56,14 +53,12 @@ class ProjectResourceTest extends Component {
             onSwipedAll={this.onSwipedAllCards}
             stackSize={0}
             stackSeparation={0}
-
             animateOverlayLabelsOpacity
             animateCardOpacity
           />
         </View>
       </View>
     );
-
   }
 }
 const mapStateToProps = state => {
@@ -81,7 +76,7 @@ ProjectResourceTest.propTypes = {
   scorebank: PropTypes.number,
   questions: PropTypes.array.isRequired,
   solutions: PropTypes.array.isRequired,
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps)(ProjectResourceTest);

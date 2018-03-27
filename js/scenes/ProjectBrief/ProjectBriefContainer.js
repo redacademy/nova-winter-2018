@@ -7,6 +7,7 @@ import {
   getCompanyProjects,
   getCompany
 } from "../../redux/modules/companyReducer";
+
 class ProjectBriefContainer extends Component {
   static route = {
     navigationBar: {
@@ -43,6 +44,7 @@ const mapStateToProps = state => ({
   image: state.company.projects.image,
   hours: state.company.projects.hoursAllowed
 });
+
 ProjectBriefContainer.propTypes = {
   projectName: PropTypes.string,
   projectBrief: PropTypes.string,

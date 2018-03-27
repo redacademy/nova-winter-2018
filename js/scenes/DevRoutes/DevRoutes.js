@@ -6,25 +6,26 @@ import { goToScene } from "../../navigation/NavigationHelper";
 const DevRoutes = ({ logOut }) => (
   <ScrollView>
     <Text style={{ fontWeight: "bold", marginTop: 16 }}>Companies stack:</Text>
-    <Text onPress={() => goToScene("devRoutes", "companiesSearch")}>
+    <Text onPress={() => goToScene("companies", "companies")}>Companies</Text>
+    <Text onPress={() => goToScene("companies", "companiesSearch")}>
       CompaniesSearch
     </Text>
-    <Text onPress={() => goToScene("devRoutes", "companyProfile", "deloitte")}>
+    <Text onPress={() => goToScene("companies", "companyProfile", "deloitte")}>
       CompanyProfile (Deloitte)
     </Text>
-    <Text onPress={() => goToScene("devRoutes", "companyProfile", "adobe")}>
+    <Text onPress={() => goToScene("companies", "companyProfile", "adobe")}>
       CompanyProfile (Adobe)
     </Text>
-    <Text onPress={() => goToScene("devRoutes", "projectBrief")}>
+    <Text onPress={() => goToScene("companies", "projectBrief")}>
       ProjectBrief
     </Text>
-    <Text onPress={() => goToScene("devRoutes", "projectConfirm")}>
+    <Text onPress={() => goToScene("companies", "projectConfirm")}>
       ProjectConfirm
     </Text>
 
     <Text
       onPress={() =>
-        goToScene("devRoutes", "projectResourceTest", {
+        goToScene("companies", "projectResourceTest", {
           company: "adobe",
           project: "indesign"
         })
@@ -35,7 +36,7 @@ const DevRoutes = ({ logOut }) => (
 
     <Text
       onPress={() =>
-        goToScene("devRoutes", "projectResourceTest", {
+        goToScene("companies", "projectResourceTest", {
           company: "deloitte",
           project: "blockchain"
         })
@@ -44,12 +45,12 @@ const DevRoutes = ({ logOut }) => (
       ProjectResourceTest (Deloitte blockchain project)
     </Text>
 
-    <Text onPress={() => goToScene("devRoutes", "projectResourceTestResults")}>
+    <Text onPress={() => goToScene("companies", "projectResourceTestResults")}>
       ProjectResourceTestResults
     </Text>
     <Text
       onPress={() =>
-        goToScene("devRoutes", "projectResources", {
+        goToScene("companies", "projectResources", {
           companyID: "deloitte",
           projectID: "blockchain"
         })
@@ -57,36 +58,38 @@ const DevRoutes = ({ logOut }) => (
     >
       ProjectResources (Deloitte blockchain project)
     </Text>
-    <Text onPress={() => goToScene("devRoutes", "projectSubmit")}>
+    <Text onPress={() => goToScene("companies", "projectSubmit")}>
       ProjectSubmit
     </Text>
-    <Text onPress={() => goToScene("devRoutes", "projectSubmitConfirm")}>
+    <Text onPress={() => goToScene("companies", "projectSubmitConfirm")}>
       ProjectSubmitConfirm
     </Text>
 
     <Text style={{ fontWeight: "bold", marginTop: 16 }}>Root Stack:</Text>
-    <Text onPress={() => goToScene("devRoutes", "login")}>Login</Text>
+    <Text onPress={() => goToScene("root", "login")}>Login</Text>
 
-    <Text onPress={() => goToScene("devRoutes", "userAccountConfirm")}>
+    <Text onPress={() => goToScene("root", "userAccountConfirm")}>
       UserAccountConfirm
     </Text>
 
-    <Text onPress={() => goToScene("devRoutes", "userAccountCreate")}>
+    <Text onPress={() => goToScene("root", "userAccountCreate")}>
       UserAccountCreate
     </Text>
 
-    <Text onPress={() => goToScene("devRoutes", "userProfileConfirm")}>
+    <Text onPress={() => goToScene("root", "userProfileConfirm")}>
       UserProfileConfirm
     </Text>
 
-    <Text onPress={() => goToScene("devRoutes", "userProfileCreate")}>
+    <Text onPress={() => goToScene("root", "userProfileCreate")}>
       UserProfileCreate
     </Text>
 
     <Text style={{ fontWeight: "bold", marginTop: 16 }}>
       User Profile Stack?:
     </Text>
-
+    <Text onPress={() => goToScene("userProfile", "userProfileEdit")}>
+      UserProfileEdit
+    </Text>
     <Text
       onPress={() => {
         logOut();

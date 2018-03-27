@@ -13,8 +13,8 @@ class NavigationLogin extends Component {
   render() {
     return (
       <StackNav
-        id="devRoutes"
-        navigatorUID="devRoutes"
+        id="companies"
+        navigatorUID="companies"
         initialRoute={Router.getRoute("login")}
         defaultRouteConfig={defaultRouteConfig}
       />

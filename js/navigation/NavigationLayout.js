@@ -22,7 +22,7 @@ class NavigationLayout extends Component {
       <TabNav
         id="main"
         navigatorUID="main"
-        initialTab="devRoutes"
+        initialTab="companies"
         tabBarColor={nearBlack}
       >
         <TabItem
@@ -56,7 +56,7 @@ class NavigationLayout extends Component {
           <StackNav
             id="companies"
             navigatorUID="companies"
-            initialRoute={Router.getRoute("companies")}
+            initialRoute={Router.getRoute("companiesSearch")}
             defaultRouteConfig={defaultRouteConfig}
           />
         </TabItem>
