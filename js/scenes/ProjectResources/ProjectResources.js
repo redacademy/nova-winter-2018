@@ -93,7 +93,7 @@ const ProjectResources = ({
           title="BEGIN TEST"
           color={green}
           onPressParams={{
-            currentNavigatorUID: "devRoutes",
+            currentNavigatorUID: "companies",
             targetScene: "projectResourceTest",
             props: {
               company: companyID,

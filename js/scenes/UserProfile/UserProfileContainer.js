@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import UserProfile from "./UserProfile";
 import { getUser } from "../../redux/modules/userReducer";
 import { connect } from "react-redux";
+
 class UserProfileContainer extends Component {
   static route = {
     navigationBar: {
@@ -18,15 +19,18 @@ class UserProfileContainer extends Component {
     return <UserProfile userInfo={userInfo} />;
   }
 }
+
 UserProfileContainer.propTypes = {
   userID: PropTypes.string.isRequired,
   userInfo: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired
 };
+
 const mapStateToProps = state => {
   return {
     userID: state.auth.userId,
     userInfo: state.user.userInfo
   };
 };
+
 export default connect(mapStateToProps)(UserProfileContainer);

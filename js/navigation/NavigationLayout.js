@@ -22,21 +22,9 @@ class NavigationLayout extends Component {
       <TabNav
         id="main"
         navigatorUID="main"
-        initialTab="devRoutes"
+        initialTab="companies"
         tabBarColor={nearBlack}
       >
-        <TabItem
-          id="devRoutes"
-          renderIcon={isSelected => this.renderIcon(isSelected, "ios-code")}
-        >
-          <StackNav
-            id="devRoutes"
-            navigatorUID="devRoutes"
-            initialRoute={Router.getRoute("devRoutes")}
-            defaultRouteConfig={defaultRouteConfig}
-          />
-        </TabItem>
-
         <TabItem
           id="userProfile"
           renderIcon={isSelected => this.renderIcon(isSelected, "ios-contact")}
@@ -56,7 +44,7 @@ class NavigationLayout extends Component {
           <StackNav
             id="companies"
             navigatorUID="companies"
-            initialRoute={Router.getRoute("companies")}
+            initialRoute={Router.getRoute("companiesSearch")}
             defaultRouteConfig={defaultRouteConfig}
           />
         </TabItem>

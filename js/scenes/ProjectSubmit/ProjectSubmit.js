@@ -10,6 +10,7 @@ import {
 } from "../../api/projectHelper";
 import PropTypes from "prop-types";
 import { styles } from "./styles.js";
+import { buttonToScene } from "../../navigation/NavigationHelper";
 const { red } = colors;
 
 const ProjectSubmit = ({
@@ -25,7 +26,7 @@ const ProjectSubmit = ({
       <NovaH2 color={red} title="Time Remaining" />
       <View style={styles.timer}>
         <TimerCountdown
-          initialSecondsRemaining={16000}
+          initialSecondsRemaining={7206000}
           onTimeElapsed={() =>
             writeProjectOutOfTime(companyName, projectName, userEmail)
           }
@@ -58,7 +59,16 @@ const ProjectSubmit = ({
           );
         }}
       />
-      <NovaButton title="ENTER SUBMISSION" color={red} onPressFunc={null} />
+      <NovaButton
+        title="ENTER SUBMISSION"
+        color={red}
+        onPressParams={{
+          currentNavigatorUID: "companies",
+          targetScene: "projectSubmitConfirm",
+          props: { success: true, id: "blockchain", company: "deloitte" }
+        }}
+        onPressFunc={buttonToScene}
+      />
     </ScrollView>
   </View>
 );

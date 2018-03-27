@@ -14,7 +14,7 @@ class ProjectSubmitContainer extends Component {
   componentDidMount = () => {
     this.props.dispatch(
       getProjectDeliverables(
-        this.props.route.params.company,
+        this.props.route.params.props.company,
         this.props.route.params.props.id
       )
     );
@@ -39,13 +39,12 @@ const mapStateToProps = state => ({
 });
 ProjectSubmitContainer.propTypes = {
   userID: PropTypes.string,
-  params: PropTypes.string.isRequired,
-  route: PropTypes.string.isRequired,
+  params: PropTypes.string,
+  route: PropTypes.object,
   deliverables: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired,
   userEmail: PropTypes.string.isRequired
 };
-
 ProjectSubmitContainer.defaultProps = {
   userID: ""
 };

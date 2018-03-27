@@ -41,7 +41,6 @@ const CompanyProfile = companyInfo => (
     </View>
 
     <View>
-      
       <FlatList
         data={companyInfo.projects}
         keyExtractor={item => item.title}
@@ -57,9 +56,16 @@ const CompanyProfile = companyInfo => (
                   title="Brief"
                   color={green}
                   style={[styles.brief, shadow]}
-                  onPressParams={{ currentNavigatorUID: "devRoutes", targetScene: "projectBrief", props: { success: false, id: item.id, company: companyInfo.companyInfo.id } }}
+                  onPressParams={{
+                    currentNavigatorUID: "companies",
+                    targetScene: "projectBrief",
+                    props: {
+                      success: false,
+                      id: item.id,
+                      company: companyInfo.companyInfo.id
+                    }
+                  }}
                   onPressFunc={buttonToScene}
-
                 />
                 <NovaH2
                   color="white"

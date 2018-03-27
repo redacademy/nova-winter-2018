@@ -33,5 +33,5 @@ export function writeProfileToDatabase({
         merge: true
       }
     )
-    .then(goToScene("devRoutes", "userProfileConfirm"));
+    .then(goToScene("userProfile", "userProfileConfirm"));
 }
