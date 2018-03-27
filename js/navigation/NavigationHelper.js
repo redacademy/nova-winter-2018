@@ -11,6 +11,10 @@ export const goToScene = (currentNavigatorUID, targetScene, props) => {
   );
 };
 
+export const goBack = () => {
+  Store.dispatch(NavigationActions.goBack());
+}
+
 export const buttonToScene = params => {
   const { currentNavigatorUID, targetScene, props } = params;
   Store.dispatch(
@@ -19,4 +23,6 @@ export const buttonToScene = params => {
       Router.getRoute(targetScene, { props })
     )
   );
-};
+}
+
+
