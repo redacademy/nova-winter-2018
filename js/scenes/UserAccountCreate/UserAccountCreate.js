@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TextInput } from "react-native";
+import { View, TextInput, Text } from "react-native";
 import PropTypes from "prop-types";
 import { styles } from "./styles";
 import { colors } from "../../config/styles";
@@ -16,7 +16,9 @@ const UserAccountCreate = ({
   handleChangePassword,
   handleChangeConfirmPassword,
   handleSubmit,
-  handleChangeName
+  renderStyleConfirmPassword,
+  renderStylePassword,
+  userError
 }) => (
   <View style={styles.container}>
     <NovaImperative color="white" title="Create An Account" />
@@ -33,21 +35,38 @@ const UserAccountCreate = ({
     <TextInput
       placeholder="Password"
       value={password}
+      secureTextEntry
       autoCapitalize="none"
       onChange={e => {
         handleChangePassword(e.nativeEvent.text);
       }}
-      style={styles.input}
+      style={[styles.input, renderStylePassword()]}
     />
+    {password.length < 6 && password.length > 0 ? (
+      <Text style={styles.inputError}>Password must at least 6 characters</Text>
+    ) : (
+      <View />
+    )}
     <TextInput
       placeholder="Confirm Password"
       autoCapitalize="none"
+      secureTextEntry
       value={confirmPassword}
       onChange={e => {
         handleChangeConfirmPassword(e.nativeEvent.text);
       }}
-      style={styles.input}
+      style={[styles.input, renderStyleConfirmPassword()]}
     />
+    {confirmPassword.length > 0 && password !== confirmPassword ? (
+      <Text style={styles.inputError}>Passwords do not match</Text>
+    ) : (
+      <View />
+    )}
+    {userError ? (
+      <Text style={styles.inputError}>{userError.message}</Text>
+    ) : (
+      <View />
+    )}
     <NovaButton
       title="CREATE"
       color={red}
@@ -62,10 +81,12 @@ UserAccountCreate.propTypes = {
   password: PropTypes.string.isRequired,
   confirmPassword: PropTypes.string.isRequired,
   handleChangeEmail: PropTypes.func.isRequired,
-  handleChangeName: PropTypes.func.isRequired,
   handleChangePassword: PropTypes.func.isRequired,
   handleChangeConfirmPassword: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  renderStyleConfirmPassword: PropTypes.func.isRequired,
+  renderStylePassword: PropTypes.func.isRequired,
+  userError: PropTypes.object
 };
 
 export default UserAccountCreate;
