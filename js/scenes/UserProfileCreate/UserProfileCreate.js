@@ -7,8 +7,19 @@ import NovaButton from "../../components/UI/NovaButton/";
 import NovaImperative from "../../components/UI/NovaImperative";
 const { fontMain } = typography;
 const { nearBlack } = colors;
+let nameCheck = true;
+let bioCheck = true;
+let expCheck = true;
+let eduCheck = true;
+let gloCheck = true;
+let quoCheck = true;
+let refCheck = true;
+let imgCheck = true;
+let titCheck = true;
+let proCheck = true;
 
 const UserProfileCreate = ({
+  handleChangeProjects,
   handleChangeBio,
   handleChangeExperience,
   handleChangeEducation,
@@ -43,8 +54,14 @@ const UserProfileCreate = ({
           placeholderTextColor={nearBlack}
           onChange={text => {
             handleChangeName(text);
+            nameCheck = false;
           }}
         />
+        {nameCheck ? (
+          <Text style={{ color: "red" }}> Required </Text>
+        ) : (
+          <Text style={{ color: "green" }}>Completed</Text>
+        )}
       </View>
       <Text style={styles.header}>Your tag-line</Text>
       <View style={styles.textInputContainer}>
@@ -57,8 +74,14 @@ const UserProfileCreate = ({
           placeholderTextColor={nearBlack}
           onChange={text => {
             handleChangeQuote(text);
+            quoCheck = false;
           }}
         />
+        {quoCheck ? (
+          <Text style={{ color: "red" }}> Required </Text>
+        ) : (
+          <Text style={{ color: "green" }}>Completed</Text>
+        )}
       </View>
       <Text style={styles.header}>Your Degree</Text>
       <View style={styles.textInputContainer}>
@@ -71,8 +94,14 @@ const UserProfileCreate = ({
           placeholderTextColor={nearBlack}
           onChange={text => {
             handleChangeTitle(text);
+            titCheck = false;
           }}
         />
+        {titCheck ? (
+          <Text style={{ color: "red" }}> Required </Text>
+        ) : (
+          <Text style={{ color: "green" }}>Completed</Text>
+        )}
       </View>
       <Text style={styles.header}>Biography</Text>
       <View style={styles.textInputContainer}>
@@ -85,8 +114,14 @@ const UserProfileCreate = ({
           placeholderTextColor={nearBlack}
           onChange={text => {
             handleChangeBio(text);
+            bioCheck = false;
           }}
         />
+        {bioCheck ? (
+          <Text style={{ color: "red" }}> Required </Text>
+        ) : (
+          <Text style={{ color: "green" }}>Completed</Text>
+        )}
       </View>
       <Text style={styles.header}>Work Experience</Text>
       <View style={styles.textInputContainer}>
@@ -101,8 +136,14 @@ you work there, what did you do?)"
           placeholderTextColor={nearBlack}
           onChange={text => {
             handleChangeExperience(text);
+            expCheck = false;
           }}
         />
+        {expCheck ? (
+          <Text style={{ color: "red" }}> Required </Text>
+        ) : (
+          <Text style={{ color: "green" }}>Completed</Text>
+        )}
       </View>
       <Text style={styles.header}>Education</Text>
       <View style={styles.textInputContainer}>
@@ -116,8 +157,34 @@ certfications? What field did you study?"
           placeholderTextColor={nearBlack}
           onChange={text => {
             handleChangeEducation(text);
+            eduCheck = false;
           }}
         />
+        {eduCheck ? (
+          <Text style={{ color: "red" }}> Required </Text>
+        ) : (
+          <Text style={{ color: "green" }}>Completed</Text>
+        )}
+      </View>
+      <Text style={styles.header}>Projects</Text>
+      <View style={styles.textInputContainer}>
+        <TextInput
+          placeholder="What are some projects you have worked on?"
+          multiline={true}
+          value={education}
+          numberOfLines={4}
+          style={styles.input}
+          placeholderTextColor={nearBlack}
+          onChange={e => {
+            handleChangeProjects(e.nativeEvent.text);
+            proCheck = false;
+          }}
+        />
+        {proCheck ? (
+          <Text style={{ color: "red" }}> Required </Text>
+        ) : (
+          <Text style={{ color: "green" }}>Completed</Text>
+        )}
       </View>
       <View style={styles.global}>
         <Text style={styles.header}>Global Goals</Text>
@@ -138,9 +205,16 @@ certfications? What field did you study?"
           value={global}
           placeholderTextColor={nearBlack}
           onChange={text => {
-            handleChangeGlobal(text);
+            handleChangeGlobal(text);     
+            gloCheck = false;
+
           }}
         />
+        {gloCheck ? (
+          <Text style={{ color: "red" }}> Required </Text>
+        ) : (
+          <Text style={{ color: "green" }}>Completed</Text>
+        )}
       </View>
       <Text style={styles.header}>References</Text>
       <View style={styles.textInputContainer}>
@@ -151,10 +225,19 @@ certfications? What field did you study?"
           value={references}
           style={styles.input}
           placeholderTextColor={nearBlack}
+
           onChange={text => {
             handleChangeReferences(text);
+
+            refCheck = false;
+
           }}
         />
+        {refCheck ? (
+          <Text style={{ color: "red" }}> Required </Text>
+        ) : (
+          <Text style={{ color: "green" }}>Completed</Text>
+        )}
       </View>
       <Text style={styles.header}>Image</Text>
       <View style={styles.textInputContainer}>
@@ -167,8 +250,14 @@ certfications? What field did you study?"
           placeholderTextColor={nearBlack}
           onChange={text => {
             handleChangeImage(text);
+            imgCheck = false;
           }}
         />
+        {imgCheck ? (
+          <Text style={{ color: "red" }}> Required </Text>
+        ) : (
+          <Text style={{ color: "green" }}>Completed</Text>
+        )}
       </View>
     </View>
     <NovaButton title="CONTINUE" color="black" onPressFunc={handleSubmit} />
