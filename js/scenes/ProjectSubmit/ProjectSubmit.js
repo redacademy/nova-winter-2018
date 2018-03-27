@@ -63,7 +63,7 @@ const ProjectSubmit = ({
         title="ENTER SUBMISSION"
         color={red}
         onPressParams={{
-          currentNavigatorUID: "devRoutes",
+          currentNavigatorUID: "companies",
           targetScene: "projectSubmitConfirm",
           props: { success: true, id: "blockchain", company: "deloitte" }
         }}

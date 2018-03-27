@@ -23,7 +23,7 @@ const ProjectSubmitConfirm = () => (
         title="CONTINUE"
         color={red}
         onPressParams={{
-          currentNavigatorUID: "devRoutes",
+          currentNavigatorUID: "companies",
           targetScene: "companiesSearch",
           props: { success: true, id: "blockchain", company: "deloitte" }
         }}

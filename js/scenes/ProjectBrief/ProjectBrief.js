@@ -80,7 +80,7 @@ const ProjectBrief = ({
           color={green}
           title="START PROJECT"
           onPressParams={{
-            currentNavigatorUID: "devRoutes",
+            currentNavigatorUID: "companies",
             targetScene: "projectConfirm",
             props: { success: true, id: "blockchain", company: "deloitte" }
           }}
@@ -144,7 +144,20 @@ const ProjectBrief = ({
           material of the resources.
         </Text>
       </View>
-      <NovaButton color={green} title="RESOURCES" />
+      <NovaButton
+        color={green}
+        title="RESOURCES"
+        onPressParams={{
+          currentNavigatorUID: "companies",
+          targetScene: "projectResources",
+          props: {
+            success: true,
+            projectID: "blockchain",
+            companyID: "deloitte"
+          }
+        }}
+        onPressFunc={buttonToScene}
+      />
     </ScrollView>
   );
 };
