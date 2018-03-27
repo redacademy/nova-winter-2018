@@ -1,7 +1,3 @@
-// Dev use only
-// temporary routes to make it possible to test components
-// remove before shipping!
-import DevRoutes from "../scenes/DevRoutes/";
 import CompaniesSearch from "../scenes/CompaniesSearch";
 import CompanyProfile from "../scenes/CompanyProfile";
 import CompaniesFilter from "../scenes/CompaniesFilter";
@@ -27,17 +23,10 @@ import NavigationLayout from "./NavigationLayout";
 import { createRouter } from "@expo/ex-navigation";
 
 const Router = createRouter(() => ({
-  // Dev use only - remove before shipping!
-  devRoutes: () => DevRoutes,
-
-  // Main routes in the tab tab
   layout: () => NavigationLayout,
   userProfile: () => UserProfile,
   companies: () => Companies,
   myProjects: () => MyProjects,
-
-  // temporary routes to make it possible to test components
-  // remove before shipping!
   companiesFilter: () => CompaniesFilter,
   companiesSearch: () => CompaniesSearch,
   companyProfile: () => CompanyProfile,

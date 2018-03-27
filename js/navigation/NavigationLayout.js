@@ -26,18 +26,6 @@ class NavigationLayout extends Component {
         tabBarColor={nearBlack}
       >
         <TabItem
-          id="devRoutes"
-          renderIcon={isSelected => this.renderIcon(isSelected, "ios-code")}
-        >
-          <StackNav
-            id="devRoutes"
-            navigatorUID="devRoutes"
-            initialRoute={Router.getRoute("devRoutes")}
-            defaultRouteConfig={defaultRouteConfig}
-          />
-        </TabItem>
-
-        <TabItem
           id="userProfile"
           renderIcon={isSelected => this.renderIcon(isSelected, "ios-contact")}
         >
