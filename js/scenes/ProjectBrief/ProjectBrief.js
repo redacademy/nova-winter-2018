@@ -9,7 +9,7 @@ import {
   StyleSheet
 } from "react-native";
 import PropTypes from "prop-types";
-import { colors } from "../../config/styles";
+import { colors, colorShadow } from "../../config/styles";
 import Icon from "react-native-vector-icons/Ionicons";
 import moment from "moment";
 import { buttonToScene } from "../../navigation/NavigationHelper";
@@ -54,7 +54,9 @@ const ProjectBrief = ({
         source={companyImage && { uri: companyImage }}
       >
         <View style={styles.overlay}>
-          <Image style={styles.logo} source={{ uri: companyLogo }} />
+          <View style={colorShadow}>
+            <Image style={styles.logo} source={{ uri: companyLogo }} />
+          </View>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>{title}</Text>
           </View>

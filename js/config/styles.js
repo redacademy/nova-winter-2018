@@ -15,6 +15,13 @@ export const shadow = {
   shadowRadius: 2
 };
 
+export const colorShadow = {
+  shadowColor: colors.red,
+  shadowOffset: { width: 0, height: 0 },
+  shadowOpacity: 0.75,
+  shadowRadius: 3
+};
+
 export const typography = {
   fontMainLight: "Avenir-Light",
   fontMain: "Avenir"
