@@ -116,7 +116,7 @@ export default function(
     authenticated: false,
     user: null,
     userId: null,
-    userLoading: false,
+    userLoading: true,
     userError: null
   },
   action
