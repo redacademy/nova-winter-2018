@@ -36,11 +36,13 @@ const ProjectBrief = ({
   if (dueDate) {
     dateInFuture = moment(dueDate.toString(), "YYYY-MM-DD");
   }
-  let companyLogo = null;
+  let companyLogo =
+    "https://firebasestorage.googleapis.com/v0/b/nova-2018.appspot.com/o/company-logos%2Fcompany-logo-deloitte.png?alt=media&token=e1fa5bfb-9316-400a-bc43-d02267907f64";
   if (logo) {
     companyLogo = logo;
   }
-  let companyImage = null;
+  let companyImage =
+    "https://firebasestorage.googleapis.com/v0/b/nova-2018.appspot.com/o/company-logos%2Fcompany-logo-deloitte.png?alt=media&token=e1fa5bfb-9316-400a-bc43-d02267907f64";
   if (image) {
     companyImage = image;
   }
