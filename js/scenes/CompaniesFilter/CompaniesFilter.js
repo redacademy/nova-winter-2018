@@ -7,6 +7,7 @@ import {
   TouchableHighlight,
   View
 } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 import PropTypes from "prop-types";
 
 import { colors } from "../../config/styles";
@@ -18,7 +19,8 @@ const CompaniesFilter = ({
   handleChange,
   filterSearchResults,
   activeFilter,
-  handleClick
+  handleClick,
+  handleGoBack
 }) => (
   <ScrollView
     style={styles.container}
@@ -29,18 +31,26 @@ const CompaniesFilter = ({
       title="Search for Your Industry of Interest"
       style={{ textAlign: "left" }}
     />
-    <TextInput
-      style={styles.searchBar}
-      autoCapitalize="none"
-      placeholder="Search"
-      onChange={e => {
-        handleChange(e.nativeEvent.text);
-      }}
-    />
+    <View style={styles.searchBar}>
+      <Icon
+        name="ios-search"
+        size={16}
+        style={styles.searchIcon}
+        color={colors.darkGrey}
+      />
+      <TextInput
+        autoCapitalize="none"
+        placeholder="Search"
+        style={{ marginLeft: 10 }}
+        onChange={e => {
+          handleChange(e.nativeEvent.text);
+        }}
+      />
+    </View>
     <View style={styles.horizontalRule} />
 
     {activeFilter ? (
-      <View>
+      <View style={styles.searchResults}>
         <Text>Active Filter</Text>
         <TouchableHighlight
           underlayColor={colors.mediumGrey}
@@ -70,14 +80,14 @@ const CompaniesFilter = ({
         />
       </View>
     )}
-    <View>
+    <View style={styles.goBack}>
       <TouchableHighlight
         underlayColor={colors.mediumGrey}
         onPress={() => {
-          goBack();
+          handleGoBack();
         }}
       >
-        <Text style={styles.closeFilter}>^</Text>
+        <Icon style={styles.closeFilter} name="ios-arrow-up" />
       </TouchableHighlight>
     </View>
   </ScrollView>
