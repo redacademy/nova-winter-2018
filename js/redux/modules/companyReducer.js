@@ -306,7 +306,6 @@ export default function(
     case DATA_ERROR: {
       return { ...state, dataError: action.payload };
     }
-
     case GET_COMPANY_SEARCH_RESULTS: {
       return {
         ...state,
