@@ -28,7 +28,7 @@ class UserProfileContainer extends Component {
 
 UserProfileContainer.propTypes = {
   userID: PropTypes.string.isRequired,
-  userInfo: PropTypes.object.isRequired,
+  userInfo: PropTypes.object,
   dispatch: PropTypes.func.isRequired
 };
 
