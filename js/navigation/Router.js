@@ -4,6 +4,7 @@
 import DevRoutes from "../scenes/DevRoutes/";
 import CompaniesSearch from "../scenes/CompaniesSearch";
 import CompanyProfile from "../scenes/CompanyProfile";
+import CompaniesFilter from "../scenes/CompaniesFilter";
 import Login from "../scenes/Login";
 import ProjectBrief from "../scenes/ProjectBrief";
 import ProjectConfirm from "../scenes/ProjectConfirm";
@@ -12,12 +13,10 @@ import ProjectResourceTest from "../scenes/ProjectResourceTest";
 import ProjectResourceTestResults from "../scenes/ProjectResourceTestResults";
 import ProjectSubmit from "../scenes/ProjectSubmit";
 import ProjectSubmitConfirm from "../scenes/ProjectSubmitConfirm";
-import Splash from "../scenes/Splash";
 import UserAccountConfirm from "../scenes/UserAccountConfirm";
 import UserAccountCreate from "../scenes/UserAccountCreate";
 import UserProfileConfirm from "../scenes/UserProfileConfirm";
 import UserProfileCreate from "../scenes/UserProfileCreate";
-import UserProfileEdit from "../scenes/UserProfileEdit";
 
 // Main routes in the tab tab
 import UserProfile from "../scenes/UserProfile";
@@ -39,6 +38,7 @@ const Router = createRouter(() => ({
 
   // temporary routes to make it possible to test components
   // remove before shipping!
+  companiesFilter: () => CompaniesFilter,
   companiesSearch: () => CompaniesSearch,
   companyProfile: () => CompanyProfile,
   login: () => Login,
@@ -49,12 +49,10 @@ const Router = createRouter(() => ({
   projectResourceTestResults: () => ProjectResourceTestResults,
   projectSubmit: () => ProjectSubmit,
   projectSubmitConfirm: () => ProjectSubmitConfirm,
-  splash: () => Splash,
   userAccountConfirm: () => UserAccountConfirm,
   userAccountCreate: () => UserAccountCreate,
   userProfileConfirm: () => UserProfileConfirm,
-  userProfileCreate: () => UserProfileCreate,
-  userProfileEdit: () => UserProfileEdit
+  userProfileCreate: () => UserProfileCreate
 }));
 
 export default Router;

@@ -21,14 +21,41 @@ const DevRoutes = ({ logOut }) => (
     <Text onPress={() => goToScene("devRoutes", "projectConfirm")}>
       ProjectConfirm
     </Text>
-    <Text onPress={() => goToScene("devRoutes", "projectResourceTest")}>
-      ProjectResourceTest
+
+    <Text
+      onPress={() =>
+        goToScene("devRoutes", "projectResourceTest", {
+          company: "adobe",
+          project: "indesign"
+        })
+      }
+    >
+      ProjectResourceTest (Adobe InDesign project)
     </Text>
+
+    <Text
+      onPress={() =>
+        goToScene("devRoutes", "projectResourceTest", {
+          company: "deloitte",
+          project: "blockchain"
+        })
+      }
+    >
+      ProjectResourceTest (Deloitte blockchain project)
+    </Text>
+
     <Text onPress={() => goToScene("devRoutes", "projectResourceTestResults")}>
       ProjectResourceTestResults
     </Text>
-    <Text onPress={() => goToScene("devRoutes", "projectResources")}>
-      ProjectResources
+    <Text
+      onPress={() =>
+        goToScene("devRoutes", "projectResources", {
+          companyID: "deloitte",
+          projectID: "blockchain"
+        })
+      }
+    >
+      ProjectResources (Deloitte blockchain project)
     </Text>
     <Text onPress={() => goToScene("devRoutes", "projectSubmit")}>
       ProjectSubmit
@@ -39,7 +66,6 @@ const DevRoutes = ({ logOut }) => (
 
     <Text style={{ fontWeight: "bold", marginTop: 16 }}>Root Stack:</Text>
     <Text onPress={() => goToScene("devRoutes", "login")}>Login</Text>
-    <Text onPress={() => goToScene("devRoutes", "splash")}>Splash</Text>
 
     <Text onPress={() => goToScene("devRoutes", "userAccountConfirm")}>
       UserAccountConfirm
@@ -60,9 +86,7 @@ const DevRoutes = ({ logOut }) => (
     <Text style={{ fontWeight: "bold", marginTop: 16 }}>
       User Profile Stack?:
     </Text>
-    <Text onPress={() => goToScene("devRoutes", "userProfileEdit")}>
-      UserProfileEdit
-    </Text>
+
     <Text
       onPress={() => {
         logOut();

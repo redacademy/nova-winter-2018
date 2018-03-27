@@ -24,6 +24,12 @@ const UserProfile = ({ userInfo }) => (
           <Text style={styles.headline}>Education</Text>
           <Text style={styles.text}>{userInfo.education}</Text>
         </View>
+
+        <View style={styles.viewbox}>
+          <Text style={styles.headline}>Experience</Text>
+          <Text style={styles.text}>{userInfo.experience}</Text>
+        </View>
+
         <View style={styles.viewbox}>
           <Text style={styles.headline}>Global Goals</Text>
           <Text style={styles.text}>{userInfo.global}</Text>
