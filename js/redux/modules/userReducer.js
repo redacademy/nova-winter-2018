@@ -81,8 +81,7 @@ export const getResourceProgress = (
     )
     .get()
     .then(function(doc) {
-      let progress = doc.data().resourceprogress;
-      dispatch(getProgress(progress));
+      dispatch(getProgress(doc.data().resourceprogress));
     })
     .catch(err => {
       dispatch(getDataError(err));

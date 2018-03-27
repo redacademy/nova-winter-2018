@@ -161,11 +161,10 @@ export const getCompanyQuestions = (companyID, projectName) => dispatch => {
         "/questions/questions"
     )
     .get()
-    .then(function(doc) {
-      let questionsData = doc.data();
-      dispatch(getQuestionsInfo(questionsData));
+    .then(doc => {
+      dispatch(getQuestionsInfo(doc.data()));
     })
-    .catch(function(error) {
+    .catch(error => {
       console.log("Error getting document:", error);
     });
 };
