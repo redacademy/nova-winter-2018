@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from "react";
-import { ActivityIndicator, AsyncStorage } from "react-native";
+import { AsyncStorage } from "react-native";
 import Splash from "./components/Splash";
 import Router from "./navigation/Router";
 import { Provider } from "react-redux";

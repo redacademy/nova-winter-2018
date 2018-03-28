@@ -1,18 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { AsyncStorage } from "react-native";
 import PropTypes from "prop-types";
 import Login from "./Login";
 
-import Router from "../../navigation/Router";
 import {
-  setAuthenticationStatus,
-  setUserState,
-  userLoading,
   setEmailState,
   setPasswordState,
-  login,
-  logOut
+  login
 } from "../../redux/modules/auth";
 import { colors, typography } from "../../config/styles.js";
 const { nearBlack } = colors;
@@ -27,21 +21,10 @@ class LoginContainer extends Component {
     this.props.dispatch(setPasswordState(value));
   };
 
-  _handleSubmit = async ({ email, password }) => {
+  _handleSubmit = ({ email, password }) => {
     if (this.props.email && this.props.password) {
-      await this.props.dispatch(login({ email, password }));
-
-      if (this.props.authenticated) {
-        this._goToLayout();
-      }
+      this.props.dispatch(login({ email, password }));
     }
-  };
-  _logOut = () => {
-    this.props.dispatch(logOut());
-  };
-
-  _goToLayout = () => {
-    this.props.navigator.push(Router.getRoute("layout"));
   };
 
   static route = {
@@ -56,27 +39,12 @@ class LoginContainer extends Component {
     }
   };
 
-  componentDidMount() {
-    this.props.dispatch(userLoading(true));
-    AsyncStorage.getItem("USER", (err, result) => {
-      if (result) {
-        this.props.dispatch(setUserState(JSON.parse(result)));
-        this.props.dispatch(setAuthenticationStatus(true));
-      }
-      this.props.dispatch(userLoading(false));
-      if (this.props.authenticated) {
-        this._goToLayout();
-      }
-    });
-  }
-
   render() {
     return (
       <Login
         handleChangeEmail={this._handleChangeEmail}
         handleChangePassword={this._handleChangePassword}
         handleSubmit={this._handleSubmit}
-        logOut={this._logOut}
         password={this.props.password}
         email={this.props.email}
         currentUser={this.props.currentUser}

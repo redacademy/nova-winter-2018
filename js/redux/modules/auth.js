@@ -82,10 +82,6 @@ export const login = data => dispatch => {
       AsyncStorage.setItem("USER", JSON.stringify(user));
     })
     .catch(error => {
-      console.log(
-        "An error occured when logging in. Please check your login credentials",
-        error
-      );
       dispatch(userError(error));
       dispatch(userLoading(false));
     });
@@ -104,7 +100,7 @@ export const createUser = data => dispatch => {
       dispatch(setConfirmPasswordState(""));
       dispatch(userError(null));
       AsyncStorage.setItem("USER", JSON.stringify(user));
-      goToScene("root", "layout");
+      goToScene("root", "userProfileCreate");
     })
     .catch(error => dispatch(userError(error)));
 };

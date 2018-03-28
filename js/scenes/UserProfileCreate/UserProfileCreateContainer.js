@@ -76,6 +76,7 @@ class UserProfileCreateContainer extends Component {
       title: this.props.title
     };
     await writeProfileToDatabase(submitData);
+    goToScene("root", "userProfileConfirm");
   };
   render() {
     return (

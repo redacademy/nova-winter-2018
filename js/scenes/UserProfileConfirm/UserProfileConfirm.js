@@ -1,14 +1,13 @@
 import React from "react";
 import { Text, View } from "react-native";
 import { colors } from "../../config/styles";
-
 import { styles } from "./styles";
 // import Nova UI components:
 import NovaButton from "../../components/UI/NovaButton";
 import NovaH1 from "../../components/UI/NovaH1";
-import { buttonToScene } from "../../navigation/NavigationHelper";
-const { red, white, nearBlack } = colors;
-const UserProfileConfirm = () => (
+
+const { white, nearBlack } = colors;
+const UserProfileConfirm = ({ routeToLayout }) => (
   <View style={styles.container}>
     <NovaH1 title="Profile Created" color={white} />
     <Text style={styles.message}>{"It's time to start exploring!"}</Text>
@@ -16,10 +15,10 @@ const UserProfileConfirm = () => (
       title="CONTINUE"
       color={nearBlack}
       onPressParams={{
-        currentNavigatorUID: "userProfile",
-        targetScene: "userProfile"
+        currentNavigatorUID: "root",
+        targetScene: "layout"
       }}
-      onPressFunc={buttonToScene}
+      onPressFunc={routeToLayout}
     />
   </View>
 );

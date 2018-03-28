@@ -71,7 +71,6 @@ Login.propTypes = {
   handleChangeEmail: PropTypes.func.isRequired,
   handleChangePassword: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  logOut: PropTypes.func.isRequired,
   currentUser: PropTypes.string,
   navigatorUID: PropTypes.string.isRequired
 };

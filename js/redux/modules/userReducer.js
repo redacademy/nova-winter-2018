@@ -23,16 +23,15 @@ const getUserProjects = projects => ({
   payload: projects
 });
 
-export const userLoading = () => ({
-  type: USER_LOADING
+export const userLoading = bool => ({
+  type: USER_LOADING,
+  payload: bool
 });
 
 const getDataError = error => ({
   type: DATA_ERROR,
   payload: error
 });
-
-// TODO DISPATCH USER LOADING ACTION
 
 export const getUser = userID => dispatch => {
   database
@@ -46,6 +45,7 @@ export const getUser = userID => dispatch => {
     .catch(error => {
       console.log("User data not found:", error);
     });
+  dispatch(userLoading(false));
 };
 
 // write user's progress watching videos on resources page.
@@ -136,7 +136,7 @@ export default function(
     case USER_LOADING: {
       return {
         ...state,
-        userLoading: false
+        userLoading: action.payload
       };
     }
 

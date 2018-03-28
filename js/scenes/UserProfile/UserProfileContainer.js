@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import UserProfile from "./UserProfile";
-import { getUser } from "../../redux/modules/userReducer";
+import { getUser, userLoading } from "../../redux/modules/userReducer";
+import { ActivityIndicator } from "react-native";
 import { connect } from "react-redux";
 import { logOut } from "../../redux/modules/auth";
 class UserProfileContainer extends Component {
@@ -10,10 +11,14 @@ class UserProfileContainer extends Component {
       title: "Profile"
     }
   };
-  _logoutFunc = () => {
+  _logoutFunc = async () => {
+    await this.props.navigation.performAction(({ stacks }) => {
+      stacks("root").popToTop();
+    });
     this.props.dispatch(logOut());
   };
   componentDidMount = () => {
+    this.props.dispatch(userLoading(true));
     this.props.dispatch(getUser(this.props.userID));
   };
   _logoutFunc = () => {
@@ -22,20 +27,25 @@ class UserProfileContainer extends Component {
 
   render() {
     const userInfo = this.props.userInfo;
+    if (this.props.userLoading) {
+      return <ActivityIndicator />;
+    }
     return <UserProfile userInfo={userInfo} logoutFunc={this._logoutFunc} />;
   }
 }
 
 UserProfileContainer.propTypes = {
-  userID: PropTypes.string.isRequired,
+  userID: PropTypes.string,
   userInfo: PropTypes.object,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  userLoading: PropTypes.bool
 };
 
 const mapStateToProps = state => {
   return {
     userID: state.auth.userId,
-    userInfo: state.user.userInfo
+    userInfo: state.user.userInfo,
+    userLoading: state.userLoading
   };
 };
 
