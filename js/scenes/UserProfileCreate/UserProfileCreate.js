@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import NovaButton from "../../components/UI/NovaButton/";
 import NovaImperative from "../../components/UI/NovaImperative";
 const { fontMain } = typography;
-const { nearBlack } = colors;
+const { nearBlack, red, green } = colors;
 let nameCheck = true;
 let bioCheck = true;
 let expCheck = true;
@@ -56,9 +56,9 @@ const UserProfileCreate = ({
           }}
         />
         {nameCheck ? (
-          <Text style={{ color: "red" }}> Required </Text>
+          <Text style={{ color: red }}> Required </Text>
         ) : (
-          <Text style={{ color: "green" }}>Completed</Text>
+          <Text style={{ color: green }}>Completed</Text>
         )}
       </View>
       <Text style={styles.header}>Your tag-line</Text>
@@ -76,9 +76,9 @@ const UserProfileCreate = ({
           }}
         />
         {quoCheck ? (
-          <Text style={{ color: "red" }}> Required </Text>
+          <Text style={{ color: red }}> Required </Text>
         ) : (
-          <Text style={{ color: "green" }}>Completed</Text>
+          <Text style={{ color: green }}>Completed</Text>
         )}
       </View>
       <Text style={styles.header}>Your Degree</Text>
@@ -96,9 +96,9 @@ const UserProfileCreate = ({
           }}
         />
         {titCheck ? (
-          <Text style={{ color: "red" }}> Required </Text>
+          <Text style={{ color: red }}> Required </Text>
         ) : (
-          <Text style={{ color: "green" }}>Completed</Text>
+          <Text style={{ color: green }}>Completed</Text>
         )}
       </View>
       <Text style={styles.header}>Biography</Text>
@@ -116,9 +116,9 @@ const UserProfileCreate = ({
           }}
         />
         {bioCheck ? (
-          <Text style={{ color: "red" }}> Required </Text>
+          <Text style={{ color: red }}> Required </Text>
         ) : (
-          <Text style={{ color: "green" }}>Completed</Text>
+          <Text style={{ color: green }}>Completed</Text>
         )}
       </View>
       <Text style={styles.header}>Work Experience</Text>
@@ -138,32 +138,11 @@ you work there, what did you do?)"
           }}
         />
         {expCheck ? (
-          <Text style={{ color: "red" }}> Required </Text>
+          <Text style={{ color: red }}> Required </Text>
         ) : (
-          <Text style={{ color: "green" }}>Completed</Text>
+          <Text style={{ color: green }}>Completed</Text>
         )}
       </View>
-      {/* <Text style={styles.header}>Education</Text>
-      <View style={styles.textInputContainer}>
-        <TextInput
-          placeholder="Where did you attend school? Any credible
-certfications? What field did you study?"
-          multiline={true}
-          value={education}
-          numberOfLines={4}
-          style={styles.input}
-          placeholderTextColor={nearBlack}
-          onChange={text => {
-            handleChangeEducation(text.nativeEvent.text);
-            eduCheck = false;
-          }}
-        />
-        {eduCheck ? (
-          <Text style={{ color: "red" }}> Required </Text>
-        ) : (
-          <Text style={{ color: "green" }}>Completed</Text>
-        )}
-      </View> */}
       <Text style={styles.header}>Projects</Text>
       <View style={styles.textInputContainer}>
         <TextInput
@@ -179,9 +158,9 @@ certfications? What field did you study?"
           }}
         />
         {proCheck ? (
-          <Text style={{ color: "red" }}> Required </Text>
+          <Text style={{ color: red }}> Required </Text>
         ) : (
-          <Text style={{ color: "green" }}>Completed</Text>
+          <Text style={{ color: green }}>Completed</Text>
         )}
       </View>
       <View style={styles.global}>
@@ -208,9 +187,9 @@ certfications? What field did you study?"
           }}
         />
         {gloCheck ? (
-          <Text style={{ color: "red" }}> Required </Text>
+          <Text style={{ color: red }}> Required </Text>
         ) : (
-          <Text style={{ color: "green" }}>Completed</Text>
+          <Text style={{ color: green }}>Completed</Text>
         )}
       </View>
       <Text style={styles.header}>References</Text>
@@ -228,9 +207,9 @@ certfications? What field did you study?"
           }}
         />
         {refCheck ? (
-          <Text style={{ color: "red" }}> Required </Text>
+          <Text style={{ color: red }}> Required </Text>
         ) : (
-          <Text style={{ color: "green" }}>Completed</Text>
+          <Text style={{ color: green }}>Completed</Text>
         )}
       </View>
       <Text style={styles.header}>Image</Text>
@@ -248,9 +227,9 @@ certfications? What field did you study?"
           }}
         />
         {imgCheck ? (
-          <Text style={{ color: "red" }}> Required </Text>
+          <Text style={{ color: red }}> Required </Text>
         ) : (
-          <Text style={{ color: "green" }}>Completed</Text>
+          <Text style={{ color: green }}>Completed</Text>
         )}
       </View>
     </View>

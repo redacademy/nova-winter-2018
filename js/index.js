@@ -27,6 +27,7 @@ const navContext = new NavContext({
   router: Router,
   store: Store
 });
+console.disableYellowBox = true;
 
 export default class App extends Component {
   constructor(props) {
