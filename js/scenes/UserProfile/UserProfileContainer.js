@@ -14,6 +14,8 @@ class UserProfileContainer extends Component {
   _logoutFunc = async () => {
     await this.props.navigation.performAction(({ stacks }) => {
       stacks("root").popToTop();
+      stacks("main").popToTop();
+      stacks("companies").popToTop();
     });
     this.props.dispatch(logOut());
   };
